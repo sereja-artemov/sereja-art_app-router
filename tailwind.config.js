@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   darkMode: 'class',
   content: [
@@ -8,6 +11,13 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      'sans': ['"Open Sans"', ...defaultTheme.fontFamily.sans],
+      'boss': ['Raleway', ...defaultTheme.fontFamily.sans],
+      'bitter': ['Bitter', ...defaultTheme.fontFamily.serif],
+    },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
