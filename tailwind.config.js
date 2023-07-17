@@ -16,6 +16,13 @@ module.exports = {
       'boss': ['Raleway', ...defaultTheme.fontFamily.sans],
       'bitter': ['Bitter', ...defaultTheme.fontFamily.serif],
     },
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/typography'),
