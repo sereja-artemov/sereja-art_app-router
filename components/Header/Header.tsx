@@ -74,8 +74,6 @@ export const Header = () => {
           <button onClick={openMenu} className='px-3 p-0.5 rounded-full border hover:bg-slate-50 hover:text-black' type='button'>Меню</button>
         </div>
       </nav>
-      {/* <div className='fixed top-0 left-0 w-full h-screen bg-black z-800 bg-opacity-40'></div> */}
->>>>>>>>> Temporary merge branch 2
     </header>
   )
 }
