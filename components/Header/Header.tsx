@@ -38,8 +38,8 @@ export const Header = () => {
           </div>
         </button>
         
-        {/* Мобильное меню */}
-        { isMenuOpen && <ul className='z-800 fixed top-[60px] translate-x-[-50%] border rounded-3xl left-1/2 w-[90%] p-4 py-14 bg-black'>
+        {/* Меню */}
+        { isMenuOpen && <ul className='z-800 fixed top-[60px] md:top-[65px] lg:top-[75px] translate-x-[-50%] border rounded-3xl left-1/2 w-[91%] p-4 py-14 bg-black'>
 
           {navigationRoutes.map((item) => {
             return (
@@ -50,8 +50,11 @@ export const Header = () => {
           })}
         </ul>}
 
-        <div className='z-800 relative flex p-0.5 border rounded-full'>
-          <button onClick={openMenu} className='px-3 p-0.5 rounded-full border hover:bg-slate-50 hover:text-black' type='button'>Меню</button>
+        <div className='z-800 relative flex lg:flex-grow p-0.5 border rounded-full'>
+          <div onClick={openMenu} className='flex align-middle justify-between lg:flex-grow px-3 p-0.5 rounded-full border hover:bg-slate-50 hover:text-black'>
+            <button type='button'>Меню</button>
+            <div className='hidden lg:block'><span>9</span></div>
+          </div>
         </div>
       </nav>
       <div>
