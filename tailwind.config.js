@@ -14,7 +14,7 @@ module.exports = {
     fontFamily: {
       'sans': ['"Open Sans"', ...defaultTheme.fontFamily.sans],
       'boss': ['Raleway', ...defaultTheme.fontFamily.sans],
-      'bitter': ['Bitter', ...defaultTheme.fontFamily.serif],
+      'playfair': ['"Playfair Display"', ...defaultTheme.fontFamily.serif],
     },
     container: {
       center: true,

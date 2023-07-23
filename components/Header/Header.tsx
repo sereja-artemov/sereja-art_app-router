@@ -28,9 +28,9 @@ export const Header = () => {
   },[])
 
   return (
-    <header className='fixed container mx-auto my-5 flex items-center'>
+    <header className='container fixed flex items-center mx-auto my-5'>
       <nav className='z-900 mx-auto px-4 sm:px-8 fixed top-5 lg:static lg:px-0 w-full left-0 flex gap-x-1.5 align-middle'>
-      { isMenuOpen &&  <div onClick={closeMenu} className='fixed backdrop-blur-sm top-0 left-0 w-full h-screen bg-black z-700 bg-opacity-40'></div>}
+      { isMenuOpen &&  <div onClick={closeMenu} className='fixed top-0 left-0 w-full h-screen bg-black backdrop-blur-sm z-700 bg-opacity-40'></div>}
         <button type='button' className='flex grow lg:grow-0 shrink-0 p-0.5 lg:p-1 border rounded-full'>
           <div className="w-full h-full gap-3 px-4 pr-1 p-0.5 rounded-full bg-slate-50 flex justify-between items-center">
             <Link className='text-black' href='/'>Главная страница</Link>
@@ -41,9 +41,9 @@ export const Header = () => {
         {/* Меню */}
         { isMenuOpen && <ul className='z-800 fixed top-[60px] md:top-[65px] lg:top-[75px] translate-x-[-50%] border rounded-3xl left-1/2 w-[91%] p-4 py-14 bg-black'>
 
-          {navigationRoutes.map((item) => {
+          {navigationRoutes.map((item, index) => {
             return (
-              <li className='mb-2 lg:mb-0 flex lg:w-[24.7%] p-0.5 border rounded-full bg-[#2B2B2B] hover:text-black hover:bg-white'>
+              <li key={index} className='mb-2 lg:mb-0 flex lg:w-[24.7%] p-0.5 border rounded-full bg-[#2B2B2B] hover:text-black hover:bg-white'>
                <Link className='w-full h-full px-3 p-0.5 rounded-full flex gap-2 lg:gap-4 justify-between items-center' href={item.route}>{item.name}</Link>
              </li>  
             )
@@ -59,7 +59,7 @@ export const Header = () => {
       </nav>
       <div>
         {/* Иконки соцсетей */}
-        <ul className='hidden lg:flex gap-1'>
+        <ul className='hidden gap-1 lg:flex'>
           <li className='border rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5'>
             <a href="">
               <svg className='max-w-full max-h-auto' fill="#ffffff" width="64px" height="64px" viewBox="-2.5 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>vk</title> <path d="M16.563 15.75c-0.5-0.188-0.5-0.906-0.531-1.406-0.125-1.781 0.5-4.5-0.25-5.656-0.531-0.688-3.094-0.625-4.656-0.531-0.438 0.063-0.969 0.156-1.344 0.344s-0.75 0.5-0.75 0.781c0 0.406 0.938 0.344 1.281 0.875 0.375 0.563 0.375 1.781 0.375 2.781 0 1.156-0.188 2.688-0.656 2.75-0.719 0.031-1.125-0.688-1.5-1.219-0.75-1.031-1.5-2.313-2.063-3.563-0.281-0.656-0.438-1.375-0.844-1.656-0.625-0.438-1.75-0.469-2.844-0.438-1 0.031-2.438-0.094-2.719 0.5-0.219 0.656 0.25 1.281 0.5 1.813 1.281 2.781 2.656 5.219 4.344 7.531 1.563 2.156 3.031 3.875 5.906 4.781 0.813 0.25 4.375 0.969 5.094 0 0.25-0.375 0.188-1.219 0.313-1.844s0.281-1.25 0.875-1.281c0.5-0.031 0.781 0.406 1.094 0.719 0.344 0.344 0.625 0.625 0.875 0.938 0.594 0.594 1.219 1.406 1.969 1.719 1.031 0.438 2.625 0.313 4.125 0.25 1.219-0.031 2.094-0.281 2.188-1 0.063-0.563-0.563-1.375-0.938-1.844-0.938-1.156-1.375-1.5-2.438-2.563-0.469-0.469-1.063-0.969-1.063-1.531-0.031-0.344 0.25-0.656 0.5-1 1.094-1.625 2.188-2.781 3.188-4.469 0.281-0.5 0.938-1.656 0.688-2.219-0.281-0.625-1.844-0.438-2.813-0.438-1.25 0-2.875-0.094-3.188 0.156-0.594 0.406-0.844 1.063-1.125 1.688-0.625 1.438-1.469 2.906-2.344 4-0.313 0.375-0.906 1.156-1.25 1.031z"></path> </g></svg>
