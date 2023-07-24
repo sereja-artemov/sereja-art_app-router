@@ -20,7 +20,7 @@ export const Header = () => {
   useEffect(() => {
     const close = (e:any) => {
       if(e.keyCode === 27){
-        closeMenu;
+        closeMenu();
       }
     }
     window.addEventListener('keydown', close)
@@ -29,7 +29,7 @@ export const Header = () => {
 
   return (
     <>
-          <header className='z-50 fixed top-0 my-5 left-1/2 -translate-x-1/2 w-full'>
+          <header className='fixed top-0 z-50 w-full py-5 -translate-x-1/2 left-1/2 backdrop-blur-sm'>
         <div className='container flex gap-x-1.5 items-center mx-auto'>
           <nav className='mx-auto w-full left-0 flex gap-x-1.5 align-middle'>
             <button type='button' className='flex grow lg:grow-0 shrink-0 p-0.5 lg:p-1 border rounded-full'>
@@ -40,7 +40,7 @@ export const Header = () => {
             </button>
             
             {/* Меню */}
-            { isMenuOpen && <ul className='fixed top-[50px] md:top-[65px] lg:top-[75px] translate-x-[-50%] border rounded-3xl left-1/2 w-[91%] p-4 py-14 bg-black'>
+            { isMenuOpen && <ul className='fixed top-[70px] md:top-[75px] lg:top-[90px] translate-x-[-50%] border rounded-3xl left-1/2 w-[91%] p-4 py-14 bg-black'>
 
               {navigationRoutes.map((item, index) => {
                 return (
@@ -84,7 +84,7 @@ export const Header = () => {
         </div>
       </header>
       {/* Popup */}
-      { isMenuOpen &&  <div onClick={closeMenu} className='z-40 fixed top-0 left-0 w-full h-screen bg-black backdrop-blur-sm bg-opacity-40'></div>}
+      { isMenuOpen &&  <div onClick={closeMenu} className='fixed top-0 left-0 z-40 w-full h-screen bg-black backdrop-blur-sm bg-opacity-40'></div>}
 
     </>
 
