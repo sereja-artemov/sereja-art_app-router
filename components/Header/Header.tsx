@@ -40,13 +40,13 @@ export const Header = () => {
             </button>
             
             {/* Меню */}
-            { isMenuOpen && <ul className='fixed top-[70px] md:top-[75px] lg:top-[90px] translate-x-[-50%] border rounded-3xl left-1/2 w-[91%] p-4 py-14 bg-black'>
+            { isMenuOpen && <ul className='fixed top-[70px] md:top-[75px] lg:top-[90px] translate-x-[-50%] border rounded-3xl left-1/2 w-[91%] p-4 py-8 bg-black'>
 
               {navigationRoutes.map((item, index) => {
                 return (
                   <li key={index} className='mb-2 lg:mb-0 flex lg:w-[24.7%] p-0.5 border rounded-full bg-[#2B2B2B] hover:text-black hover:bg-white'>
-                  <Link className='w-full h-full px-3 p-0.5 rounded-full flex gap-2 lg:gap-4 justify-between items-center' href={item.route}>{item.name}</Link>
-                </li>  
+                   <Link className='w-full h-full px-3 p-0.5 rounded-full flex gap-2 lg:gap-4 justify-between items-center' href={item.route}>{item.name}</Link>
+                  </li>  
                 )
               })}
             </ul>}
