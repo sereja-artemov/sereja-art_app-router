@@ -29,36 +29,37 @@ export const Header = () => {
 
   return (
     <>
-          <header className='fixed top-0 z-50 w-full py-5 -translate-x-1/2 left-1/2 backdrop-blur-sm'>
+          <header className='fixed top-0 z-50 w-full py-5 -translate-x-1/2 left-1/2'>
         <div className='container flex gap-x-1.5 items-center mx-auto'>
           <nav className='mx-auto w-full left-0 flex gap-x-1.5 align-middle'>
             <button type='button' className='flex grow lg:grow-0 shrink-0 p-0.5 lg:p-1 border rounded-full'>
               <div className="w-full h-full gap-3 px-4 pr-1 p-0.5 rounded-full bg-slate-50 flex justify-between items-center">
-                <Link className='text-black' href='/'>Главная страница</Link>
+                <Link className='text-black lg:mb-[0.1em] leading-none' href='/'>Главная страница</Link>
                 <svg className='w-[22px] lg:w-[27px] h-auto group-hover:fill-slate-50' width="20px" height="20px" viewBox="-3.2 -3.2 38.40 38.40" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.064"></g><g id="SVGRepo_iconCarrier"> <title>arrow-right-circle</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke-width="0.00032" fill="none" fill-rule="evenodd"> <g id="Icon-Set-Filled" transform="translate(-310.000000, -1089.000000)" fill="#000000"> <path d="M332.535,1105.88 L326.879,1111.54 C326.488,1111.93 325.855,1111.93 325.465,1111.54 C325.074,1111.15 325.074,1110.51 325.465,1110.12 L329.586,1106 L319,1106 C318.447,1106 318,1105.55 318,1105 C318,1104.45 318.447,1104 319,1104 L329.586,1104 L325.465,1099.88 C325.074,1099.49 325.074,1098.86 325.465,1098.46 C325.855,1098.07 326.488,1098.07 326.879,1098.46 L332.535,1104.12 C332.775,1104.36 332.85,1104.69 332.795,1105 C332.85,1105.31 332.775,1105.64 332.535,1105.88 L332.535,1105.88 Z M326,1089 C317.163,1089 310,1096.16 310,1105 C310,1113.84 317.163,1121 326,1121 C334.837,1121 342,1113.84 342,1105 C342,1096.16 334.837,1089 326,1089 L326,1089 Z" id="arrow-right-circle"> </path> </g> </g> </g></svg>
               </div>
             </button>
-            
-            {/* Меню */}
-            { isMenuOpen && <ul className='fixed top-[70px] md:top-[75px] lg:top-[90px] translate-x-[-50%] border rounded-3xl left-1/2 w-[91%] p-4 py-8 bg-black'>
 
-              {navigationRoutes.map((item, index) => {
-                return (
-                  <li key={index} className='mb-2 lg:mb-0 flex lg:w-[24.7%] p-0.5 border rounded-full bg-[#2B2B2B] hover:text-black hover:bg-white'>
-                   <Link className='w-full h-full px-3 p-0.5 rounded-full flex gap-2 lg:gap-4 justify-between items-center' href={item.route}>{item.name}</Link>
-                  </li>  
-                )
-              })}
-            </ul>}
-
-            <div className='relative flex lg:flex-grow p-0.5 lg:p-1 min-w-[93px] border rounded-full'>
-              <div onClick={openMenu} className='flex w-full align-middle justify-center lg:justify-between lg:flex-grow px-3 p-0.5 rounded-full border hover:bg-slate-50 hover:text-black'>
-                <button type='button'>
+            <div className='relative flex lg:flex-grow p-0.5 lg:p-1 min-w-[93px] border rounded-full lg:bg-neutral-800'>
+              <div onClick={openMenu} className={`flex w-full hover:cursor-pointer align-middle justify-center lg:justify-between lg:flex-grow px-3 lg:px-5 p-1 lg:pr-1 rounded-full ${isMenuOpen && 'bg-slate-50 text-black'} border hover:bg-slate-50 hover:text-black`}>
+                <button className='lg:mb-[0.1em] leading-none' type='button'>
                   {isMenuOpen ? 'Закрыть' : 'Меню'}
                   
                 </button>
-                <div className='hidden lg:block'><span>9</span></div>
+                <div className='hidden lg:block px-8 bg-indigo-500 rounded-full'><span>{navigationRoutes.length}</span></div>
               </div>
+              {/* Меню */}
+              { isMenuOpen && 
+                <ul className='absolute right-0 lg:w-full top-[55px] max-h-[80vh] overflow-auto w-auto border rounded-3xl p-4 py-8 bg-black'>
+                  {navigationRoutes.map((item, index) => {
+                    return (
+                      <li key={index} className='text-stroke mb-2 lg:mb-0 flex p-0.5 text-4xl md:text-6xl lg:py-[0.2em] font-bold uppercase'>
+                        <Link className='link w-full lg:w-auto h-full px-3 p-0.5 rounded-full flex gap-2 lg:gap-4 justify-between items-center font-boss' href={item.route}>
+                          <span data-text={item.name}>{item.name}</span>
+                        </Link>
+                      </li>  
+                    )
+                  })}
+                </ul>}
             </div>
           </nav>
           <div>

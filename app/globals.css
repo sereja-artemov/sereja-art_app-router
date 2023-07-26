@@ -15,8 +15,16 @@
 
 @layer utilities {
   .text-stroke {
-    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-width: .015em;
     -webkit-text-stroke-color: inherit;
     -webkit-text-fill-color: transparent;
+  }
+  .link span {
+    @apply w-full block relative before:w-0 before:text-[color:text-black] before:overflow-hidden before:absolute before:content-[attr(data-text)] before:transition-all before:duration-[1s] before:ease-[cubic-bezier(0.84,0,0.08,0.99)] hover:before:w-full;
+  }
+  .link span::before {
+    -webkit-text-stroke-width: 0;
+    -webkit-text-stroke-color: #fff;
+    -webkit-text-fill-color: #fff;
   }
 }
