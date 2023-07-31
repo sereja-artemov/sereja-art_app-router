@@ -45,15 +45,15 @@ export const Header = () => {
                   {isMenuOpen ? 'Закрыть' : 'Меню'}
                   
                 </button>
-                <div className='hidden lg:block px-8 bg-indigo-500 rounded-full'><span>{navigationRoutes.length}</span></div>
+                <div className='hidden px-8 bg-indigo-500 rounded-full lg:block'><span>{navigationRoutes.length}</span></div>
               </div>
-              {/* Меню */}
+              {/* Мобильное меню */}
               { isMenuOpen && 
-                <ul className='absolute right-0 lg:w-full top-[55px] max-h-[80vh] overflow-auto w-auto border rounded-3xl p-4 py-8 bg-black'>
+                <ul className='fixed top-0 right-0 w-auto h-full p-4 py-8 overflow-auto bg-black border lg:static rounded-3xl'>
                   {navigationRoutes.map((item, index) => {
                     return (
-                      <li key={index} className='text-stroke mb-2 lg:mb-0 flex p-0.5 text-4xl md:text-6xl lg:py-[0.2em] font-bold uppercase'>
-                        <Link className='link w-full lg:w-auto h-full px-3 p-0.5 rounded-full flex gap-2 lg:gap-4 justify-between items-center font-boss' href={item.route}>
+                      <li key={index} className=''>
+                        <Link className='' href={item.route}>
                           <span data-text={item.name}>{item.name}</span>
                         </Link>
                       </li>  
