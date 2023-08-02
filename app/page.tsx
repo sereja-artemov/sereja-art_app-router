@@ -8,7 +8,7 @@ export default function Home() {
       <Header />
       <main>
         {/* отступ для fixed header */}
-        <div className='mt-14'></div>
+        <div className='mt-[72px]'></div>
         <Hero />
       </main>
     </>
