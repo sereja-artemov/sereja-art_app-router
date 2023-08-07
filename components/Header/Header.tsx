@@ -39,17 +39,16 @@ export const Header = () => {
               </div>
             </button>
 
-            <div className='relative flex lg:flex-grow p-0.5 lg:p-1 min-w-[93px] border rounded-full lg:bg-neutral-800'>
-              <div onClick={openMenu} className={`flex w-full hover:cursor-pointer align-middle justify-center lg:justify-between lg:flex-grow px-3 lg:px-5 p-1 lg:pr-1 rounded-full ${isMenuOpen && 'bg-slate-50 text-black'} border hover:bg-slate-50 hover:text-black`}>
-                <button className='lg:mb-[0.1em] leading-none' type='button'>
-                  {isMenuOpen ? 'Закрыть' : 'Меню'}
-                  
-                </button>
-                <div className='hidden px-8 bg-indigo-500 rounded-full lg:block'><span>{navigationRoutes.length}</span></div>
-              </div>
-              {/* Мобильное меню */}
+            <div className='flex'>
+                {/* Кнопка меню */}
+                <div onClick={openMenu} className={`lg:hidden border rounded-full p-0.5 flex items-center`}>
+                  <button className='leading-none px-4 p-0.5 border rounded-full h-full min-w-[87px]' type='button'>
+                    {isMenuOpen ? 'Закрыть' : 'Меню'}
+                  </button>
+                </div>
+              {/* Меню */}
               { isMenuOpen && 
-                <ul className='fixed top-0 right-0 w-auto h-full p-4 py-8 overflow-auto bg-black border lg:static rounded-3xl'>
+                <ul className='fixed top-20 left-1/2 -translate-x-1/2 w-[90vw] h-auto p-4 py-8 overflow-auto bg-black border lg:static rounded-3xl'>
                   {navigationRoutes.map((item, index) => {
                     return (
                       <li key={index} className=''>
@@ -60,6 +59,7 @@ export const Header = () => {
                     )
                   })}
                 </ul>}
+
             </div>
           </nav>
           <div>
