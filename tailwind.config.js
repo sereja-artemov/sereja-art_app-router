@@ -10,7 +10,13 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        darkPrimary: "#0f172a",
+        darkSecondary: "#334155",
+        darkWhite: "#f8fafc",
+      },
+    },
     fontFamily: {
       'sans': ['"Open Sans"', ...defaultTheme.fontFamily.sans],
       'boss': ['Raleway', ...defaultTheme.fontFamily.sans],

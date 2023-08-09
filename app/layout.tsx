@@ -1,3 +1,4 @@
+import { DarkModeProvider } from '@/context/darkModeContext'
 import './globals.css'
 
 export const metadata = {
@@ -11,8 +12,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html className='dark' lang="ru">
-      <body className='font-sans text-sm md:text-base lg:text-xl'>{children}</body>
-    </html>
+    <DarkModeProvider>
+      <html lang="ru">
+          <body className='font-sans text-sm md:text-base lg:text-xl dark:bg-darkPrimary'>{children}</body>
+      </html>
+    </DarkModeProvider>
   )
 }

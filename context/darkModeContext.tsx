@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useContext, useEffect, createContext } from "react";
 
 export interface DarkModeContextType {
@@ -13,10 +15,10 @@ export function DarkModeProvider({ children }: { children: React.ReactNode }) {
   function updateTheme() {
     const currentTheme = localStorage.getItem("isDarkMode") || "false";
     if (currentTheme === "true") {
-      document.body.classList.add("dark");
+      document.documentElement.classList.add("dark");
       setDarkMode(true);
     } else {
-      document.body.classList.remove("dark");
+      document.documentElement.classList.remove("dark");
       setDarkMode(false);
     }
   }
