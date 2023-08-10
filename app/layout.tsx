@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <DarkModeProvider>
       <html lang="ru">
-          <body className='font-sans text-sm md:text-base lg:text-xl dark:bg-darkPrimary'>{children}</body>
+          <body>{children}</body>
       </html>
     </DarkModeProvider>
   )

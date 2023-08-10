@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { navigationRoutes } from '@/utils/utils';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
@@ -9,15 +9,41 @@ import { useDarkMode } from '@/context/darkModeContext';
 export function Header() {
   const { isDarkMode, changeDarkMode } = useDarkMode();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const [width, setWidth] = React.useState(window.innerWidth);
+  
+  const navRef = useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleResizeWindow = () => setWidth(window.innerWidth);
     window.addEventListener('resize', handleResizeWindow);
     return () => {
       window.removeEventListener('resize', handleResizeWindow);
     };
+  }, []);
+
+  const addShadowToNavbar = () => {
+    if (window.scrollY > 10 ) {
+      navRef.current?.classList.add(...[
+        "shadow",
+        "backdrop-blur-md",
+        "bg-darkWhite/50",
+        "dark:bg-darkSecondary/50",
+      ])
+    } else {
+      navRef.current?.classList.remove(...[
+        "shadow",
+        "backdrop-blur-md",
+        "bg-darkWhite/50",
+        "dark:bg-darkSecondary/50",
+      ])
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', addShadowToNavbar);
+    return () => {
+      window.removeEventListener('scroll', addShadowToNavbar);
+    }
   }, []);
 
   const openMenu = () => {
@@ -42,19 +68,18 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed top-0 z-50 w-full py-5 -translate-x-1/2 left-1/2">
+      <header ref={navRef} className="fixed top-0 z-50 w-full py-5 -translate-x-1/2 left-1/2">
         <div className="container flex gap-x-1.5 items-stretch mx-auto">
           <nav className="mx-auto w-full left-0 flex gap-x-1.5">
-            <button
-              type="button"
+          <Link  href="/"
               className="flex grow lg:grow-0 shrink-0 p-0.5 lg:p-1 border border-darkPrimary/50 dark:border-darkWhite rounded-full"
             >
               <div className="w-full h-full gap-3 px-3 p-0.5 pr-0.5 lg:pr-1 lg:p-1 lg:px-4 rounded-full bg-slate-800 dark:bg-darkWhite dark:text-black text-darkWhite flex justify-between items-center">
-                <Link className="lg:mb-[0.1em]" href="/">
+                <p className="m-0 lg:mb-[0.1em]">
                   {width <= 320 ? 'Главная' : 'Главная страница'}
-                </Link>
+                </p>
                 <svg
-                  className="w-auto h-full group-hover:fill-slate-50"
+                  className="w-auto h-full"
                   width="18"
                   height="18"
                   viewBox="0 0 18 18"
@@ -70,12 +95,12 @@ export function Header() {
                   />
                 </svg>
               </div>
-            </button>
+            </Link>
             <ul className="hidden h-auto gap-1.5 lg:flex overflow-auto">
               {navigationRoutes.map((route, index) => (
                 <li
                   key={index}
-                  className="flex items-center lg:px-5 xl:px-6 lg:my-1 my-0.5 border rounded-full border-slate-900/10 dark:border-slate-50/25 bg-darkWhite dark:bg-darkSecondary"
+                  className="flex items-center lg:px-5 xl:px-6 lg:my-1 my-0.5 border rounded-full border-slate-900/10 dark:border-slate-50/20 bg-whiteSecondary dark:bg-darkSecondary"
                 >
                   <Link className="mb-[0.1em]" href={route.route}>
                     {route.name}

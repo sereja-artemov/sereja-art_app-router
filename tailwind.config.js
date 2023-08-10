@@ -15,6 +15,8 @@ module.exports = {
         darkPrimary: "#21252b",
         darkSecondary: "#333841",
         darkWhite: "#ededef",
+        whitePrimary: '#f6f8fc',
+        whiteSecondary: "#fff",
       },
     },
     fontFamily: {

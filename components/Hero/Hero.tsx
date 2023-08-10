@@ -5,35 +5,34 @@ import HeroAvatar from '../../images/hero-avatar.jpg';
 const Hero = () => {
   return (
     <section className="container mb-6">
-      <div className="flex flex-col-reverse lg:items-end lg:pt-20 lg:px-12 lg:pb-12 md:flex-row md:justify-between md:align-top gap-7 px-4 py-8 md:px-9 md:py-11 rounded-3xl bg-slate-400 bg-[url('/hero-bg.jpg')] bg-no-repeat bg-cover bg-center">
+      <div className="flex flex-col-reverse lg:items-end text-darkWhite bg-darkSecondary lg:pt-20 lg:px-12 lg:pb-12 md:flex-row md:justify-between md:align-top gap-7 px-4 py-8 md:px-9 md:py-11 rounded-3xl bg-slate-400 bg-[url('/hero-bg.jpg')] bg-no-repeat bg-cover bg-center">
         <div className="md:max-w-[285px] lg:max-w-none">
           <h1 className="text-[40px] md:text-[46px] lg:text-[110px] leading-none font-boss mb-3 md:mb-1 lg:mb-5 uppercase font-bold">
             sereja <span className="text-stroke">art-</span>
           </h1>
           <div className="lg:flex lg:flex-row-reverse lg:shrink-0 lg:items-center lg:gap-7">
             <p className="mb-5 lg:mb-0 lg:text-base">
-              frontend-разработчик, дизайнер, специалист по контекстной рекламе
+              frontend-разработчик, веб-дизайнер, специалист по контекстной рекламе
             </p>
-            <div className="flex items-center justify-between gap-5 px-4 py-1 pr-1 border rounded-full shrink-0 md:border-2 lg:text-xl lg:w-[350px]">
-              <button type="button">Начать работать</button>
-              <svg
-                className="w-[22px] lg:w-[27px] h-auto"
-                width="18"
-                height="18"
-                viewBox="0 0 18 18"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  className="fill-orange-300"
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M12.4035 9.45829L9.45765 12.4062C9.254 12.6094 8.92431 12.6094 8.72119 12.4062C8.51754 12.2031 8.51754 11.8697 8.72119 11.6666L10.8675 9.52079H5.354C5.06598 9.52079 4.83317 9.28642 4.83317 8.99996C4.83317 8.7135 5.06598 8.47913 5.354 8.47913H10.8675L8.72119 6.33329C8.51754 6.13017 8.51754 5.80202 8.72119 5.59369C8.92431 5.39056 9.254 5.39056 9.45765 5.59369L12.4035 8.54162C12.5285 8.66662 12.5676 8.8385 12.5389 8.99996C12.5676 9.16142 12.5285 9.33329 12.4035 9.45829ZM8.99984 0.666626C4.39723 0.666626 0.666504 4.39579 0.666504 8.99996C0.666504 13.6041 4.39723 17.3333 8.99984 17.3333C13.6024 17.3333 17.3332 13.6041 17.3332 8.99996C17.3332 4.39579 13.6024 0.666626 8.99984 0.666626Z"
-                  fill="black"
-                  stroke="black"
-                  stroke-width="0.000166667"
-                />
-              </svg>
-            </div>
+            <button type='button' className="flex items-center h-full justify-between gap-5 px-4 py-1 pr-1 border rounded-full shrink-0 md:border-2 lg:text-xl">
+              <p className="lg:mb-[0.1em]">Начать работать</p>
+                <svg
+                    className="w-auto lg:h-[30px] h-5"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      className="fill-slate-50"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M12.4049 9.45833L9.45911 12.4063C9.25547 12.6094 8.92578 12.6094 8.72265 12.4063C8.51901 12.2031 8.51901 11.8698 8.72265 11.6667L10.869 9.52083H5.35547C5.06745 9.52083 4.83464 9.28646 4.83464 9C4.83464 8.71354 5.06745 8.47916 5.35547 8.47916H10.869L8.72265 6.33333C8.51901 6.13021 8.51901 5.80206 8.72265 5.59373C8.92578 5.3906 9.25547 5.3906 9.45911 5.59373L12.4049 8.54166C12.5299 8.66666 12.569 8.83854 12.5404 9C12.569 9.16146 12.5299 9.33333 12.4049 9.45833ZM9.0013 0.666664C4.3987 0.666664 0.667969 4.39583 0.667969 9C0.667969 13.6042 4.3987 17.3333 9.0013 17.3333C13.6039 17.3333 17.3346 13.6042 17.3346 9C17.3346 4.39583 13.6039 0.666664 9.0013 0.666664Z"
+                      fill="white"
+                    />
+                  </svg>
+            </button>
           </div>
         </div>
         <div className="w-fit">
