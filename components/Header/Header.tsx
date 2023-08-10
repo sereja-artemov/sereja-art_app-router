@@ -47,14 +47,14 @@ export function Header() {
           <nav className="mx-auto w-full left-0 flex gap-x-1.5">
             <button
               type="button"
-              className="flex grow lg:grow-0 shrink-0 p-0.5 lg:p-1 border border-slate-900/50 dark:border-slate-50 rounded-full"
+              className="flex grow lg:grow-0 shrink-0 p-0.5 lg:p-1 border border-darkPrimary/50 dark:border-darkWhite rounded-full"
             >
-              <div className="w-full h-full gap-3 px-4 pr-0.5 lg:p-1 p-0.5 rounded-full bg-slate-800 dark:bg-slate-50 dark:text-black text-white flex justify-between items-center">
+              <div className="w-full h-full gap-3 px-3 p-0.5 pr-0.5 lg:pr-1 lg:p-1 lg:px-4 rounded-full bg-slate-800 dark:bg-darkWhite dark:text-black text-darkWhite flex justify-between items-center">
                 <Link className="lg:mb-[0.1em]" href="/">
                   {width <= 320 ? 'Главная' : 'Главная страница'}
                 </Link>
                 <svg
-                  className="w-[22px]  lg:w-[27px] h-auto group-hover:fill-slate-50"
+                  className="w-auto h-full group-hover:fill-slate-50"
                   width="18"
                   height="18"
                   viewBox="0 0 18 18"
@@ -75,7 +75,7 @@ export function Header() {
               {navigationRoutes.map((route, index) => (
                 <li
                   key={index}
-                  className="flex items-center lg:px-5 xl:px-6 lg:my-1 my-0.5 border rounded-full border-slate-900/10 dark:border-slate-50/25 bg-slate-200 dark:bg-darkSecondary hover:bg-opa"
+                  className="flex items-center lg:px-5 xl:px-6 lg:my-1 my-0.5 border rounded-full border-slate-900/10 dark:border-slate-50/25 bg-darkWhite dark:bg-darkSecondary"
                 >
                   <Link className="mb-[0.1em]" href={route.route}>
                     {route.name}
@@ -87,10 +87,10 @@ export function Header() {
               {/* Кнопка меню */}
               <div
                 onClick={openMenu}
-                className="lg:hidden border border-slate-900/50 rounded-full p-0.5 flex items-center"
+                className="lg:hidden border border-slate-900/50 dark:border-darkWhite rounded-full p-0.5 flex items-center"
               >
                 <button
-                  className="leading-none px-4 p-0.5 border border-slate-900/50 rounded-full h-full min-w-[87px]"
+                  className="leading-none px-4 p-0.5 border border-slate-900/50 dark:border-darkWhite rounded-full h-full min-w-[87px]"
                   type="button"
                 >
                   {isMenuOpen ? 'Закрыть' : 'Меню'}
@@ -115,7 +115,7 @@ export function Header() {
             <div className="w-8 h-8 lg:w-10 lg:h-10 max-h-12">
               <DarkModeSwitch
                 sunColor="#0f172a"
-                moonColor="#f8fafc"
+                moonColor="#ededef"
                 style={{ width: '100%', height: 'auto' }}
                 checked={isDarkMode}
                 onChange={changeDarkMode}
@@ -126,17 +126,15 @@ export function Header() {
           <div>
             {/* Иконки соцсетей */}
             <ul className="items-center hidden gap-1 lg:flex">
-              <li className="border rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
+              <li className="border border-darkPrimary/50 dark:border-darkWhite rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
                 <a href="">
                   <svg
-                    className="max-w-full max-h-auto"
-                    fill="#ffffff"
+                    className="max-w-full max-h-auto fill-darkPrimary dark:fill-darkWhite"
                     width="64px"
                     height="64px"
                     viewBox="-2.5 0 32 32"
                     version="1.1"
                     xmlns="http://www.w3.org/2000/svg"
-                    stroke="#ffffff"
                   >
                     <g id="SVGRepo_bgCarrier" stroke-width="0" />
                     <g
@@ -152,17 +150,15 @@ export function Header() {
                   </svg>
                 </a>
               </li>
-              <li className="border rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
+              <li className="border border-darkPrimary/50 dark:border-darkWhite rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
                 <a href="">
                   <svg
-                    className="max-w-full max-h-auto"
-                    fill="#ffffff"
+                    className="max-w-full max-h-auto fill-darkPrimary dark:fill-darkWhite"
                     width="64px"
                     height="64px"
                     viewBox="-2.5 0 32 32"
                     version="1.1"
                     xmlns="http://www.w3.org/2000/svg"
-                    stroke="#ffffff"
                   >
                     <g id="SVGRepo_bgCarrier" stroke-width="0" />
                     <g
@@ -178,17 +174,15 @@ export function Header() {
                   </svg>
                 </a>
               </li>
-              <li className="border rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
+              <li className="border border-darkPrimary/50 dark:border-darkWhite rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
                 <a href="">
                   <svg
-                    className="max-w-full max-h-auto"
-                    fill="#ffffff"
+                    className="max-w-full max-h-auto fill-darkPrimary dark:fill-darkWhite"
                     width="64px"
                     height="64px"
                     viewBox="-2.5 0 32 32"
                     version="1.1"
                     xmlns="http://www.w3.org/2000/svg"
-                    stroke="#ffffff"
                   >
                     <g id="SVGRepo_bgCarrier" stroke-width="0" />
                     <g
