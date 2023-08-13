@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { navigationRoutes } from '@/utils/utils';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
@@ -9,8 +9,8 @@ import { useDarkMode } from '@/context/darkModeContext';
 export function Header() {
   const { isDarkMode, changeDarkMode } = useDarkMode();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [width, setWidth] = React.useState(window.innerWidth);
-  
+  const [width, setWidth] = useState(window.innerWidth);
+
   const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -22,28 +22,32 @@ export function Header() {
   }, []);
 
   const addShadowToNavbar = () => {
-    if (window.scrollY > 10 ) {
-      navRef.current?.classList.add(...[
-        "shadow",
-        "backdrop-blur-md",
-        "bg-darkWhite/50",
-        "dark:bg-darkSecondary/50",
-      ])
+    if (window.scrollY > 10) {
+      navRef.current?.classList.add(
+        ...[
+          'shadow',
+          'backdrop-blur-md',
+          'bg-darkWhite/50',
+          'dark:bg-darkSecondary/50',
+        ]
+      );
     } else {
-      navRef.current?.classList.remove(...[
-        "shadow",
-        "backdrop-blur-md",
-        "bg-darkWhite/50",
-        "dark:bg-darkSecondary/50",
-      ])
+      navRef.current?.classList.remove(
+        ...[
+          'shadow',
+          'backdrop-blur-md',
+          'bg-darkWhite/50',
+          'dark:bg-darkSecondary/50',
+        ]
+      );
     }
-  }
+  };
 
   useEffect(() => {
     window.addEventListener('scroll', addShadowToNavbar);
     return () => {
       window.removeEventListener('scroll', addShadowToNavbar);
-    }
+    };
   }, []);
 
   const openMenu = () => {
@@ -68,10 +72,14 @@ export function Header() {
 
   return (
     <>
-      <header ref={navRef} className="fixed top-0 z-50 w-full py-5 -translate-x-1/2 left-1/2">
+      <header
+        ref={navRef}
+        className="fixed top-0 z-50 w-full py-5 -translate-x-1/2 left-1/2"
+      >
         <div className="container flex gap-x-1.5 items-stretch mx-auto">
           <nav className="mx-auto w-full left-0 flex gap-x-1.5">
-          <Link  href="/"
+            <Link
+              href="/"
               className="flex grow lg:grow-0 shrink-0 p-0.5 lg:p-1 border border-darkPrimary/50 dark:border-darkWhite rounded-full"
             >
               <div className="w-full h-full gap-3 px-3 p-0.5 pr-0.5 lg:pr-1 lg:p-1 lg:px-4 rounded-full bg-slate-800 dark:bg-darkWhite dark:text-black text-darkWhite flex justify-between items-center">

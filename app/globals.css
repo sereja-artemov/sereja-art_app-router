@@ -15,7 +15,7 @@
 
 @layer utilities {
   .text-stroke {
-    -webkit-text-stroke-width: .015em;
+    -webkit-text-stroke-width: 0.015em;
     -webkit-text-stroke-color: inherit;
     -webkit-text-fill-color: transparent;
   }
@@ -27,7 +27,7 @@
     -webkit-text-stroke-color: #fff;
     -webkit-text-fill-color: #fff;
   }
-  
+
   .scrollbar::-webkit-scrollbar {
     height: 5px;
   }
@@ -45,5 +45,9 @@
 
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: #c0a0b9;
+  }
+
+  .border-custom {
+    @apply border-darkPrimary/50 dark:dark:border-darkWhite;
   }
 }
