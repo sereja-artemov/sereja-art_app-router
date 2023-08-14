@@ -24,8 +24,13 @@
   }
   .link span::before {
     -webkit-text-stroke-width: 0;
-    -webkit-text-stroke-color: #fff;
-    -webkit-text-fill-color: #fff;
+    -webkit-text-stroke-color: #f6f8fc;
+    -webkit-text-fill-color: #f6f8fc;
+  }
+  .text-stroke-dark .link span::before {
+    -webkit-text-stroke-width: 0;
+    -webkit-text-stroke-color: #f6f8fc;
+    -webkit-text-fill-color: #f6f8fc;
   }
 
   .scrollbar::-webkit-scrollbar {
