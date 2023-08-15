@@ -1,22 +1,57 @@
-import Link from 'next/link';
-import React from 'react';
-import Image from 'next/image';
+'use client';
 
-export const ServicesImage = ({
-  imgLink,
-  alt,
-}: {
+import Link from 'next/link';
+import React, { useRef } from 'react';
+import Image from 'next/image';
+import { useMotionValue } from 'framer-motion';
+
+type ServicesItemProps = {
+  children?: any;
+  linkHref: string;
   imgLink: string;
-  alt: string;
-}) => {
+  imgAlt: string;
+};
+
+export const ServicesListItem = ({
+  children,
+  linkHref,
+  imgLink,
+  imgAlt,
+}: ServicesItemProps) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const imgRef = useRef(null);
+
+  const showImage = (event: any) => {
+    imgRef.current.style.display = 'inline-block';
+    x.set(event.pageX);
+    y.set(-10);
+  };
+
+  const hideImage = (event: any) => {
+    imgRef.current.style.display = 'none';
+    x.set(0);
+    y.set(0);
+  };
+
   return (
-    <Image
-      className="hidden"
-      width={300}
-      height={200}
-      src={imgLink}
-      alt={alt}
-    />
+    <li
+      onMouseMove={showImage}
+      onMouseLeave={hideImage}
+      className="flex flex-col gap-2 text-2xl font-extrabold text-stroke"
+    >
+      <Link className="link" href={linkHref}>
+        {children}
+        <Image
+          width="500"
+          height="300"
+          ref={imgRef}
+          className="hidden"
+          src={imgLink}
+          alt={imgAlt}
+        />
+      </Link>
+    </li>
   );
 };
 
@@ -46,20 +81,29 @@ const ServicesBlock = ({ cssGridClassName }: { cssGridClassName?: string }) => {
         </Link>
       </div>
       <ul className="overflow-auto">
-        <li className="flex flex-col gap-2 text-2xl font-extrabold text-stroke">
-          <Link className="link" href="/">
-            <span data-text={`Разработка\u00A0сайтов`}>Разработка сайтов</span>
-            <ServicesImage imgLink="/" alt="" />
-          </Link>
+        <ServicesListItem
+          linkHref="/"
+          imgLink="/"
+          imgAlt="Разработка сайтов картинка"
+        >
+          <span data-text={`Разработка\u00A0сайтов`}>Разработка сайтов</span>
+        </ServicesListItem>
+        <li>
           <Link className="link" href="/">
             <span data-text={`Сопровождение`}>Сопровождение</span>
           </Link>
+        </li>
+        <li>
           <Link className="link" href="/">
             <span data-text={`Продвижение`}>Продвижение</span>
           </Link>
+        </li>
+        <li>
           <Link className="link" href="/">
             <span data-text={`HTML\u00A0верстка`}>HTML верстка</span>
           </Link>
+        </li>
+        <li>
           <Link className="link" href="/">
             <span data-text={`Дизайн`}>Дизайн</span>
           </Link>
