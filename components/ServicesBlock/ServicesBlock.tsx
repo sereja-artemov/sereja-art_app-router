@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import React, { useRef } from 'react';
 import Image from 'next/image';
-import { useMotionValue } from 'framer-motion';
+import { motion, useMotionValue } from 'framer-motion';
+import { lockScroll, removeScrollLock } from '@/utils/utils';
 
 type ServicesItemProps = {
   children?: any;
@@ -11,6 +12,8 @@ type ServicesItemProps = {
   imgLink: string;
   imgAlt: string;
 };
+
+const FramerImage = motion(Image);
 
 export const ServicesListItem = ({
   children,
@@ -25,13 +28,15 @@ export const ServicesListItem = ({
   const showImage = (event: any) => {
     imgRef.current.style.display = 'inline-block';
     x.set(event.pageX);
-    y.set(-10);
+    y.set(event.pageY);
+    // lockScroll();
   };
 
   const hideImage = (event: any) => {
     imgRef.current.style.display = 'none';
     x.set(0);
     y.set(0);
+    // removeScrollLock();
   };
 
   return (
@@ -42,11 +47,12 @@ export const ServicesListItem = ({
     >
       <Link className="link" href={linkHref}>
         {children}
-        <Image
+        <FramerImage
+          style={{ x: x, y: y }}
           width="500"
           height="300"
           ref={imgRef}
-          className="hidden"
+          className="absolute top-0 left-0 hidden"
           src={imgLink}
           alt={imgAlt}
         />
