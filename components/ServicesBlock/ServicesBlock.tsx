@@ -49,7 +49,7 @@ export const ServicesListItem = ({
         {children}
         <FramerImage
           style={{ x: x, y: y }}
-          width="500"
+          width="300"
           height="300"
           ref={imgRef}
           className="absolute top-0 left-0 hidden"
@@ -87,32 +87,28 @@ const ServicesBlock = ({ cssGridClassName }: { cssGridClassName?: string }) => {
         </Link>
       </div>
       <ul className="overflow-auto">
-        <ServicesListItem
-          linkHref="/"
-          imgLink="/"
-          imgAlt="Разработка сайтов картинка"
-        >
+        <ServicesListItem linkHref="/" imgLink="/" imgAlt="Разработка сайтов">
           <span data-text={`Разработка\u00A0сайтов`}>Разработка сайтов</span>
         </ServicesListItem>
         <li>
-          <Link className="link" href="/">
+          <ServicesListItem linkHref="/" imgLink="/" imgAlt="Сопровождение">
             <span data-text={`Сопровождение`}>Сопровождение</span>
-          </Link>
+          </ServicesListItem>
         </li>
         <li>
-          <Link className="link" href="/">
+          <ServicesListItem linkHref="/" imgLink="/" imgAlt="Продвижение">
             <span data-text={`Продвижение`}>Продвижение</span>
-          </Link>
+          </ServicesListItem>
         </li>
         <li>
-          <Link className="link" href="/">
+          <ServicesListItem linkHref="/" imgLink="/" imgAlt="HTML верстка">
             <span data-text={`HTML\u00A0верстка`}>HTML верстка</span>
-          </Link>
+          </ServicesListItem>
         </li>
         <li>
-          <Link className="link" href="/">
+          <ServicesListItem linkHref="/" imgLink="/" imgAlt="Дизайн">
             <span data-text={`Дизайн`}>Дизайн</span>
-          </Link>
+          </ServicesListItem>
         </li>
       </ul>
     </div>
