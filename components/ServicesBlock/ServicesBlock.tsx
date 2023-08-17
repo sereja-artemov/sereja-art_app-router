@@ -1,15 +1,21 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useRef } from 'react';
-import Image from 'next/image';
+import React, { useRef, useState } from 'react';
+import Image, { StaticImageData } from 'next/image';
 import { motion, useMotionValue } from 'framer-motion';
 import { lockScroll, removeScrollLock } from '@/utils/utils';
+
+import testImage1 from '../../images/servicesBlock/services1.png';
+import testImage2 from '../../images/servicesBlock/services2.png';
+import testImage3 from '../../images/servicesBlock/services3.png';
+import testImage4 from '../../images/servicesBlock/services4.png';
+import testImage5 from '../../images/servicesBlock/services5.png';
 
 type ServicesItemProps = {
   children?: any;
   linkHref: string;
-  imgLink: string;
+  imgLink: string | StaticImageData;
   imgAlt: string;
 };
 
@@ -21,38 +27,44 @@ export const ServicesListItem = ({
   imgLink,
   imgAlt,
 }: ServicesItemProps) => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+  // const x = useMotionValue(0);
+  // const y = useMotionValue(0);
   const imgRef = useRef(null);
 
-  const showImage = (event: any) => {
-    imgRef.current.style.display = 'inline-block';
-    x.set(event.pageX);
-    y.set(event.pageY);
-    // lockScroll();
-  };
+  const [xPos, setxPos] = useState(0);
+  const [yPos, setyPos] = useState(0);
 
-  const hideImage = (event: any) => {
-    imgRef.current.style.display = 'none';
-    x.set(0);
-    y.set(0);
-    // removeScrollLock();
-  };
+  useEffect(() => {
+    const showImage = (event: any) => {
+      imgRef.current.style.display = 'inline-block';
+      setxPos(event.pageX);
+      setyPos(event.pageY);
+      // x.set(event.pageX);
+      // y.set(event.pageY);
+      // lockScroll();
+    };
+
+    const hideImage = (event: any) => {
+      imgRef.current.style.display = 'none';
+      setxPos(0);
+      setyPos(0);
+      // removeScrollLock();
+    };
+  }, [xPos, yPos]);
 
   return (
     <li
       onMouseMove={showImage}
       onMouseLeave={hideImage}
-      className="flex flex-col gap-2 text-2xl font-extrabold text-stroke"
+      className="text-2xl font-extrabold text-stroke"
     >
       <Link className="link" href={linkHref}>
         {children}
         <FramerImage
-          style={{ x: x, y: y }}
           width="300"
           height="300"
           ref={imgRef}
-          className="absolute top-0 left-0 hidden"
+          className={`absolute top-${xPos} left-${yPos} hidden`}
           src={imgLink}
           alt={imgAlt}
         />
@@ -86,27 +98,43 @@ const ServicesBlock = ({ cssGridClassName }: { cssGridClassName?: string }) => {
           </svg>
         </Link>
       </div>
-      <ul className="overflow-auto">
-        <ServicesListItem linkHref="/" imgLink="/" imgAlt="Разработка сайтов">
+      <ul className="inline-flex flex-col gap-2 overflow-auto">
+        <ServicesListItem
+          linkHref="/"
+          imgLink={testImage1}
+          imgAlt="Разработка сайтов"
+        >
           <span data-text={`Разработка\u00A0сайтов`}>Разработка сайтов</span>
         </ServicesListItem>
         <li>
-          <ServicesListItem linkHref="/" imgLink="/" imgAlt="Сопровождение">
+          <ServicesListItem
+            linkHref="/"
+            imgLink={testImage2}
+            imgAlt="Сопровождение"
+          >
             <span data-text={`Сопровождение`}>Сопровождение</span>
           </ServicesListItem>
         </li>
         <li>
-          <ServicesListItem linkHref="/" imgLink="/" imgAlt="Продвижение">
+          <ServicesListItem
+            linkHref="/"
+            imgLink={testImage3}
+            imgAlt="Продвижение"
+          >
             <span data-text={`Продвижение`}>Продвижение</span>
           </ServicesListItem>
         </li>
         <li>
-          <ServicesListItem linkHref="/" imgLink="/" imgAlt="HTML верстка">
+          <ServicesListItem
+            linkHref="/"
+            imgLink={testImage4}
+            imgAlt="HTML верстка"
+          >
             <span data-text={`HTML\u00A0верстка`}>HTML верстка</span>
           </ServicesListItem>
         </li>
         <li>
-          <ServicesListItem linkHref="/" imgLink="/" imgAlt="Дизайн">
+          <ServicesListItem linkHref="/" imgLink={testImage5} imgAlt="Дизайн">
             <span data-text={`Дизайн`}>Дизайн</span>
           </ServicesListItem>
         </li>
