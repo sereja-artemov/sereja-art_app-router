@@ -27,44 +27,36 @@ export const ServicesListItem = ({
   imgLink,
   imgAlt,
 }: ServicesItemProps) => {
-  // const x = useMotionValue(0);
-  // const y = useMotionValue(0);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
   const imgRef = useRef(null);
 
-  const [xPos, setxPos] = useState(0);
-  const [yPos, setyPos] = useState(0);
+  const showImage = (event: any) => {
+    imgRef.current.style.display = 'inline-block';
+    x.set(event.pageX);
+    y.set(event.pageY);
+    // lockScroll();
+  };
 
-  useEffect(() => {
-    const showImage = (event: any) => {
-      imgRef.current.style.display = 'inline-block';
-      setxPos(event.pageX);
-      setyPos(event.pageY);
-      // x.set(event.pageX);
-      // y.set(event.pageY);
-      // lockScroll();
-    };
-
-    const hideImage = (event: any) => {
-      imgRef.current.style.display = 'none';
-      setxPos(0);
-      setyPos(0);
-      // removeScrollLock();
-    };
-  }, [xPos, yPos]);
+  const hideImage = (event: any) => {
+    imgRef.current.style.display = 'none';
+    // removeScrollLock();
+  };
 
   return (
     <li
       onMouseMove={showImage}
       onMouseLeave={hideImage}
-      className="text-2xl font-extrabold text-stroke"
+      className="text-2xl font-bold lg:font-extrabold text-whitePrimary"
     >
       <Link className="link" href={linkHref}>
         {children}
         <FramerImage
+          style={{x: x, y: y}}
           width="300"
           height="300"
           ref={imgRef}
-          className={`absolute top-${xPos} left-${yPos} hidden`}
+          className={`absolute top-0 left-0 hidden`}
           src={imgLink}
           alt={imgAlt}
         />
@@ -73,11 +65,9 @@ export const ServicesListItem = ({
   );
 };
 
-const ServicesBlock = ({ cssGridClassName }: { cssGridClassName?: string }) => {
+const ServicesBlock = () => {
   return (
-    <div
-      className={`${cssGridClassName} bg-[#1635A5] rounded-2xl p-5 text-whitePrimary`}
-    >
+    <>
       <div className="flex items-center justify-between mb-5">
         <h3 className="px-3 py-1 text-xs uppercase border rounded-full">
           Услуги
@@ -139,7 +129,7 @@ const ServicesBlock = ({ cssGridClassName }: { cssGridClassName?: string }) => {
           </ServicesListItem>
         </li>
       </ul>
-    </div>
+    </>
   );
 };
 
