@@ -5,6 +5,7 @@ import CardWrapper from '../CardWrapper/CardWrapper';
 const CardsGrid = () => {
   return (
     <section className="container grid grid-flow-row-dense grid-cols-6 gap-5">
+      {/* Услуги */}
       <CardWrapper
         cardLink="/services"
         cardTitle="Услуги"
@@ -12,6 +13,8 @@ const CardsGrid = () => {
       >
         <ServicesBlock />
       </CardWrapper>
+
+      {/* Проекты */}
     </section>
   );
 };
