@@ -52,6 +52,24 @@
     background: #c0a0b9;
   }
 
+  .line-background {
+    background-image: repeating-linear-gradient(
+        150deg,
+        rgba(255, 255, 255, 0.06),
+        rgba(255, 255, 255, 0.06) 1px,
+        transparent 0,
+        transparent 41px
+      ),
+      repeating-linear-gradient(
+        -150deg,
+        rgba(255, 255, 255, 0.06),
+        rgba(255, 255, 255, 0.06) 1px,
+        transparent 0,
+        transparent 41px
+      );
+    background-size: 82px 47px;
+  }
+
   .border-custom {
     @apply border-darkPrimary/50 dark:dark:border-darkWhite;
   }
