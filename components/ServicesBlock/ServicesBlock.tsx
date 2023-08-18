@@ -47,9 +47,9 @@ export const ServicesListItem = ({
     <li
       onMouseMove={showImage}
       onMouseLeave={hideImage}
-      className="text-2xl font-bold lg:font-extrabold text-whitePrimary"
+      className="lg:text-4xl text-2xl md:text-3xl leading-snug md:leading-snug lg:leading-snug font-bold lg:font-bold text-whitePrimary max-w-fit"
     >
-      <Link className="link" href={linkHref}>
+      <Link href={linkHref} className='hover:text-whitePrimary/75'>
         {children}
         <FramerImage
           style={{x: x, y: y}}
@@ -68,35 +68,14 @@ export const ServicesListItem = ({
 const ServicesBlock = () => {
   return (
     <>
-      <div className="flex items-center justify-between mb-5">
-        <h3 className="px-3 py-1 text-xs uppercase border rounded-full">
-          Услуги
-        </h3>
-        <Link href="/services">
-          <svg
-            width="26"
-            height="26"
-            viewBox="0 0 26 26"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+      <ul className="inline-flex flex-col gap-2 text-lg w-full">
+          <ServicesListItem
+            linkHref="/"
+            imgLink={testImage1}
+            imgAlt="Разработка сайтов"
           >
-            <ellipse cx="13" cy="12.7234" rx="13" ry="12.7234" fill="white" />
-            <path
-              d="M19.3536 13.3536C19.5488 13.1583 19.5488 12.8417 19.3536 12.6464L16.1716 9.46447C15.9763 9.2692 15.6597 9.2692 15.4645 9.46447C15.2692 9.65973 15.2692 9.97631 15.4645 10.1716L18.2929 13L15.4645 15.8284C15.2692 16.0237 15.2692 16.3403 15.4645 16.5355C15.6597 16.7308 15.9763 16.7308 16.1716 16.5355L19.3536 13.3536ZM6 13.5L19 13.5V12.5L6 12.5V13.5Z"
-              fill="black"
-            />
-          </svg>
-        </Link>
-      </div>
-      <ul className="inline-flex flex-col gap-2 overflow-auto">
-        <ServicesListItem
-          linkHref="/"
-          imgLink={testImage1}
-          imgAlt="Разработка сайтов"
-        >
-          <span data-text={`Разработка\u00A0сайтов`}>Разработка сайтов</span>
-        </ServicesListItem>
-        <li>
+            <span data-text={`Разработка\u00A0сайтов`}>Разработка сайтов</span>
+          </ServicesListItem>
           <ServicesListItem
             linkHref="/"
             imgLink={testImage2}
@@ -104,8 +83,6 @@ const ServicesBlock = () => {
           >
             <span data-text={`Сопровождение`}>Сопровождение</span>
           </ServicesListItem>
-        </li>
-        <li>
           <ServicesListItem
             linkHref="/"
             imgLink={testImage3}
@@ -113,8 +90,6 @@ const ServicesBlock = () => {
           >
             <span data-text={`Продвижение`}>Продвижение</span>
           </ServicesListItem>
-        </li>
-        <li>
           <ServicesListItem
             linkHref="/"
             imgLink={testImage4}
@@ -122,12 +97,9 @@ const ServicesBlock = () => {
           >
             <span data-text={`HTML\u00A0верстка`}>HTML верстка</span>
           </ServicesListItem>
-        </li>
-        <li>
           <ServicesListItem linkHref="/" imgLink={testImage5} imgAlt="Дизайн">
             <span data-text={`Дизайн`}>Дизайн</span>
           </ServicesListItem>
-        </li>
       </ul>
     </>
   );
