@@ -1,10 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import Image, { StaticImageData } from 'next/image';
-import { motion, useMotionValue } from 'framer-motion';
-import { lockScroll, removeScrollLock } from '@/utils/utils';
 
 import testImage1 from '../../images/servicesBlock/services1.png';
 import testImage2 from '../../images/servicesBlock/services2.png';
@@ -19,49 +17,49 @@ type ServicesItemProps = {
   imgAlt: string;
 };
 
-const FramerImage = motion(Image);
-
 export const ServicesListItem = ({
   children,
   linkHref,
   imgLink,
   imgAlt,
 }: ServicesItemProps) => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
   const imgRef = useRef(null);
+  const ImageWidth = 400;
+  const ImageHeight = 400;
 
-  const showImage = (event: any) => {
-    imgRef.current.style.display = 'inline-block';
-    x.set(event.pageX);
-    y.set(-150);
-    // lockScroll();
+  const mouseMoveEvent = (event: { pageX: number; pageY: number }) => {
+    imgRef.current.style.top = event.pageY - ImageHeight / 2 + 'px';
+    imgRef.current.style.left = event.pageX + 20 + 'px';
+    console.log(imgRef.current.style.left);
   };
 
-  const hideImage = (event: any) => {
+  const mouseEnterEvent = () => {
+    imgRef.current.style.display = 'inline-block';
+  };
+
+  const mouseLeaveEvent = () => {
     imgRef.current.style.display = 'none';
-    // removeScrollLock();
   };
 
   return (
     <li className="text-2xl font-bold leading-snug lg:text-4xl md:text-3xl md:leading-snug lg:leading-snug lg:font-bold text-whitePrimary max-w-fit">
       <Link
-        onMouseMove={showImage}
-        onMouseLeave={hideImage}
+        onMouseMove={mouseMoveEvent}
+        onMouseLeave={mouseLeaveEvent}
+        onMouseEnter={mouseEnterEvent}
         href={linkHref}
-        className="hover:text-whitePrimary/75 link text-stroke"
+        className="relative z-10 hover:mix-blend-exclusion hover:text-whitePrimary/75 link text-stroke"
       >
         {children}
-        <FramerImage
-          style={{ x: x, y: y }}
-          width="300"
-          height="300"
-          ref={imgRef}
-          className={`absolute left-[150px] hidden`}
-          src={imgLink}
-          alt={imgAlt}
-        />
       </Link>
+      <Image
+        width={ImageWidth}
+        height={ImageHeight}
+        ref={imgRef}
+        className={`hidden absolute`}
+        src={imgLink}
+        alt={imgAlt}
+      />
     </li>
   );
 };
