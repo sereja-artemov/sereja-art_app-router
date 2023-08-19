@@ -48,7 +48,7 @@ export const ServicesListItem = ({
         onMouseLeave={mouseLeaveEvent}
         onMouseEnter={mouseEnterEvent}
         href={linkHref}
-        className="relative z-10 hover:mix-blend-exclusion hover:text-whitePrimary/75 link text-stroke"
+        className="relative z-10 hover:mix-blend-difference hover:text-whitePrimary/75 link text-stroke"
       >
         {children}
       </Link>
