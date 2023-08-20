@@ -1,6 +1,7 @@
 import React from 'react';
 import ServicesBlock from '../ServicesBlock/ServicesBlock';
 import CardWrapper from '../CardWrapper/CardWrapper';
+import ProjectsBlock from '../ProjectsBlock/ProjectsBlock';
 
 const CardsGrid = () => {
   return (
@@ -15,6 +16,13 @@ const CardsGrid = () => {
       </CardWrapper>
 
       {/* Проекты */}
+      <CardWrapper
+        cardLink="/projects"
+        cardTitle="Проекты"
+        cssGridClassName="bg-darkSecondary col-span-full lg:col-span-3"
+      >
+        <ProjectsBlock />
+      </CardWrapper>
     </section>
   );
 };
