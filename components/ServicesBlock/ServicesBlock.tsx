@@ -30,7 +30,6 @@ export const ServicesListItem = ({
   const mouseMoveEvent = (event: { pageX: number; pageY: number }) => {
     imgRef.current.style.top = event.pageY - ImageHeight / 2 + 'px';
     imgRef.current.style.left = event.pageX + 20 + 'px';
-    console.log(imgRef.current.style.left);
   };
 
   const mouseEnterEvent = () => {

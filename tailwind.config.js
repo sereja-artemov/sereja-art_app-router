@@ -17,6 +17,7 @@ module.exports = {
         darkWhite: "#ededef",
         whitePrimary: '#f6f8fc',
         whiteSecondary: "#fff",
+        borderColor: "#efefef",
       },
     },
     fontFamily: {

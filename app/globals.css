@@ -73,4 +73,8 @@
   .border-custom {
     @apply border-darkPrimary/50 dark:dark:border-darkWhite;
   }
+
+  .block-border {
+    @apply border border-[#efefef] dark:border-[#464646]
+  }
 }
