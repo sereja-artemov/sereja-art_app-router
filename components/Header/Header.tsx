@@ -149,7 +149,7 @@ export function Header() {
               <DarkModeSwitch
                 sunColor="#0f172a"
                 moonColor="#ededef"
-                style={{ width: '100%', height: 'auto' }}
+                style={{ width: '100%', height: 'auto', maxWidth: '40px' }}
                 checked={isDarkMode}
                 onChange={changeDarkMode}
               />
