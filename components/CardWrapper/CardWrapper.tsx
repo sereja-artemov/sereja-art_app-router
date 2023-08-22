@@ -6,6 +6,7 @@ type CardWrapperProps = {
   children?: any;
   cardTitle?: string;
   cardLink?: string;
+  isHeader?: boolean;
 };
 
 const CardWrapper = ({
@@ -13,12 +14,14 @@ const CardWrapper = ({
   children,
   cardTitle,
   cardLink,
+  isHeader,
 }: CardWrapperProps) => {
   return (
     <div
-      className={`${cssGridClassName} rounded-2xl p-6 md:p-8 lg:p-10 text-whitePrimary`}
+      className={`${cssGridClassName} rounded-3xl ${!isHeader && 'p-3'} ${isHeader && 'p-6 md:p-8 lg:p-10'} text-whitePrimary`}
     >
-      <div className="flex items-center justify-between mb-5">
+      {/* шапка карточки */}
+      {isHeader &&       <div className="flex items-center justify-between mb-5">
         <h3
           className={`px-3 py-1 text-xs uppercase ${
             cardTitle !== undefined && 'border rounded-full'
@@ -43,7 +46,8 @@ const CardWrapper = ({
             </svg>
           </Link>
         )}
-      </div>
+      </div>}
+
       {children}
     </div>
   );

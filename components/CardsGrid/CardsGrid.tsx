@@ -11,6 +11,7 @@ const CardsGrid = () => {
         cardLink="/services"
         cardTitle="Услуги"
         cssGridClassName="bg-[#1635A5] col-span-full lg:col-span-3 line-background"
+        isHeader
       >
         <ServicesBlock />
       </CardWrapper>

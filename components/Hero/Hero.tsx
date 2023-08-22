@@ -46,7 +46,7 @@ const Hero = () => {
             alt="аватарка"
           />
           <Link
-            className="inline-block w-full px-4 py-1 text-xs text-center align-middle border rounded-full"
+            className="w-full btn-stroke"
             href="#"
           >
             Обо мне

@@ -13,6 +13,20 @@
   }
 }
 
+@layer components {
+  .btn-stroke {
+    @apply inline-block px-4 py-1 text-xs text-center align-middle border rounded-full;
+  }
+  
+  .border-custom {
+    @apply border-darkPrimary/50 dark:dark:border-darkWhite;
+  }
+
+  .block-border {
+    @apply border border-[#efefef] dark:border-[#464646]
+  }
+}
+
 @layer utilities {
   .text-stroke {
     -webkit-text-stroke-width: 0.015em;
@@ -70,11 +84,4 @@
     background-size: 82px 47px;
   }
 
-  .border-custom {
-    @apply border-darkPrimary/50 dark:dark:border-darkWhite;
-  }
-
-  .block-border {
-    @apply border border-[#efefef] dark:border-[#464646]
-  }
 }
