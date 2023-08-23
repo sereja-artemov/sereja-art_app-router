@@ -49,21 +49,22 @@ const ProjectsBlock = () => {
         ></Image>
 
         {/* попап с информацией о проекте */}
-        <div className='mb-2 px-4 py-4 rounded-2xl shadow-xl border border-[#464646]'>
-          <div className='flex  items-center flex-wrap'>
-            <h3 className='mb-2 leading-snug font-medium'>Производственная компания Промматик</h3>
+        <div className='max-h-[95%] overflow-auto xl:py-6 py-5 backdrop-blur-md min-[1280px]:absolute min-[1280px]:bottom-0 min-[1280px]:left-1/2 min-[1280px]:w-[97%] min-[1280px]:-translate-x-1/2 mb-2 px-4 rounded-2xl shadow-xl border border-[#464646] bg-[#424750]/80'>
+          <div className='flex flex-wrap flex-col md:items-start'>
+            <h3 className='xl:mb-2 mb-3 leading-normal font-medium text-base md:text-xl'>Производственная компания Промматик</h3>
+            <p className='mb-5 md:text-base'>Запустил с нуля сайт компании Промматик, наполнил контентом, сделал базовую SEO-оптимизацию и подключил необходимые сервисы.</p>
             <Link
-            className="btn-stroke shrink-0 text-xs"
+            className="btn-stroke shrink-0 md:text-base text-sm"
             href="#"
           >
             Подробнее
           </Link>
           </div>
         </div>
-
       </div>
+
       {/* счетчик и управление */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between px-2">
         <p className="text-base md:text-lg lg:text-xl">
           <span className="text-[1.6em]">1</span>/ 8
         </p>

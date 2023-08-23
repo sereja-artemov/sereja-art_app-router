@@ -15,7 +15,7 @@
 
 @layer components {
   .btn-stroke {
-    @apply inline-block px-4 py-1 text-xs text-center align-middle border rounded-full;
+    @apply inline-block px-[.9em] pb-[.4em] py-[.25em] text-xs text-center align-middle border rounded-full;
   }
   
   .border-custom {
