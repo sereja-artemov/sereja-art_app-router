@@ -12,6 +12,7 @@ export function Header() {
   const [width, setWidth] = useState(window.innerWidth);
 
   const navRef = useRef<HTMLDivElement>(null);
+  const navBgBlur = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleResizeWindow = () => setWidth(window.innerWidth);
@@ -26,18 +27,26 @@ export function Header() {
       navRef.current?.classList.add(
         ...[
           'shadow',
-          'backdrop-blur-md',
           'bg-darkWhite/50',
           'dark:bg-darkSecondary/50',
+        ]
+      );
+      navBgBlur.current?.classList.add(
+        ...[
+          'backdrop-blur-md'
         ]
       );
     } else {
       navRef.current?.classList.remove(
         ...[
           'shadow',
-          'backdrop-blur-md',
           'bg-darkWhite/50',
           'dark:bg-darkSecondary/50',
+        ]
+      );
+      navBgBlur.current?.classList.remove(
+        ...[
+          'backdrop-blur-md'
         ]
       );
     }
@@ -76,6 +85,8 @@ export function Header() {
         ref={navRef}
         className="fixed top-0 z-50 w-full py-5 -translate-x-1/2 left-1/2"
       >
+        {/* blur bg */}
+        <div ref={navBgBlur} className='-z-10 absolute left-0 top-0 w-full h-full'></div>
         <div className="container flex gap-x-1.5 items-stretch mx-auto">
           <nav className="mx-auto w-full left-0 flex gap-x-1.5">
             <Link
