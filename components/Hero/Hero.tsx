@@ -46,7 +46,7 @@ const Hero = () => {
             alt="аватарка"
           />
           <Link
-            className="w-full btn-stroke"
+            className="w-full btn"
             href="#"
           >
             Обо мне
