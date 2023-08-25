@@ -1,7 +1,6 @@
 'use client';
 
 import { useKeenSlider } from 'keen-slider/react';
-import prommaticImage from '@/images/projects/prommatic.webp';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import useWindowSize from '@/app/hooks/useWindowSize';
@@ -13,6 +12,7 @@ const ProjectsBlock = () => {
   const [isInfoPopupOpen, setIsInfoPopupOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMount, setIsMount] = useState(false);
+  const [isImageLoading, setIsImageLoading] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
     {
       slideChanged(slider) {
@@ -30,13 +30,12 @@ const ProjectsBlock = () => {
 
   // исправил неправильную ширину слайдов при первоначальной загрузке
   useEffect(() => {
-    setIsMount(true);
     instanceRef?.current?.update();
-  }, [isMount]);
+  }, [isImageLoading]);
 
   const getCurrentSlideNumber = () => {
     return (
-      isMount &&
+      isImageLoading &&
       instanceRef.current &&
       instanceRef.current.track.details.abs + 1
     );
@@ -44,7 +43,7 @@ const ProjectsBlock = () => {
 
   const getSliderlength = () => {
     return (
-      isMount &&
+      isImageLoading &&
       instanceRef.current &&
       instanceRef.current.track.details.slides.length
     );
@@ -62,13 +61,17 @@ const ProjectsBlock = () => {
               key={index}
               className="relative flex flex-col mb-3 keen-slider__slide"
             >
+              {/* фикс вспышки */}
               <Image
-                className="w-full h-auto mb-2 rounded-2xl"
+                className={`${
+                  !isImageLoading && 'invisible'
+                } w-full h-auto mb-2 rounded-2xl`}
                 src={project.previewImage || project.image}
                 alt={`${project.name} картинка проекта`}
                 sizes="100vw"
                 width={1200}
                 height={675}
+                onLoadingComplete={() => setIsImageLoading(true)}
               ></Image>
               <div className="relative max-h-[95%] h-full overflow-auto xl:py-6 py-5 min-[1280px]:absolute min-[1280px]:bottom-2 min-[1280px]:left-1/2 min-[1280px]:w-[97%] min-[1280px]:-translate-x-1/2 mb-2 px-4 rounded-2xl shadow-xl lg:border-none border border-[#464646]">
                 <div className="flex flex-col h-full">
@@ -111,7 +114,7 @@ const ProjectsBlock = () => {
         </p>
         {/* стрелки */}
         <div className="flex flex-wrap gap-5">
-          {isMount && instanceRef.current && (
+          {isImageLoading && instanceRef.current && (
             <>
               <button
                 className="disabled:opacity-20"
