@@ -12,18 +12,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        darkPrimary: "#21252b",
-        darkSecondary: "#333841",
-        darkWhite: "#ededef",
+        darkPrimary: '#21252b',
+        darkSecondary: '#333841',
         whitePrimary: '#f6f8fc',
-        whiteSecondary: "#fff",
-        borderColor: "#efefef",
+        whiteSecondary: '#fff',
+        borderColor: '#efefef',
       },
     },
     fontFamily: {
-      'sans': ['"Open Sans"', ...defaultTheme.fontFamily.sans],
-      'boss': ['Raleway', ...defaultTheme.fontFamily.sans],
-      'playfair': ['"Playfair Display"', ...defaultTheme.fontFamily.serif],
+      sans: ['"Open Sans"', ...defaultTheme.fontFamily.sans],
+      boss: ['Raleway', ...defaultTheme.fontFamily.sans],
+      playfair: ['"Playfair Display"', ...defaultTheme.fontFamily.serif],
     },
     container: {
       center: true,
@@ -33,7 +32,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
-}
+  plugins: [require('@tailwindcss/typography')],
+};

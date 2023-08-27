@@ -25,30 +25,14 @@ export function Header() {
   const addShadowToNavbar = () => {
     if (window.scrollY > 10) {
       navRef.current?.classList.add(
-        ...[
-          'shadow',
-          'bg-darkWhite/50',
-          'dark:bg-darkSecondary/50',
-        ]
+        ...['shadow', 'bg-whiteSecondary/50', 'dark:bg-darkSecondary/50']
       );
-      navBgBlur.current?.classList.add(
-        ...[
-          'backdrop-blur-md'
-        ]
-      );
+      navBgBlur.current?.classList.add(...['backdrop-blur-md']);
     } else {
       navRef.current?.classList.remove(
-        ...[
-          'shadow',
-          'bg-darkWhite/50',
-          'dark:bg-darkSecondary/50',
-        ]
+        ...['shadow', 'bg-whiteSecondary/50', 'dark:bg-darkSecondary/50']
       );
-      navBgBlur.current?.classList.remove(
-        ...[
-          'backdrop-blur-md'
-        ]
-      );
+      navBgBlur.current?.classList.remove(...['backdrop-blur-md']);
     }
   };
 
@@ -86,14 +70,17 @@ export function Header() {
         className="fixed top-0 z-50 w-full py-5 -translate-x-1/2 left-1/2"
       >
         {/* blur bg */}
-        <div ref={navBgBlur} className='-z-10 absolute left-0 top-0 w-full h-full'></div>
+        <div
+          ref={navBgBlur}
+          className="absolute top-0 left-0 w-full h-full -z-10"
+        ></div>
         <div className="container flex gap-x-1.5 items-stretch mx-auto">
           <nav className="mx-auto w-full left-0 flex gap-x-1.5">
             <Link
               href="/"
-              className="flex grow lg:grow-0 shrink-0 p-0.5 lg:p-1 border border-darkPrimary/50 dark:border-darkWhite rounded-full"
+              className="flex grow lg:grow-0 shrink-0 p-0.5 lg:p-1 border border-darkPrimary/50 dark:border-whiteSecondary rounded-full"
             >
-              <div className="w-full h-full gap-3 px-3 p-0.5 pr-0.5 lg:pr-1 lg:p-1 lg:px-4 rounded-full bg-slate-800 dark:bg-darkWhite dark:text-black text-darkWhite flex justify-between items-center">
+              <div className="w-full h-full gap-3 px-3 p-0.5 pr-0.5 lg:pr-1 lg:p-1 lg:px-4 rounded-full bg-slate-800 dark:bg-whiteSecondary dark:text-black text-whiteSecondary flex justify-between items-center">
                 <p className="m-0 lg:mb-[0.1em]">
                   {width <= 320 ? 'Главная' : 'Главная страница'}
                 </p>
@@ -115,6 +102,7 @@ export function Header() {
                 </svg>
               </div>
             </Link>
+            {/* Меню */}
             <ul className="hidden h-auto gap-1.5 lg:flex overflow-auto">
               {navigationRoutes.map((route, index) => (
                 <li
@@ -131,10 +119,10 @@ export function Header() {
               {/* Кнопка меню */}
               <div
                 onClick={openMenu}
-                className="lg:hidden border border-slate-900/50 dark:border-darkWhite rounded-full p-0.5 flex items-center"
+                className="lg:hidden border border-slate-900/50 dark:border-whiteSecondary rounded-full p-0.5 flex items-center"
               >
                 <button
-                  className="leading-none px-4 p-0.5 border border-slate-900/50 dark:border-darkWhite rounded-full h-full min-w-[87px]"
+                  className="leading-none px-4 p-0.5 border border-slate-900/50 dark:border-whiteSecondary rounded-full h-full min-w-[87px]"
                   type="button"
                 >
                   {isMenuOpen ? 'Закрыть' : 'Меню'}
@@ -143,10 +131,10 @@ export function Header() {
 
               {/* Мобильное меню */}
               {isMenuOpen && (
-                <ul className="fixed top-20 left-1/2 -translate-x-1/2 w-[90vw] h-auto p-4 py-8 overflow-auto dark:bg-darkPrimary border lg:hidden rounded-3xl">
+                <ul className="fixed top-20 left-1/2 -translate-x-1/2 w-[90vw] backdrop-blur-md h-auto p-4 py-8 overflow-auto bg-whiteSecondary/50 dark:bg-darkSecondary/50 border lg:hidden rounded-3xl">
                   {navigationRoutes.map((item, index) => (
-                    <li key={index} className="">
-                      <Link className="" href={item.route}>
+                    <li key={index}>
+                      <Link className="text-4xl uppercase" href={item.route}>
                         <span data-text={item.name}>{item.name}</span>
                       </Link>
                     </li>
@@ -170,10 +158,10 @@ export function Header() {
           <div>
             {/* Иконки соцсетей */}
             <ul className="items-center hidden gap-1 lg:flex">
-              <li className="border border-darkPrimary/50 dark:border-darkWhite rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
+              <li className="border border-darkPrimary/50 dark:border-whiteSecondary rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
                 <a href="">
                   <svg
-                    className="max-w-full max-h-auto fill-darkPrimary dark:fill-darkWhite"
+                    className="max-w-full max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
                     width="64px"
                     height="64px"
                     viewBox="-2.5 0 32 32"
@@ -194,10 +182,10 @@ export function Header() {
                   </svg>
                 </a>
               </li>
-              <li className="border border-darkPrimary/50 dark:border-darkWhite rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
+              <li className="border border-darkPrimary/50 dark:border-whiteSecondary rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
                 <a href="">
                   <svg
-                    className="max-w-full max-h-auto fill-darkPrimary dark:fill-darkWhite"
+                    className="max-w-full max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
                     width="64px"
                     height="64px"
                     viewBox="-2.5 0 32 32"
@@ -218,10 +206,10 @@ export function Header() {
                   </svg>
                 </a>
               </li>
-              <li className="border border-darkPrimary/50 dark:border-darkWhite rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
+              <li className="border border-darkPrimary/50 dark:border-whiteSecondary rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
                 <a href="">
                   <svg
-                    className="max-w-full max-h-auto fill-darkPrimary dark:fill-darkWhite"
+                    className="max-w-full max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
                     width="64px"
                     height="64px"
                     viewBox="-2.5 0 32 32"

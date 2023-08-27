@@ -5,7 +5,7 @@ import HeroAvatar from '../../images/hero-avatar.jpg';
 const Hero = () => {
   return (
     <section className="container mb-6">
-      <div className="flex flex-col-reverse lg:items-end text-darkWhite bg-darkSecondary lg:pt-20 lg:px-12 lg:pb-12 md:flex-row md:justify-between md:align-top gap-7 px-4 py-8 md:px-9 md:py-11 rounded-3xl bg-slate-400 bg-[url('/hero-bg.jpg')] bg-no-repeat bg-cover bg-center">
+      <div className="flex flex-col-reverse lg:items-end text-whiteSecondary bg-darkSecondary lg:pt-20 lg:px-12 lg:pb-12 md:flex-row md:justify-between md:align-top gap-7 px-4 py-8 md:px-9 md:py-11 rounded-3xl bg-slate-400 bg-[url('/hero-bg.jpg')] bg-no-repeat bg-cover bg-center">
         <div className="md:max-w-[285px] lg:max-w-none">
           <h1 className="text-[40px] md:text-[46px] lg:text-[110px] leading-none font-boss mb-3 md:mb-1 lg:mb-5 uppercase font-bold">
             sereja <span className="text-stroke">art-</span>
@@ -45,10 +45,7 @@ const Hero = () => {
             src={HeroAvatar}
             alt="аватарка"
           />
-          <Link
-            className="w-full btn"
-            href="#"
-          >
+          <Link className="w-full btn" href="#">
             Обо мне
           </Link>
         </div>
