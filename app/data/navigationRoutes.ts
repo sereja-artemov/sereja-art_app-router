@@ -2,10 +2,6 @@
 
 export const navigationRoutes = [
   {
-    route: '/',
-    name: 'Главная',
-  },
-  {
     route: '/about',
     name: `Обо\u00A0мне`,
   },

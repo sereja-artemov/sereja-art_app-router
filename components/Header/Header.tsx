@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { navigationRoutes } from '@/utils/utils';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import { useDarkMode } from '@/context/darkModeContext';
+import { navigationRoutes } from '@/app/data/navigationRoutes';
 
 export function Header() {
   const { isDarkMode, changeDarkMode } = useDarkMode();
