@@ -13,7 +13,7 @@ const ProjectsBlock = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMount, setIsMount] = useState(false);
   const [isImageLoading, setIsImageLoading] = useState(false);
-  const [isProjectInfoVisivle, setIsProjectInfoVisible] = useState(false);
+  const [isProjectInfoVisible, setIsProjectInfoVisible] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
     {
       slideChanged(slider) {
@@ -53,25 +53,23 @@ const ProjectsBlock = () => {
   return (
     <>
       <div
-        
         ref={sliderRef}
         className="flex max-w-full overflow-hidden keen-slider"
       >
         {projectsData.map((project, index) => {
           return (
             <div
-            onMouseEnter={() => {
-              setIsProjectInfoVisible(true);
-            }}
-            onMouseLeave={() => {
-              setIsProjectInfoVisible(false);
-            }}
+              onMouseEnter={() => {
+                setIsProjectInfoVisible(true);
+              }}
+              onMouseLeave={() => {
+                setIsProjectInfoVisible(false);
+              }}
               key={index}
               className="relative flex flex-col mb-3 keen-slider__slide group"
             >
               {/* фикс вспышки */}
               <Image
-
                 className={`${
                   !isImageLoading && 'invisible'
                 } w-full h-auto mb-2 rounded-2xl`}
@@ -83,7 +81,11 @@ const ProjectsBlock = () => {
                 onLoadingComplete={() => setIsImageLoading(true)}
               ></Image>
               {/* подложка с информацией о проекте */}
-              <div className={` ${isProjectInfoVisivle ? 'lg:opacity-100 ' : 'lg:opacity-0'} ease-out duration-200 relative lg:w-full lg:m-0 lg:h-auto h-full overflow-auto xl:py-6 py-5 min-[1280px]:absolute min-[1280px]:bottom-2 min-[1280px]:left-1/2 min-[1280px]:-translate-x-1/2 mb-2 px-4 rounded-2xl shadow-xl lg:border-none border border-[#464646]`}>
+              <div
+                className={` ${
+                  isProjectInfoVisible ? 'lg:opacity-100 ' : 'lg:opacity-0'
+                } ease-in duration-200 relative lg:w-full lg:m-0 lg:h-auto h-full overflow-auto xl:py-6 py-5 min-[1280px]:absolute min-[1280px]:bottom-2 min-[1280px]:left-1/2 min-[1280px]:-translate-x-1/2 mb-2 px-4 rounded-2xl shadow-xl lg:border-none border border-[#464646]`}
+              >
                 <div className="flex flex-col h-full">
                   <h3 className="mb-3 text-base font-medium leading-normal xl:mb-2 md:text-xl">
                     {project.name}
@@ -119,8 +121,10 @@ const ProjectsBlock = () => {
       <div className="flex items-center justify-between px-2 mt-auto">
         {/* счетчик */}
         <p className="text-base md:text-lg lg:text-xl">
-          <span className="text-[1.6em] font-medium">{getCurrentSlideNumber()}</span>/{' '}
-          {getSliderlength()}
+          <span className="text-[1.6em] font-medium">
+            {getCurrentSlideNumber()}
+          </span>
+          / {getSliderlength()}
         </p>
         {/* стрелки */}
         <div className="flex flex-wrap gap-5">
