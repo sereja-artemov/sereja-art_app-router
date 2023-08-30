@@ -33,7 +33,8 @@ export const projectsData: project[] = [
   },
   {
     name: 'Промышленные сварочные роботы GSK - компания Техновелд',
-    description: 'Провел маркетинговое исследование, создал дизайн и сверстал на Tilda. Подключил необходимые виджеты и маркетинговые сервисы.',
+    description:
+      'Провел маркетинговое исследование, создал дизайн и сверстал на Tilda. Подключил необходимые виджеты и маркетинговые сервисы.',
     date: new Date('2020-01-01'),
     cost: 123,
     links: {
@@ -48,7 +49,8 @@ export const projectsData: project[] = [
 
   {
     name: 'Предприятие Материально-Технического Снабжения «ОМ»',
-    description: 'Запустил сайт на решении Аспро:Максимум и CMS 1С-Битрикс, наполнил контентом по ТЗ заказчика и сделал интеграцию с 1С.',
+    description:
+      'Запустил сайт на решении Аспро:Максимум и CMS 1С-Битрикс, наполнил контентом по ТЗ заказчика и сделал интеграцию с 1С.',
     date: new Date('2019-01-01'),
     cost: 123,
     links: {
@@ -69,7 +71,8 @@ export const projectsData: project[] = [
     links: {
       detailLink: '#',
       githubLink: '#',
-      buildLink: 'http://tech.sereja-art.ru/project-build/family-budget-calculator/',
+      buildLink:
+        'http://tech.sereja-art.ru/project-build/family-budget-calculator/',
     },
     image:
       'http://tech.sereja-art.ru/upload/projects/family-budget-calculator-960x540.jpg',
@@ -110,7 +113,8 @@ export const projectsData: project[] = [
       buildLink: '#',
     },
     image: 'http://tech.sereja-art.ru/upload/projects/ant-farm_1280x720.png',
-    previewImage: 'http://tech.sereja-art.ru/upload/projects/ant-farm_1280x720.png',
+    previewImage:
+      'http://tech.sereja-art.ru/upload/projects/ant-farm_1280x720.png',
     tools: ['HTML', 'CSS', 'JS', 'Photoshop', 'Bicall'],
     year: 2023,
     active: true,
@@ -128,7 +132,8 @@ export const projectsData: project[] = [
       buildLink: '#',
     },
     image: 'http://tech.sereja-art.ru/upload/projects/gloria_1280x720.png',
-    previewImage: 'http://tech.sereja-art.ru/upload/projects/gloria_1280x720.png',
+    previewImage:
+      'http://tech.sereja-art.ru/upload/projects/gloria_1280x720.png',
     tools: ['HTML', 'CSS', 'JS', 'Photoshop'],
     year: 2023,
     active: true,
@@ -162,7 +167,8 @@ export const projectsData: project[] = [
     links: {
       githubLink: 'https://github.com/sereja-artemov/movies-explorer-frontend',
     },
-    image: 'http://tech.sereja-art.ru/upload/projects/movies-explorer_1280x720.jpg',
+    image:
+      'http://tech.sereja-art.ru/upload/projects/movies-explorer_1280x720.jpg',
     previewImage: '',
     tools: ['HTML', 'CSS', 'JS', 'React', 'Node.js', 'MongoDB'],
     year: 2022,
@@ -171,7 +177,8 @@ export const projectsData: project[] = [
 
   {
     name: 'Mesto',
-    description: 'Сервис предоставляет возможность делиться фотографиями и картинками. Фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями.',
+    description:
+      'Сервис предоставляет возможность делиться фотографиями и картинками. Фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями.',
     date: new Date('2022-09-12'),
     cost: 123,
     links: {
@@ -199,11 +206,11 @@ export const projectsData: project[] = [
   },
   {
     name: 'Скорая компьютерная помощь',
-    description: 'Дизайн и адаптивная верстка лендинга аутсорсинговой IT-компании.',
+    description:
+      'Дизайн и адаптивная верстка лендинга аутсорсинговой IT-компании.',
     date: new Date('2020-09-12'),
     cost: 123,
-    links: {
-    },
+    links: {},
     image: 'http://tech.sereja-art.ru/upload/projects/pchelp_1280x720.jpg',
     previewImage: '',
     tools: ['HTML', 'CSS', 'Photoshop'],
@@ -213,12 +220,13 @@ export const projectsData: project[] = [
 
   {
     name: 'Автомотошкола Курск',
-    description: 'Один из первых моих сайтов из далекого 2017 года. Работает без CMS.',
+    description:
+      'Один из первых моих сайтов из далекого 2017 года. Работает без CMS.',
     date: new Date('2017-01-01'),
     cost: 123,
-    links: {
-    },
-    image: 'http://tech.sereja-art.ru/upload/projects/automotoschool_1280x720.jpg',
+    links: {},
+    image:
+      'http://tech.sereja-art.ru/upload/projects/automotoschool_1280x720.jpg',
     previewImage: '',
     tools: ['HTML', 'CSS', 'JS', 'Bootstrap', 'Photoshop'],
     year: 2017,
