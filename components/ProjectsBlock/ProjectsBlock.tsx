@@ -2,7 +2,7 @@
 
 import { useKeenSlider } from 'keen-slider/react';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useWindowSize from '@/app/hooks/useWindowSize';
 import Link from 'next/link';
 import { projectsData } from '@/app/data/projectsData';
@@ -52,6 +52,7 @@ const ProjectsBlock = () => {
   return (
     <>
       <div
+        
         ref={sliderRef}
         className="flex max-w-full overflow-hidden keen-slider"
       >
@@ -59,7 +60,7 @@ const ProjectsBlock = () => {
           return (
             <div
               key={index}
-              className="relative flex flex-col mb-3 keen-slider__slide"
+              className="relative flex flex-col mb-3 keen-slider__slide group"
             >
               {/* фикс вспышки */}
               <Image
@@ -73,7 +74,8 @@ const ProjectsBlock = () => {
                 height={675}
                 onLoadingComplete={() => setIsImageLoading(true)}
               ></Image>
-              <div className="relative max-h-[95%] h-full overflow-auto xl:py-6 py-5 min-[1280px]:absolute min-[1280px]:bottom-2 min-[1280px]:left-1/2 min-[1280px]:w-[97%] min-[1280px]:-translate-x-1/2 mb-2 px-4 rounded-2xl shadow-xl lg:border-none border border-[#464646]">
+              {/* подложка с информацией о проекте */}
+              <div  className="lg:hidden lg:group-hover:block lg:hover:block relative lg:w-full lg:m-0 lg:h-auto h-full overflow-auto xl:py-6 py-5 min-[1280px]:absolute min-[1280px]:bottom-2 min-[1280px]:left-1/2 min-[1280px]:-translate-x-1/2 mb-2 px-4 rounded-2xl shadow-xl lg:border-none border border-[#464646]">
                 <div className="flex flex-col h-full">
                   <h3 className="mb-3 text-base font-medium leading-normal xl:mb-2 md:text-xl">
                     {project.name}
@@ -106,10 +108,10 @@ const ProjectsBlock = () => {
       </div>
 
       {/* счетчик и управление */}
-      <div className="flex items-center justify-between px-2">
+      <div className="flex items-center justify-between px-2 mt-auto">
         {/* счетчик */}
         <p className="text-base md:text-lg lg:text-xl">
-          <span className="text-[1.6em]">{getCurrentSlideNumber()}</span>/{' '}
+          <span className="text-[1.6em] font-medium">{getCurrentSlideNumber()}</span>/{' '}
           {getSliderlength()}
         </p>
         {/* стрелки */}
