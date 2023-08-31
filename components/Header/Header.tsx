@@ -5,22 +5,15 @@ import Link from 'next/link';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import { useDarkMode } from '@/context/darkModeContext';
 import { navigationRoutes } from '@/app/data/navigationRoutes';
+import useWindowSize from '@/app/hooks/useWindowSize';
 
 export function Header() {
+  const windowSize = useWindowSize();
   const { isDarkMode, changeDarkMode } = useDarkMode();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth);
 
   const navRef = useRef<HTMLDivElement>(null);
   const navBgBlur = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleResizeWindow = () => setWidth(window.innerWidth);
-    window.addEventListener('resize', handleResizeWindow);
-    return () => {
-      window.removeEventListener('resize', handleResizeWindow);
-    };
-  }, []);
 
   const addShadowToNavbar = () => {
     if (window.scrollY > 10) {
@@ -82,7 +75,7 @@ export function Header() {
             >
               <div className="w-full h-full gap-3 px-3 p-0.5 pr-0.5 lg:pr-1 lg:p-1 lg:px-4 rounded-full bg-slate-800 dark:bg-whiteSecondary dark:text-black text-whiteSecondary flex justify-between items-center">
                 <p className="m-0 lg:mb-[0.1em]">
-                  {width <= 320 ? 'Главная' : 'Главная страница'}
+                  {windowSize.width <= 320 ? 'Главная' : 'Главная страница'}
                 </p>
                 <svg
                   className="w-auto h-full"
@@ -94,8 +87,8 @@ export function Header() {
                 >
                   <path
                     className="fill-slate-50 dark:fill-darkPrimary"
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M12.4049 9.45833L9.45911 12.4063C9.25547 12.6094 8.92578 12.6094 8.72265 12.4063C8.51901 12.2031 8.51901 11.8698 8.72265 11.6667L10.869 9.52083H5.35547C5.06745 9.52083 4.83464 9.28646 4.83464 9C4.83464 8.71354 5.06745 8.47916 5.35547 8.47916H10.869L8.72265 6.33333C8.51901 6.13021 8.51901 5.80206 8.72265 5.59373C8.92578 5.3906 9.25547 5.3906 9.45911 5.59373L12.4049 8.54166C12.5299 8.66666 12.569 8.83854 12.5404 9C12.569 9.16146 12.5299 9.33333 12.4049 9.45833ZM9.0013 0.666664C4.3987 0.666664 0.667969 4.39583 0.667969 9C0.667969 13.6042 4.3987 17.3333 9.0013 17.3333C13.6039 17.3333 17.3346 13.6042 17.3346 9C17.3346 4.39583 13.6039 0.666664 9.0013 0.666664Z"
                     fill="white"
                   />
@@ -153,8 +146,8 @@ export function Header() {
                       >
                         <path
                           className="fill-slate-50 dark:fill-darkPrimary"
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
+                          fillRule="evenodd"
+                          clipRule="evenodd"
                           d="M12.4049 9.45833L9.45911 12.4063C9.25547 12.6094 8.92578 12.6094 8.72265 12.4063C8.51901 12.2031 8.51901 11.8698 8.72265 11.6667L10.869 9.52083H5.35547C5.06745 9.52083 4.83464 9.28646 4.83464 9C4.83464 8.71354 5.06745 8.47916 5.35547 8.47916H10.869L8.72265 6.33333C8.51901 6.13021 8.51901 5.80206 8.72265 5.59373C8.92578 5.3906 9.25547 5.3906 9.45911 5.59373L12.4049 8.54166C12.5299 8.66666 12.569 8.83854 12.5404 9C12.569 9.16146 12.5299 9.33333 12.4049 9.45833ZM9.0013 0.666664C4.3987 0.666664 0.667969 4.39583 0.667969 9C0.667969 13.6042 4.3987 17.3333 9.0013 17.3333C13.6039 17.3333 17.3346 13.6042 17.3346 9C17.3346 4.39583 13.6039 0.666664 9.0013 0.666664Z"
                           fill="white"
                         />
@@ -190,11 +183,11 @@ export function Header() {
                     version="1.1"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                    <g id="SVGRepo_bgCarrier" strokeWidth="0" />
                     <g
                       id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                     <g id="SVGRepo_iconCarrier">
                       {' '}
@@ -214,11 +207,11 @@ export function Header() {
                     version="1.1"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                    <g id="SVGRepo_bgCarrier" strokeWidth="0" />
                     <g
                       id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                     <g id="SVGRepo_iconCarrier">
                       {' '}
@@ -238,11 +231,11 @@ export function Header() {
                     version="1.1"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                    <g id="SVGRepo_bgCarrier" strokeWidth="0" />
                     <g
                       id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                     <g id="SVGRepo_iconCarrier">
                       {' '}
