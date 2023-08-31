@@ -2,6 +2,7 @@ import React from 'react';
 import ServicesBlock from '../ServicesBlock/ServicesBlock';
 import CardWrapper from '../CardWrapper/CardWrapper';
 import ProjectsBlock from '../ProjectsBlock/ProjectsBlock';
+import { PostBlock } from '../PostBlock/PostBlock';
 
 const CardsGrid = () => {
   return (
@@ -23,6 +24,16 @@ const CardsGrid = () => {
         cssGridClassName="bg-darkSecondary col-span-full lg:col-span-3 flex flex-col"
       >
         <ProjectsBlock />
+      </CardWrapper>
+
+      {/* Блог */}
+      <CardWrapper
+        cardLink="/blog"
+        cardTitle="Последняя запись"
+        cssGridClassName="border col-span-full lg:col-span-3 flex flex-col"
+        isHeader
+      >
+        <PostBlock />
       </CardWrapper>
     </section>
   );
