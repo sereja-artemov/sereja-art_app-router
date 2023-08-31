@@ -1,7 +1,8 @@
 export const PostBlock = () => {
   return (
     <div>
-      <Image></Image>
+      <p></p>
+      {/* <Image></Image> */}
     </div>
-  )
-}
+  );
+};
