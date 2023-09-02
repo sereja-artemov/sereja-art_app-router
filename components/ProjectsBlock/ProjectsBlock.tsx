@@ -83,7 +83,7 @@ const ProjectsBlock = () => {
               {/* подложка с информацией о проекте */}
               <div
                 className={` ${
-                  isProjectInfoVisible ? 'lg:opacity-100 ' : 'lg:opacity-0'
+                  isProjectInfoVisible ? 'xl:opacity-100 ' : 'xl:opacity-0'
                 } ease-in duration-200 relative lg:w-full lg:m-0 lg:h-auto h-full overflow-auto xl:py-6 py-5 min-[1280px]:absolute min-[1280px]:bottom-2 min-[1280px]:left-1/2 min-[1280px]:-translate-x-1/2 mb-2 px-4 rounded-2xl shadow-xl lg:border-none border border-[#464646]`}
               >
                 <div className="flex flex-col h-full">
