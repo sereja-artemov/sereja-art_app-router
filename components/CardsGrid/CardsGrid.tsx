@@ -30,8 +30,9 @@ const CardsGrid = () => {
       <CardWrapper
         cardLink="/blog"
         cardTitle="Последняя запись"
-        cssGridClassName="border col-span-full lg:col-span-3 flex flex-col"
+        cssGridClassName="border border-custom col-span-full lg:col-span-3 flex flex-col"
         isHeader
+        isBgTransparent
       >
         <PostBlock />
       </CardWrapper>
