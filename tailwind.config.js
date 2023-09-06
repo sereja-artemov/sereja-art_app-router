@@ -18,6 +18,9 @@ module.exports = {
         whiteSecondary: '#fff',
         borderColor: '#efefef',
       },
+      maxWidth: {
+        textContainer: '680px',
+      },
     },
     fontFamily: {
       sans: ['"Open Sans"', ...defaultTheme.fontFamily.sans],

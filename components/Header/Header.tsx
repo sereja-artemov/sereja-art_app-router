@@ -131,6 +131,7 @@ export function Header() {
                       className="flex items-center justify-between w-full h-full gap-3 p-2 px-5 pr-1.5 mb-3 rounded-full  last:mb-0 lg:pr-1 lg:p-1 lg:px-4 bg-slate-800 dark:bg-whiteSecondary dark:text-black text-whiteSecondary"
                     >
                       <Link
+                        onClick={() => closeMenu()}
                         className="text-2xl uppercase m-0 lg:mb-[0.1em] font-boss font-medium text-whitePrimary dark:text-darkPrimary"
                         href={item.route}
                       >
