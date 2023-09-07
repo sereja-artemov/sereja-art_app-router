@@ -11,6 +11,6 @@ function removeScrollLock() {
 }
 
 const activeLink = (url: string, pathname: string) =>
-  pathname === url ? 'active-menu-link' : '';
+  pathname === url ? 'link-group:bg-darkPrimary link-group:text-whitePrimary' : '';
 
 export { activeLink, lockScroll, removeScrollLock };
