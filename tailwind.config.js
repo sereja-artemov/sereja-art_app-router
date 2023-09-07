@@ -21,6 +21,15 @@ module.exports = {
       maxWidth: {
         textContainer: '680px',
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.darkPrimary'),
+
+            // ...
+          },
+        },
+      }),
     },
     fontFamily: {
       sans: ['"Open Sans"', ...defaultTheme.fontFamily.sans],

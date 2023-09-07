@@ -71,7 +71,7 @@ export function Header() {
           <nav className="mx-auto w-full left-0 flex gap-x-1.5">
             <Link
               href="/"
-              className="flex grow lg:max-w-[240px] shrink-0 p-0.5 lg:p-1 border border-darkPrimary/50 dark:border-whiteSecondary rounded-full"
+              className="flex grow lg:max-w-[250px] shrink-0 p-0.5 lg:p-1 border border-darkPrimary/50 dark:border-whiteSecondary rounded-full"
             >
               <div className="w-full h-full gap-3 px-3 p-0.5 pr-0.5 lg:pr-1 lg:p-1 lg:px-4 rounded-full bg-slate-800 dark:bg-whiteSecondary dark:text-black text-whiteSecondary flex justify-between items-center">
                 <p className="m-0 lg:mb-[0.1em]">

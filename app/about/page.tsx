@@ -4,15 +4,15 @@ import avatarPhoto from '../../images/about-photo.png';
 
 const About = () => {
   return (
-    <div className="md:flex md:items-center md:gap-20">
-      <div className="md:w-2/5">
+    <div className="lg:flex lg:items-center lg:gap-20">
+      <div className="lg:w-2/5 mb-14 md:mb-20 lg:mb-0">
         <Image
-          className="mx-auto"
+          className="mx-auto sm:max-w-[80%]"
           src={avatarPhoto}
           alt="Сергей Артемов - веб-разработчик"
         />
       </div>
-      <div className="max-w-textContainer md:w-3/5">
+      <div className="max-w-prose lg:w-3/5 prose-sm sm:prose-base md:prose-lg">
         <h1 className="mb-5 text-2xl leading-none uppercase font-boss">
           Обо мне
         </h1>
@@ -21,6 +21,7 @@ const About = () => {
           занимаюсь разработкой и сопровождением сайтов. Провожу маркетинговое
           исследование, создаю дизайн, верстаю и программирую.
         </p>
+        
         <p>
           Мне нравится использовать React.js или Next.js для создания сайтов и
           функциональных веб-приложений. Также работаю с 1С-Битрикс и Tilda.
