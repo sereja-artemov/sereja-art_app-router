@@ -17,7 +17,7 @@ const Hero = () => {
             </p>
             <button
               type="button"
-              className="flex items-center justify-between h-full gap-4 px-4 py-1 pr-1 border rounded-full lg:pr-1 lg:gap-5 lg:px-5 shrink-0 md:border-2 lg:text-xl"
+              className="flex items-center justify-between h-full gap-6 px-4 py-1 pr-1 border rounded-full lg:pr-1 lg:gap-5 lg:px-5 shrink-0 md:border-2 lg:text-xl"
             >
               <p className="lg:mb-[0.1em]">Начать работать</p>
               <svg

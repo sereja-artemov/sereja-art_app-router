@@ -73,11 +73,11 @@ export function Header() {
         ></div>
         <div className="container flex gap-x-1.5 items-stretch mx-auto">
           <nav className="mx-auto w-full left-0 flex gap-x-1.5">
-            <Link
-              href="/"
+            <div
+              
               className={`flex grow lg:max-w-[250px] shrink-0 p-0.5 lg:p-1 border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full`}
             >
-              <div className={`${isIndexPath ? 'bg-darkPrimary text-whitePrimary dark:bg-whitePrimary dark:text-darkPrimary' : 'bg-whiteSecondary dark:text-whitePrimary dark:bg-darkSecondary hover:bg-white/0 dark:hover:bg-white/0'} w-full h-full gap-3 px-3 p-0.5 pr-0.5 lg:pr-1 lg:p-1 lg:px-4 rounded-full flex justify-between items-center`}>
+              <Link href="/" className={`${isIndexPath ? 'bg-darkPrimary text-whitePrimary dark:bg-whitePrimary dark:text-darkPrimary' : 'bg-whiteSecondary dark:text-whitePrimary dark:bg-darkSecondary hover:bg-white/0 dark:hover:bg-white/0'} w-full h-full gap-3 px-3 p-0.5 pr-0.5 lg:pr-1 lg:p-1 lg:px-4 rounded-full flex justify-between items-center`}>
                 <p className="m-0 lg:mb-[0.1em]">
                   {windowSize.width <= 320 ? 'Главная' : 'Главная страница'}
                 </p>
@@ -97,8 +97,8 @@ export function Header() {
                     fill="white"
                   />
                 </svg>
-              </div>
-            </Link>
+              </Link>
+            </div>
             {/* Меню */}
             <ul className="hidden h-auto gap-1.5 lg:flex overflow-auto">
               {navigationRoutes.map((route, index) => {
@@ -107,9 +107,9 @@ export function Header() {
                 return (
                   <li
                     key={index}
-                    className={`${isActive ? 'bg-darkPrimary text-whitePrimary dark:bg-whitePrimary dark:text-darkPrimary' : 'bg-whiteSecondary dark:bg-darkSecondary'} flex hover:bg-darkPrimary hover:text-whitePrimary dark:hover:bg-whitePrimary dark:hover:text-darkPrimary items-center lg:px-5 xl:px-6 lg:my-1 my-0.5 border rounded-full border-slate-900/10 dark:border-whiteSecondary/20 `}
+                    className='flex items-center'
                   >
-                    <Link className={`mb-[0.1em]`} href={route.route}>
+                    <Link className={`mb-[0.1em] ${isActive ? 'bg-darkPrimary text-whitePrimary dark:bg-whitePrimary dark:text-darkPrimary' : 'bg-whiteSecondary dark:bg-darkSecondary'} hover:bg-darkPrimary hover:text-whitePrimary dark:hover:bg-whitePrimary dark:hover:text-darkPrimary py-[.4em] leading-none px-[1em] lg:my-1 my-0.5 border rounded-full text-lg border-slate-900/10 dark:border-whiteSecondary/20 `} href={route.route}>
                       {route.name}
                     </Link>
                   </li>
