@@ -182,10 +182,10 @@ export function Header() {
           <div>
             {/* Иконки соцсетей */}
             <ul className="items-center hidden gap-1 lg:flex">
-              <li className="border border-darkPrimary/50 dark:border-whiteSecondary rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
+              <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
                 <a href="">
                   <svg
-                    className="max-w-full max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
+                    className="group-hover/social-item:fill-whiteSecondary dark:group-hover/social-item:fill-darkPrimary max-w-full max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
                     width="64px"
                     height="64px"
                     viewBox="-2.5 0 32 32"
@@ -206,10 +206,10 @@ export function Header() {
                   </svg>
                 </a>
               </li>
-              <li className="border border-darkPrimary/50 dark:border-whiteSecondary rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
+              <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
                 <a href="">
                   <svg
-                    className="max-w-full max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
+                    className=" dark:group-hover/social-item:fill-darkPrimary group-hover/social-item:fill-whiteSecondary max-w-full max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
                     width="64px"
                     height="64px"
                     viewBox="-2.5 0 32 32"
@@ -230,10 +230,10 @@ export function Header() {
                   </svg>
                 </a>
               </li>
-              <li className="border border-darkPrimary/50 dark:border-whiteSecondary rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
+              <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
                 <a href="">
                   <svg
-                    className="max-w-full max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
+                    className=" dark:group-hover/social-item:fill-darkPrimary group-hover/social-item:fill-whiteSecondary max-w-full max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
                     width="64px"
                     height="64px"
                     viewBox="-2.5 0 32 32"
