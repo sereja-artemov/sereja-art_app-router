@@ -100,7 +100,7 @@ export function Header() {
               </Link>
             </div>
             {/* Меню */}
-            <ul className="hidden h-auto gap-1.5 p-1 lg:flex overflow-auto border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full">
+            <ul className="hidden h-auto p-1 lg:flex overflow-auto border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full">
               {navigationRoutes.map((route, index) => {
                 const isActive = pathname === route.route;
 
@@ -181,7 +181,7 @@ export function Header() {
 
           <div>
             {/* Иконки соцсетей */}
-            <ul className="items-center hidden gap-1 lg:flex">
+            <ul className="items-center hidden lg:flex">
               <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
                 <a href="">
                   <svg
