@@ -1,6 +1,7 @@
 import { DarkModeProvider } from '@/context/darkModeContext';
 import './globals.css';
 import { Header } from '@/components/Header/Header';
+import Footer from '@/components/Footer/Footer';
 
 export const metadata = {
   title: 'Create Next App',
@@ -20,6 +21,7 @@ export default function RootLayout({
           {/* отступ для fixed header */}
           <div className="mt-[72px] lg:mt-[88px]"></div>
           {children}
+          <Footer />
         </body>
       </html>
     </DarkModeProvider>
