@@ -100,16 +100,16 @@ export function Header() {
               </Link>
             </div>
             {/* Меню */}
-            <ul className="hidden h-auto gap-1.5 lg:flex overflow-auto">
+            <ul className="hidden h-auto p-1 lg:flex overflow-auto border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full">
               {navigationRoutes.map((route, index) => {
                 const isActive = pathname === route.route;
 
                 return (
                   <li
                     key={index}
-                    className='flex items-center'
+                    className='flex items-stretch'
                   >
-                    <Link className={`mb-[0.1em] ${isActive ? 'bg-darkPrimary text-whitePrimary dark:bg-whitePrimary dark:text-darkPrimary' : 'bg-whiteSecondary dark:bg-darkSecondary'} hover:bg-darkPrimary hover:text-whitePrimary dark:hover:bg-whitePrimary dark:hover:text-darkPrimary py-[.4em] leading-none px-[1em] lg:my-1 my-0.5 border rounded-full text-lg border-slate-900/10 dark:border-whiteSecondary/20 `} href={route.route}>
+                    <Link className={`mb-[0.1em] ${isActive ? 'bg-darkPrimary text-whitePrimary dark:bg-whitePrimary dark:text-darkPrimary' : 'bg-whiteSecondary dark:bg-darkSecondary'} hover:bg-darkPrimary hover:text-whitePrimary dark:hover:bg-whitePrimary dark:hover:text-darkPrimary py-[.4em] leading-none px-[1em] my-0.5 lg:my-0 border rounded-full text-lg flex items-center border-darkPrimary/50 dark:border-whiteSecondary/20 `} href={route.route}>
                       {route.name}
                     </Link>
                   </li>
@@ -181,7 +181,7 @@ export function Header() {
 
           <div>
             {/* Иконки соцсетей */}
-            <ul className="items-center hidden gap-1 lg:flex">
+            <ul className="items-center hidden lg:flex">
               <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
                 <a href="">
                   <svg
