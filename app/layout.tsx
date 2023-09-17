@@ -2,8 +2,8 @@ import { DarkModeProvider } from '@/context/darkModeContext';
 import './globals.css';
 import { Header } from '@/components/Header/Header';
 import { Suspense } from 'react';
-import Loading from './loading';
 import Footer from '@/components/Footer/Footer';
+import NextTopLoader from 'nextjs-toploader';
 
 export const metadata = {
   title: 'Create Next App',
@@ -19,12 +19,11 @@ export default function RootLayout({
     <DarkModeProvider>
       <html lang="ru">
         <body>
+          <NextTopLoader height={4} />
           <Header />
-          <Suspense fallback={<Loading />}>
-            {/* отступ для fixed header */}
-            <div className="mt-[72px] lg:mt-[88px]"></div>
-            {children}
-          </Suspense>
+          {/* отступ для fixed header */}
+          <div className="mt-[72px] lg:mt-[88px]"></div>
+          {children}
           <Footer />
         </body>
       </html>

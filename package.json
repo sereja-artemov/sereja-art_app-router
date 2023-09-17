@@ -19,6 +19,7 @@
     "framer-motion": "^10.15.2",
     "keen-slider": "^6.8.6",
     "next": "13.4.7",
+    "nextjs-toploader": "^1.4.2",
     "postcss": "8.4.24",
     "prettier": "^3.0.1",
     "react": "18.2.0",
