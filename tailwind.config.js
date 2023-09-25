@@ -17,6 +17,8 @@ module.exports = {
         whitePrimary: '#f6f8fc',
         whiteSecondary: '#fff',
         borderColor: '#efefef',
+        blockBorderColorDark: '#464646',
+        blockBorderColorLight: '#efefef',
         secondTextColor: '#828282',
         accentBg: '#6767ab29',
       },

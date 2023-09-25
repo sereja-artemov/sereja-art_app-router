@@ -1,19 +1,20 @@
 import { StaticImageData } from 'next/image';
+import { ProjectType } from '@/lib/types';
 
-export interface project {
-  name: string;
-  description: string;
-  date: number | string | Date;
-  cost: number;
-  links: { detailLink?: string; githubLink?: string; buildLink?: string };
-  image: string | StaticImageData;
-  previewImage: string | StaticImageData;
-  tools: string[];
-  year?: number;
-  active: boolean;
-}
+// export interface project {
+//   name: string;
+//   description: string;
+//   date: number | string | Date;
+//   cost: number;
+//   links: { detailLink?: string; githubLink?: string; buildLink?: string };
+//   image: string | StaticImageData;
+//   previewImage: string | StaticImageData;
+//   tools: string[];
+//   year?: number;
+//   active: boolean;
+// }
 
-export const projectsData: project[] = [
+export const projectsData: ProjectType[] = [
   {
     name: 'Сайт производственной компании Промматик',
     description:
