@@ -17,6 +17,8 @@ module.exports = {
         whitePrimary: '#f6f8fc',
         whiteSecondary: '#fff',
         borderColor: '#efefef',
+        secondTextColor: '#828282',
+        accentBg: '#6767ab29',
       },
       maxWidth: {
         textContainer: '680px',
