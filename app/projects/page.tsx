@@ -4,15 +4,45 @@ import Image from 'next/image';
 import React from 'react';
 import {
   AiOutlineCalendar,
-  AiOutlineFieldTime,
-  AiOutlineRead,
 } from 'react-icons/ai';
-import Link from 'next/link';
-import { BsGithub } from 'react-icons/bs';
-import { FiExternalLink } from 'react-icons/fi';
 import { projectsData } from '../data/projectsData';
 
 const Projects = () => {
+  const ImageWidth = 667;
+  const ImageHeight = 375;
+
+  // показывает картинку при наведении
+  const mouseEnterHandler = (event: { target: { nextSibling: HTMLElement }}) => {
+      const nextDomElement = event.target.nextSibling;
+      if (nextDomElement.tagName === 'IMG') {
+        nextDomElement.classList.remove('hidden');
+      } else {
+        console.error('nextDomElement не является картинкой');
+      }
+  }
+
+  // перемещает картинку при наведении
+  const mouseMoveHandler = (event: {
+    target: { nextSibling: HTMLElement }, pageX: number, pageY: number
+}) => {
+      const nextDomElement = event.target.nextSibling;
+      if (nextDomElement.tagName === 'IMG') {
+        nextDomElement.style.top = event.pageY - ImageHeight / 2 + 'px';
+        nextDomElement.style.left = event.pageX + ImageWidth / 9 + 'px';
+      } else {
+        console.error('nextDomElement не является картинкой');
+      } 
+  }
+
+  const mouseLeaveHandler = (event: { target: { nextSibling: HTMLElement; }; }) => {
+    const nextDomElement = event.target.nextSibling;
+    if (nextDomElement.tagName === 'IMG') {
+      nextDomElement.classList.add('hidden');
+    } else {
+      console.error('nextDomElement не является картинкой');
+    }
+  }
+
   return (
     <>
       <h1 className="mb-5 text-3xl leading-none uppercase lg:text-5xl font-boss">
@@ -32,10 +62,21 @@ const Projects = () => {
             className="p-2 pb-6 mb-5 xl:p-3 bg-whiteSecondary dark:bg-darkSecondary border border-blockBorderColorLight dark:border-blockBorderColorDark rounded-2xl lg:flex items-start lg:pb-2 max-w-[1140px]"
           >
             <Image
-              className="w-full h-auto rounded-xl mb-5 lg:w-[35%] lg:mb-0"
+              onMouseOver={mouseEnterHandler}
+              onMouseLeave={mouseLeaveHandler}
+              onMouseMove={mouseMoveHandler}
+              className="w-full h-auto rounded-xl mb-5 lg:w-[35%] lg:mb-0 hover:mix-blend-luminosity"
               width={910}
               height={512}
               src={project.previewImage || project.image}
+              alt={`${project.name} картинка проекта`}
+              priority
+            />
+            <Image
+              className="w-full h-auto rounded-xl mb-5 lg:w-[45vw] absolute hidden overflow-hidden pointer-events-none z-[1001]"
+              width={910}
+              height={512}
+              src={project.image || project.previewImage}
               alt={`${project.name} картинка проекта`}
               priority
             />
