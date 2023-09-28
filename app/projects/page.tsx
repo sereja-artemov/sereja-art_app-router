@@ -8,6 +8,7 @@ import {
 import { projectsData } from '../data/projectsData';
 
 const Projects = () => {
+  
   const ImageWidth = 667;
   const ImageHeight = 375;
 
@@ -48,13 +49,6 @@ const Projects = () => {
       <h1 className="mb-5 text-3xl leading-none uppercase lg:text-5xl font-boss">
         Проекты
       </h1>
-      {/* <ul>
-          {projectsData.map((project) => (
-            <li>
-              <Image width={910} height={512} src={project.previewImage || project.image} alt={`${project.name} картинка проекта`} priority />
-            </li>
-          ))}
-        </ul> */}
       <ul>
         {projectsData.map((project, index) => (
           <li
