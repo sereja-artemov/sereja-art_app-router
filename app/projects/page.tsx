@@ -2,47 +2,50 @@
 
 import Image from 'next/image';
 import React from 'react';
-import {
-  AiOutlineCalendar,
-} from 'react-icons/ai';
+import { AiOutlineCalendar } from 'react-icons/ai';
 import { projectsData } from '../data/projectsData';
 
 const Projects = () => {
-  
   const ImageWidth = 667;
   const ImageHeight = 375;
 
   // показывает картинку при наведении
-  const mouseEnterHandler = (event: { target: { nextSibling: HTMLElement }}) => {
-      const nextDomElement = event.target.nextSibling;
-      if (nextDomElement.tagName === 'IMG') {
-        nextDomElement.classList.remove('hidden');
-      } else {
-        console.error('nextDomElement не является картинкой');
-      }
-  }
+  const mouseEnterHandler = (event: {
+    target: { nextSibling: HTMLElement };
+  }) => {
+    const nextDomElement = event.target.nextSibling;
+    if (nextDomElement.tagName === 'IMG') {
+      nextDomElement.classList.remove('hidden');
+    } else {
+      console.error('nextDomElement не является картинкой');
+    }
+  };
 
   // перемещает картинку при наведении
   const mouseMoveHandler = (event: {
-    target: { nextSibling: HTMLElement }, pageX: number, pageY: number
-}) => {
-      const nextDomElement = event.target.nextSibling;
-      if (nextDomElement.tagName === 'IMG') {
-        nextDomElement.style.top = event.pageY - ImageHeight / 2 + 'px';
-        nextDomElement.style.left = event.pageX + ImageWidth / 9 + 'px';
-      } else {
-        console.error('nextDomElement не является картинкой');
-      } 
-  }
+    target: { nextSibling: HTMLElement };
+    pageX: number;
+    pageY: number;
+  }) => {
+    const nextDomElement = event.target.nextSibling;
+    if (nextDomElement.tagName === 'IMG') {
+      nextDomElement.style.top = event.pageY - ImageHeight / 2 + 'px';
+      nextDomElement.style.left = event.pageX + ImageWidth / 9 + 'px';
+    } else {
+      console.error('nextDomElement не является картинкой');
+    }
+  };
 
-  const mouseLeaveHandler = (event: { target: { nextSibling: HTMLElement; }; }) => {
+  const mouseLeaveHandler = (event: {
+    target: { nextSibling: HTMLElement };
+  }) => {
     const nextDomElement = event.target.nextSibling;
     if (nextDomElement.tagName === 'IMG') {
       nextDomElement.classList.add('hidden');
     } else {
       console.error('nextDomElement не является картинкой');
     }
-  }
+  };
 
   return (
     <>
@@ -59,7 +62,7 @@ const Projects = () => {
               onMouseOver={mouseEnterHandler}
               onMouseLeave={mouseLeaveHandler}
               onMouseMove={mouseMoveHandler}
-              className="w-full h-auto rounded-xl mb-5 lg:w-[35%] lg:mb-0 hover:mix-blend-luminosity"
+              className="w-full h-auto rounded-xl mb-5 lg:w-[380px] lg:mb-0 hover:mix-blend-luminosity"
               width={910}
               height={512}
               src={project.previewImage || project.image}
@@ -79,10 +82,12 @@ const Projects = () => {
                 <AiOutlineCalendar className="w-4 h-auto" />
                 {project.year} год
               </span>
-              <h2 className="font-bold font-boss text-md lg:text-xl mb-2 lg:mb-2 leading-normal">
+              <h2 className="mb-2 font-bold leading-normal font-boss text-md lg:text-xl lg:mb-2">
                 {project.name}
               </h2>
-              <p className="mb-4 text-sm xl:text-base leading-normal">{project.description}</p>
+              <p className="mb-4 text-sm leading-normal xl:text-base">
+                {project.description}
+              </p>
               <ul className="flex flex-wrap text-sm">
                 {project.tools.map((tool, index) => (
                   <li
@@ -93,7 +98,7 @@ const Projects = () => {
                   </li>
                 ))}
               </ul>
-              {/* <div className="flex gap-4 flex-wrap shrink-0">
+              {/* <div className="flex flex-wrap gap-4 shrink-0">
                 {projectsData.links.githubLink !== undefined && (
                   <Link href={projectsData.links.githubLink} target="_blank">
                     <BsGithub
@@ -115,7 +120,6 @@ const Projects = () => {
           </li>
         ))}
       </ul>
-
     </>
   );
 };
