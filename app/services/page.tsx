@@ -5,14 +5,14 @@ import { ServicesProps } from '@/lib/types';
 const Services = () => {
 
   return (
-    <section className="container">
+    <>
       <h1 className="block-title">Услуги</h1>
       <div className="grid gap-10 max-sm:gap-7 md:grid-cols-[repeat(auto-fit,minmax(383px,1fr))] bg-whiteSecondary dark:bg-darkSecondary p-5 lg:p-9 rounded-xl block-border">
         { servicesData.map((element, index) => (
           <ServicesItem key={index} itemData={element} />
         )) }
       </div>
-    </section>
+    </>
   )
 }
 
