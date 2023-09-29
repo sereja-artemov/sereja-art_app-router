@@ -14,7 +14,7 @@ export const navigationRoutes = [
     name: 'Услуги',
   },
   {
-    route: '/blogs',
+    route: '/blog',
     name: 'Блог',
   },
   {
