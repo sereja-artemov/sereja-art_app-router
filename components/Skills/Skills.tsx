@@ -1,3 +1,5 @@
+'use client'
+
 import { skillsData } from '@/app/data/skillsData';
 import { motion } from 'framer-motion';
 import React from 'react'
@@ -5,6 +7,7 @@ import {SiAdobephotoshop, SiCss3, SiFigma, SiHtml5, SiJavascript, SiNextdotjs, S
 import { BsWordpress } from 'react-icons/bs';
 import { AiOutlineSmallDash } from 'react-icons/ai';
 import { FaYandex } from 'react-icons/fa';
+import { FadeContainer, popUp } from '@/utils/framerMotionVariants';
 
 const Skills = () => {
 
@@ -13,12 +16,12 @@ const Skills = () => {
   })
 
   return (
-    <section className='container'>
-      <h2 className={`block-title`}>Мои основные навыки</h2>
+    <section>
+      <h2 className="block-title">Мои основные навыки</h2>
       <motion.div initial="hidden"
                   whileInView="visible"
-                  // variants={FadeContainer}
-                  viewport={{ once: true }} className='grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-3'>
+                  variants={FadeContainer}
+                  viewport={{ once: true }} className='grid lg:grid-cols-[repeat(auto-fill,minmax(250px,1fr))] grid-cols-[repeat(auto-fill,minmax(132px,1fr))] gap-3'>
         {activeSkillsArray.map((skill, index) => {
           return <SkillsItem key={index} name={skill.name} />
         })}
@@ -39,9 +42,9 @@ const SkillsItem: React.FC<SkillsItemProps> = ({name}) => {
 
   return (
     <motion.div
-      variants={popUp} className={s.skill}>
-        <Icon className={s.image} />
-        <p className={s.name}>{name}</p>
+      variants={popUp} className='dark:bg-darkSecondary bg-whiteSecondary p-3 lg:p-4 rounded-md lg:rounded-[.5vw] flex gap-3 items-center lg:text-base shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]'>
+        <Icon className='w-full max-w-[25px] lg:max-w-[30px] h-auto' />
+        <p>{name}</p>
     </motion.div>
   )
 }

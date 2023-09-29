@@ -25,6 +25,10 @@
   .block-border {
     @apply border border-[#efefef] dark:border-[#464646];
   }
+
+  .block-title {
+    @apply text-xl md:text-3xl leading-[1.4] uppercase font-black mt-0 mb-8 mx-0 font-boss;
+  }
 }
 
 @layer utilities {
