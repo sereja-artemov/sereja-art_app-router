@@ -82,7 +82,7 @@ const Projects = () => {
               <h2 className="font-bold text-md lg:text-xl mb-2 lg:mb-2 leading-normal">
                 {project.name}
               </h2>
-              <p className="mb-4 text-sm xl:text-base leading-normal">{project.description}</p>
+              <p className="mb-4 text-sm xl:text-sm leading-normal">{project.description}</p>
               <ul className="flex flex-wrap text-sm">
                 {project.tools.map((tool, index) => (
                   <li

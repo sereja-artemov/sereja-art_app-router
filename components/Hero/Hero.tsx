@@ -45,7 +45,7 @@ const Hero = () => {
             src={HeroAvatar}
             alt="аватарка"
           />
-          <Link className="w-full text-xs btn lg:text-sm" href="#">
+          <Link className="w-full text-xs btn lg:text-sm" href="/about">
             Обо мне
           </Link>
         </div>
