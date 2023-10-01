@@ -1,0 +1,26 @@
+---
+slug: aspro-next-project-link-tab
+title: Аспро:Некст правильные ссылки в табы проектов
+date: 2021-09-04
+published: false
+category: web-dev
+keywords: аспро некст, табы аспро, ссылки аспро некст проекты
+excerpt: Добавляем ссылки пунктам выпадающего меню на соответствующие табы проектов
+image:
+---
+Проблема: при клике на ссылку проекта из выпадающего меню, мы всегда попадаем на таб "Все проекты", а хотим попадать на соответствующий ссылке таб. То есть, если кликнули на ссылку "Роботизация", то и попасть должны на таб "Роботизация".
+
+<Figcaption src="http://tech.sereja-art.ru/upload/blogs/aspro-next-project-link-tab/aspro-next-project-link-tab-2.png" alt="" />
+<Figcaption src="http://tech.sereja-art.ru/upload/blogs/aspro-next-project-link-tab/aspro-next-project-link-tab.png" alt="" />
+
+<CodeTitle title='Костыль для ссылок проектов в URL' lang="js" />
+<code>
+  ```html
+    <script>
+      $(document).ready(function() {
+        var filter = window.location.hash.replace('#', '');
+        $('span[data-filter="' + filter + '"]').click();
+      });
+    </script>
+  ```
+</code>

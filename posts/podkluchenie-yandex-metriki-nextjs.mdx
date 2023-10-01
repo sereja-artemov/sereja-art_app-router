@@ -1,0 +1,78 @@
+---
+slug: podkluchenie-yandex-metriki-nextjs
+title: Подключение счетчика Яндекс.Метрики в Next.JS
+date: 2023-06-24
+published: true
+category: other
+keywords: nextjs, яндекс метрика, счетчик яндекс метрики, подключение счетчика яндекс метрики
+excerpt: Подключение счетчика Яндекс.Метрики к сайту на Next.JS
+image: http://tech.sereja-art.ru/upload/blogs/podkluchenie-yandex-metriki-nextjs/podkluchenie-yandex-metriki-nextjs-preview.jpg
+---
+
+import Figcaption from '../components/MDXComponents/Figcaption';
+
+Вставляем код счетчика в шаблон сайта, чтобы он присутствовал на всех страницах. В случае с использованием Pages Router, я вставляю счетчик яндекс метрики в <code>\_document.tsx</code>.
+
+<Figcaption
+  src="http://tech.sereja-art.ru/upload/blogs/podkluchenie-yandex-metriki-nextjs/podkluchenie-yandex-metriki-nextjs-1.png"
+  alt="создаем скрытое поле в форме Tilda"
+/>
+
+В случае с использованием App Router, вставляем счетчик яндекс метрики в файл <code>layout.tsx</code> перед закрывающим тегом <code>body</code>.
+
+<Figcaption
+  src="http://tech.sereja-art.ru/upload/blogs/podkluchenie-yandex-metriki-nextjs/podkluchenie-yandex-metriki-nextjs-2.png"
+  alt="создаем скрытое поле в форме Tilda"
+/>
+<CodeTitle title='Код счетчика' lang='js' />
+<code>
+  ```js
+        <Script id="metrika-counter" strategy="afterInteractive">
+        {`(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+          (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+          ym(XXXXXXXX, "init", {
+                defer: true,
+                clickmap:true,
+                trackLinks:true,
+                accurateTrackBounce:true,
+                webvisor:true
+          });`
+        }
+      </Script>
+
+````
+</code>
+
+
+Вместо XXXXXXXX вставляете свой id счетчика.
+Создаем компонент, который будет отправлять данные в метрику при изменении URL-адреса или параметров в нем.
+
+<CodeTitle title='Код счетчика' lang='js' />
+<code>
+  ```js
+      'use client'
+
+        import { useEffect } from 'react'
+        import { usePathname, useSearchParams } from 'next/navigation'
+
+        export function YandexMetrika() {
+          const pathname = usePathname()
+          const searchParams = useSearchParams()
+
+          useEffect(() => {
+            const url = `${pathname}?${searchParams}`
+            ym(XXXXXXXX, 'hit', url);
+
+          }, [pathname, searchParams])
+
+          return null
+        }
+````
+
+</code>
+
+Импортируем этот компонент в наш шаблон.

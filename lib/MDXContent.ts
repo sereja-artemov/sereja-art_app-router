@@ -1,13 +1,13 @@
 import path from 'path';
-import { readFileSync } from "fs";
+import { readFileSync } from 'fs';
 import { sync } from 'glob';
 import matter from 'gray-matter';
-import { serialize } from "next-mdx-remote/serialize";
+import { serialize } from 'next-mdx-remote/serialize';
 import rehypeSlug from 'rehype-slug';
-import readTime, {ReadTimeResults} from "reading-time";
-import rehypePrettyCode from "rehype-pretty-code";
-import getWordEnding from "@/lib/getWordEnding";
-import {slugify, transliterate} from "transliteration";
+import readTime, { ReadTimeResults } from 'reading-time';
+import rehypePrettyCode from 'rehype-pretty-code';
+import getWordEnding from '@/lib/getWordEnding';
+import { slugify, transliterate } from 'transliteration';
 import { FrontMatter, ReadTimeResultsCustom } from '@/lib/types';
 
 export default class MDXContent {
@@ -22,8 +22,12 @@ export default class MDXContent {
   transformReadingTime(content: string) {
     const readingTime = readTime(content, { wordsPerMinute: 200 });
 
-    const readingTimeMinutes = readingTime.text.match( /\d+/g );
-    const word = getWordEnding(Number(readingTimeMinutes), [' минута', ' минуты', ' минут']);
+    const readingTimeMinutes = readingTime.text.match(/\d+/g);
+    const word = getWordEnding(Number(readingTimeMinutes), [
+      ' минута',
+      ' минуты',
+      ' минут',
+    ]);
     const readingTimeText = readingTime.text.replace(/[^0-9\.]+/g, word);
 
     return readingTimeText;
@@ -33,9 +37,9 @@ export default class MDXContent {
   getSlugs() {
     const paths = sync(`${this.POST_PATH}/*.mdx`);
     return paths.map((path) => {
-      const parts = path.split("/");
+      const parts = path.split('/');
       const fileName = parts[parts.length - 1];
-      const [slug, _ext] = fileName.split(".");
+      const [slug, _ext] = fileName.split('.');
       return slug;
     });
   }
@@ -45,53 +49,56 @@ export default class MDXContent {
     const postPath = path.join(this.POST_PATH, `${slug}.mdx`);
     /* Возвращаем содержимое файла */
     const source = readFileSync(postPath);
+
     const { content, data } = matter(source);
 
-    const readingTime: ReadTimeResultsCustom = readTime(content, { wordsPerMinute: 200 });
+    const readingTime: ReadTimeResultsCustom = readTime(content, {
+      wordsPerMinute: 200,
+    });
     readingTime.textRU = this.transformReadingTime(content);
     if (!data.published) return null;
 
-      return {
-        slug,
-        readingTime,
-        excerpt: data.excerpt ?? "",
-        title: data.title ?? slug,
-        date: (data.date ?? new Date()).toString(),
-        stringDate: data.stringDate ?? "",
-        keywords: data.keywords ?? "",
-        image: data.image ?? "http://tech.sereja-art.ru/upload/image-empty.jpg",
-        category: data.category ?? "",
-      };
+    return {
+      slug,
+      readingTime,
+      excerpt: data.excerpt ?? '',
+      title: data.title ?? slug,
+      date: (data.date ?? new Date()).toString(),
+      stringDate: data.stringDate ?? '',
+      keywords: data.keywords ?? '',
+      image: data.image ?? 'http://tech.sereja-art.ru/upload/image-empty.jpg',
+      category: data.category ?? '',
+    };
   }
 
   /* Получаем post по значению slug (это пост с контентом и front matter)  */
   async getPostFromSlug(slug: string, force: boolean = false) {
     const postPath = path.join(this.POST_PATH, `${slug}.mdx`);
     const source = readFileSync(postPath);
-    const {content, data} = matter(source);
-    if (!data.published && !force) return {post: null};
+    const { content, data } = matter(source);
+    if (!data.published && !force) return { post: null };
 
     // получаем front matter
     const frontMatter = this.getFrontMatter(slug);
 
     /* настройка темы блоков с кодом */
     const prettyCodeOptions = {
-      theme: "one-dark-pro",
+      theme: 'one-dark-pro',
       onVisitLine(node: any) {
         // Prevent lines from collapsing in `display: grid` mode, and
         // allow empty lines to be copy/pasted
         if (node.children.length === 0) {
-          node.children = [{type: "text", value: " "}];
+          node.children = [{ type: 'text', value: ' ' }];
         }
       },
       // Feel free to add classNames that suit your docs
       onVisitHighlightedLine(node: any) {
-        node.properties.className.push("highlighted");
+        node.properties.className.push('highlighted');
       },
       onVisitHighlightedWord(node: any) {
-        node.properties.className = ["word"];
+        node.properties.className = ['word'];
       },
-    }
+    };
 
     /* обрабатываем markdown файл */
     const mdxSource = await serialize(content, {
@@ -144,12 +151,10 @@ export default class MDXContent {
       : [];
     return headingArray?.map((heading) => {
       return {
-        level: heading.split("#").length - 1 - 2, // мы начинаем с h2, поэтому мы вычитаем 2, а 1 - это дополнительный текст заголовка
-        heading: heading.replace(/#{2,6}/, "").trim(),
+        level: heading.split('#').length - 1 - 2, // мы начинаем с h2, поэтому мы вычитаем 2, а 1 - это дополнительный текст заголовка
+        heading: heading.replace(/#{2,6}/, '').trim(),
         transliteratedHeading: slugify(heading), //делаем транслитерацию для заголовка
       };
     });
   }
 }
-
-

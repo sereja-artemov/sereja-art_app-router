@@ -1,0 +1,110 @@
+---
+slug: link-tags
+title: link-tags
+date: 2021-09-04
+stringDate: September 04, 2022
+published: false
+keywords: temp, keyword, for , seo
+excerpt: description of the blog
+image:
+---
+https://mikebifulco.com/posts/mdx-auto-link-headings-with-rehype-slug#automatically-linking-to-headings-in-your-mdx-posts-with-rehype-plugins
+
+## test title
+### test title 2
+
+<CodeTitle title='Какой-то тестовый заголовок блока с кодом' lang="react" />
+<code>
+  ```tsx {1-3,4}
+  import ProjectsPage from "@/components/ProjectsPage/ProjectsPage";
+  import {getProjects} from "@/lib/dataFetch";
+  import SEO from "@/components/SEO/SEO";
+
+  export interface projectsProps {
+  projects: string,
+}
+
+  const Projects = ({projects}: projectsProps) => {
+  return (
+  <>
+  <SEO title="Проекты"/>
+  <ProjectsPage projects={projects}/>
+  </>
+  );
+};
+
+  export default Projects;
+
+  export async function getStaticProps() {
+  const projects = JSON.stringify(getProjects());
+  return {
+  props: {
+  projects,
+},
+};
+}
+
+  ```
+</code>
+### test title 2
+### test title 2
+### test title 2
+#### test title
+##### test title 2
+##### test title 2
+###### test title
+###### test title
+###### test title
+### test title 2
+## test title
+### test title 2
+## test title
+### test title 2
+## test title
+### test title 2
+## test title
+### test title 2
+## test title
+### test title 2
+## test title
+### test title 2
+## test title
+### test title 2
+## test title
+### test title 2
+
+
+
+
+
+
+This avoids repeated code, and allows me to manage my plugins for MDX from one place.
+
+At this point, if you fire up your dev environment, and use your browser devtools to inspect any of the headings generated from markdown for your site, they should all have an id property added. For the example above, you'd see:
+
+We're halfway there - you can now link to www.example.com#a-fish-called-wanda, and the browser will automatically scroll to the heading.
+
+Step 2: use MDXProvider to customize the way heading tags render
+MDXProvider is a wrapper component which allows you to customize the way your MDX renders by providing a list of components.
+
+This step will depend heavily on the UI frameworks you've chosen for your site - I use Chakra UI for my nextjs site, but you can use whatever you like - tailwindcss, Material UI, etc will all have similar parallels.
+
+Here's a simplified version of the code, which I'll show just for - you'd want to extend this for all title tags, i.e.
+
+Doing it with Chakra UI
+Like I mentioned above, my site uses Chakra UI to compose page layouts. I've added a bit of customization to links on my site - including a hover behavior which adds a nice # character before headings when they're hovered over. If you're curious about my implementation with Chakra UI, it looks a bit like this:
+
+
+// ...etc - components is passed to MDXProvider in my Layout component
+The Result
+The result is what you see on this page, and any of the other posts on my site! Every heading on my markdown pages contains an ID, and is wrapped in a link to itself. This makes it easy for readers to tap on the link to send it to their URL bar, or to right-click/long-press and copy a link to the part of the article they want to link to.
+
+The final markup looks a bit like this:
+
+I hope you found this helpful! If you run into any trouble, feel free to drop me a line on twitter. Beyond that, I'd love it if you shared this post with someone who you think could benefit from it.
+
+Auto-linking headings with other frameworks
+Generic HTML and JavaScript - if you're looking for a platform-agnostic solution, you may want to check out this CSS Tricks Article, On Adding IDs to Headings
+Jekyll - a reader was kind enough to send me a tutorial for the same functionality in Jekyll. Check it out on David Darnes' site here: Adding heading links to your Jekyll blog
+11ty - There doesn't seem to be a standard practice for this pattern with 11ty, but there was a great discussion on ways this might be implemented with plugins and shortcodes in this GitHub Issue: Support generating IDs for headings, for section direct links
+Gatsby - Gatsby has a plugin which supports this behavior, called gatsby-remark-autolink-headers
