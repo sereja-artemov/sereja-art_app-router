@@ -7,6 +7,10 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    scroll-margin-top: 87px;
+  }
+
   body {
     @apply font-sans text-sm md:text-base lg:text-xl bg-whitePrimary dark:bg-darkPrimary text-[#101921] dark:text-[#ededef];
     @apply min-h-screen;

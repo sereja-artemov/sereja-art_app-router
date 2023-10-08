@@ -21,9 +21,7 @@ export default function RootLayout({
         <body>
           <NextTopLoader height={4} />
           <Header />
-          {/* отступ для fixed header */}
-          <div className="mt-[72px] lg:mt-[88px]"></div>
-          {children}
+          <main>{children}</main>
           <Footer />
         </body>
       </html>

@@ -8,9 +8,11 @@ keywords: temp, keyword, for , seo
 excerpt: description of the blog
 image:
 ---
+
 https://mikebifulco.com/posts/mdx-auto-link-headings-with-rehype-slug#automatically-linking-to-headings-in-your-mdx-posts-with-rehype-plugins
 
-## test title
+## тестовый заголовок 1
+
 ### test title 2
 
 <CodeTitle title='Какой-то тестовый заголовок блока с кодом' lang="react" />
@@ -20,31 +22,33 @@ https://mikebifulco.com/posts/mdx-auto-link-headings-with-rehype-slug#automatica
   import {getProjects} from "@/lib/dataFetch";
   import SEO from "@/components/SEO/SEO";
 
-  export interface projectsProps {
-  projects: string,
+export interface projectsProps {
+projects: string,
 }
 
-  const Projects = ({projects}: projectsProps) => {
-  return (
-  <>
-  <SEO title="Проекты"/>
-  <ProjectsPage projects={projects}/>
-  </>
-  );
-};
+const Projects = ({projects}: projectsProps) => {
+return (
 
-  export default Projects;
+{' '}
 
-  export async function getStaticProps() {
+<>
+  <SEO title="Проекты" />
+  <ProjectsPage projects={projects} />
+</>
+); };
+
+export default Projects;
+
+export async function getStaticProps() {
   const projects = JSON.stringify(getProjects());
   return {
-  props: {
-  projects,
-},
-};
+    props: {
+      projects,
+    },
+  };
 }
 
-  ```
+```
 </code>
 ### test title 2
 ### test title 2
@@ -108,3 +112,4 @@ Generic HTML and JavaScript - if you're looking for a platform-agnostic solution
 Jekyll - a reader was kind enough to send me a tutorial for the same functionality in Jekyll. Check it out on David Darnes' site here: Adding heading links to your Jekyll blog
 11ty - There doesn't seem to be a standard practice for this pattern with 11ty, but there was a great discussion on ways this might be implemented with plugins and shortcodes in this GitHub Issue: Support generating IDs for headings, for section direct links
 Gatsby - Gatsby has a plugin which supports this behavior, called gatsby-remark-autolink-headers
+```
