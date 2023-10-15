@@ -49,9 +49,7 @@ const Projects = () => {
 
   return (
     <>
-      <h1 className="mb-5 text-3xl leading-none uppercase lg:text-5xl font-boss">
-        Проекты
-      </h1>
+      <h1 className="block-title">Проекты</h1>
       <ul>
         {projectsData.map((project, index) => (
           <li

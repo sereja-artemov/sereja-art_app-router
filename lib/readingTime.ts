@@ -1,3 +1,5 @@
+import getWordEnding from './getWordEnding';
+
 export default function getReadingTime(
   content: string,
   wordsPerMinute: number = 200
@@ -14,15 +16,8 @@ export default function getReadingTime(
     ' минут',
   ]);
   const readingTimeText = readingTime.replace(/[^0-9\.]+/g, word);
+  const wordsQuantityStr =
+    wordsQuantity + getWordEnding(wordsQuantity, [' слово', ' слова', ' слов']);
 
-  return readingTimeText;
-}
-
-function getWordEnding(value: number, words: string[]) {
-  value = Math.abs(value) % 100;
-  var num = value % 10;
-  if (value > 10 && value < 20) return words[2];
-  if (num > 1 && num < 5) return words[1];
-  if (num == 1) return words[0];
-  return words[2];
+  return { readingTimeText, wordsQuantityStr };
 }

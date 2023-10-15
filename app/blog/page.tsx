@@ -9,13 +9,11 @@ export default function Blog() {
   );
 
   return (
-    <div className="max-w-xl py-8 mx-auto">
-      <h1 className="mb-8 text-2xl font-black text-center">
-        Next.js + Contentlayer Example
-      </h1>
-      {posts.map((post, idx) => (
-        <PostCard key={idx} {...post} />
+    <>
+      <h1 className="block-title">Блог</h1>
+      {posts.map((post, index) => (
+        <PostCard key={index} {...post} />
       ))}
-    </div>
+    </>
   );
 }

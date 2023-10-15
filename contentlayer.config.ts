@@ -22,7 +22,7 @@ export const Post = defineDocumentType(() => ({
     published: { type: 'boolean', required: true },
     keywords: { type: 'string' },
     excerpt: { type: 'string' },
-    image: { type: 'string' },
+    coverImage: { type: 'string' },
   },
   computedFields: {
     url: {
@@ -30,7 +30,7 @@ export const Post = defineDocumentType(() => ({
       resolve: (post) => `/blog/${post._raw.flattenedPath}`,
     },
     readingTime: {
-      type: 'string',
+      type: 'json',
       resolve: (post) => {
         const content = post.body.raw;
         const readingTime = getReadingTime(content);
@@ -83,7 +83,23 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: 'one-dark-pro',
+          theme: "one-dark-pro",
+          grid: false,
+          onVisitLine(node: any) {
+            // Prevent lines from collapsing in `display: grid` mode, and
+            // allow empty lines to be copy/pasted
+            if (node.children.length === 0) {
+              node.children = [{type: "text", value: " "}];
+            }
+          },
+          // Feel free to add classNames that suit your docs
+          // onVisitHighlightedLine(node: any) {
+          //   node.properties.className.push("highlighted");
+          // },
+          // onVisitHighlightedWord(node: any) {
+          //   node.properties.className = ["word"];
+          // },
+          
         } satisfies Partial<PrettyCodeOptions>,
       ],
     ],

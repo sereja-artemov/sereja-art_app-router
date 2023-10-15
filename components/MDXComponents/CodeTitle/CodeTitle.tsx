@@ -10,7 +10,6 @@ import {
 } from 'react-icons/si';
 import { VscJson } from 'react-icons/vsc';
 import { IoLogoJavascript } from 'react-icons/io5';
-import s from './CodeTitle.module.scss';
 
 export interface CodeTitleProps {
   title: string;
@@ -58,7 +57,7 @@ export default function CodeTitle({ title, lang }: CodeTitleProps) {
       break;
   }
   return (
-    <div className="flex items-center border border-[color:#222] bg-darkSecondary px-4 py-[0.7rem] border-b-[none] border-solid;">
+    <div className="flex items-center border border-blockBorderColorDark border-b-0 rounded-t-xl bg-[#282c34] px-4 py-3 text-[--dark-text-color] not-prose">
       <Icon className="mr-3" />
       <p className="mb-0 text-base">{title}</p>
     </div>
