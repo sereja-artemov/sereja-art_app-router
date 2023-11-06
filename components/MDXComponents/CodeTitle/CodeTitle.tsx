@@ -57,9 +57,9 @@ export default function CodeTitle({ title, lang }: CodeTitleProps) {
       break;
   }
   return (
-    <div className="flex items-center border border-blockBorderColorDark border-b-0 rounded-t-xl bg-[#282c34] px-4 py-3 text-[--dark-text-color] not-prose">
-      <Icon className="mr-3" />
-      <p className="mb-0 text-base">{title}</p>
+    <div className="flex items-center border overflow-x-auto border-blockBorderColorDark border-b-0 rounded-t-xl bg-[#282c34] px-4 py-3 text-[--dark-text-color] not-prose">
+      <Icon className="w-5 h-auto mr-3 shrink-0" />
+      <p className="mb-0 text-sm lg:text-base">{title}</p>
     </div>
   );
 }

@@ -11,9 +11,12 @@ export default function Blog() {
   return (
     <>
       <h1 className="block-title">Блог</h1>
-      {posts.map((post, index) => (
-        <PostCard key={index} {...post} />
-      ))}
+      <section className='flex flex-col items-center gap-5'>
+        {posts.map((post, index) => (
+          <PostCard key={index} {...post} />
+        ))}
+      </section>
+
     </>
   );
 }

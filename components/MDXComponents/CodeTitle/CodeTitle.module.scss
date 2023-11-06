@@ -9,6 +9,7 @@
   border-top-right-radius: var(--code-block-border-radius);
   padding: .7rem 1rem;
   background-color: var(--card-background-color);
+  overflow-x: auto;
 
   .titleText {
     font-size: 16px;
@@ -21,5 +22,14 @@
 }
 
 .icon {
+  width: 20px;
+  height: auto;
+  flex-shrink: 0;
+
+  svg {
+    width: 20px;
+    height: auto;
+    flex-shrink: 0;
+  }
   margin-right: 12px;
 }

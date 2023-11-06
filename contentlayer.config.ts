@@ -55,7 +55,8 @@ export default makeSource({
         rehypeAutolinkHeadings,
         {
           behavior: 'append',
-          test: ['h2', 'h3'],
+          // на какие заголовки будет действовать
+          test: ['h2', 'h3'], 
           properties: { class: 'heading-link' },
           content: s(
             'svg',

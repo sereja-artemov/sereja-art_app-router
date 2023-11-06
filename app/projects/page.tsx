@@ -54,7 +54,7 @@ const Projects = () => {
         {projectsData.map((project, index) => (
           <li
             key={index}
-            className="p-2 pb-6 mb-5 xl:p-3 bg-whiteSecondary dark:bg-darkSecondary border border-blockBorderColorLight dark:border-blockBorderColorDark rounded-2xl lg:flex items-start lg:pb-2 max-w-[1140px]"
+            className="p-2 pb-6 mb-5 xl:p-3 block-bg border border-blockBorderColorLight dark:border-blockBorderColorDark rounded-2xl lg:flex items-start lg:pb-2 max-w-[1140px]"
           >
             <Image
               onMouseOver={mouseEnterHandler}

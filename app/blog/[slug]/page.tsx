@@ -8,6 +8,12 @@ import type { MDXComponents } from 'mdx/types';
 import Link from 'next/link';
 import Figcaption from '@/components/MDXComponents/Figcaption';
 import CodeTitle from '@/components/MDXComponents/CodeTitle/CodeTitle';
+import {
+  AiOutlineCalendar,
+  AiOutlineFieldTime,
+  AiOutlineRead,
+} from 'react-icons/ai';
+import getLocaleDate from '@/lib/getLocaleDate';
 // ^ This component is just a placeholder, it will give you an error, remove it.
 
 interface IProps {
@@ -60,13 +66,29 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
 
   return (
     <>
-      <article className="prose prose-pre:not-prose lg:prose-xl dark:prose-invert prose-code:text-[15px] prose-pre:border prose-pre:border-blockBorderColorDark prose-pre:rounded-xl prose-pre:mt-0 prose-code:before:hidden prose-code:after:hidden prose-pre:rounded-t-none prose-pre:px-0">
-        <div className="mb-8 text-center">
-          <time dateTime={post.date} className="mb-1 text-xs text-gray-600">
-            {new Intl.DateTimeFormat('en-US').format(new Date(post.date))}
-          </time>
-          <h1 className="text-3xl font-bold">{post.title}</h1>
+      <article className="mx-auto prose-code:not-prose prose max-[375px]:prose-sm prose-custom prose-h2:blog-title-link prose-h3:blog-title-link prose-pre:not-prose lg:prose-xl dark:prose-invert prose-code:text-[15px] prose-pre:border prose-pre:border-blockBorderColorDark prose-pre:rounded-xl prose-pre:mt-0 prose-code:before:hidden prose-code:after:hidden prose-pre:rounded-t-none prose-pre:px-0">
+        {/* шапка начало */}
+        <div className="px-5 py-6 mb-5 border sm:px-6 lg:py-8 lg:px-10 rounded-3xl block-border block-bg">
+          <h1 className="text-2xl leading-tight max-[375px]:text-xl font-bold font-boss lg:leading-tight lg:text-5xl">{post.title}</h1>
+          <div className="flex flex-wrap justify-between gap-1.5 text-sm dark:text-secondTextColorDark text-secondTextColor">
+            <span className="inline-flex items-center gap-2 mr-3 lg:text-base [&>svg]:w-[1.4em] [&>svg]:h-auto">
+              {<AiOutlineCalendar />}
+              {getLocaleDate('ru', post.date, 'short')}
+            </span>
+            <div className="inline-flex gap-4">
+              <span className="flex items-center gap-2 lg:text-base [&>svg]:w-[1.4em] [&>svg]:h-auto">
+                {<AiOutlineFieldTime />}
+                {post.readingTime.readingTimeText}
+              </span>
+              <span className="flex items-center gap-2 lg:text-base [&>svg]:w-[1.4em] [&>svg]:h-auto">
+                {<AiOutlineRead />}
+                {post.readingTime.wordsQuantityStr}
+              </span>
+            </div>
+          </div>
         </div>
+        {/* шапка конец */}
+
         <MDXContent components={mdxComponents} />
       </article>
 

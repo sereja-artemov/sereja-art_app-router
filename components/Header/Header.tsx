@@ -123,7 +123,7 @@ export function Header() {
               </Link>
             </div>
             {/* Меню */}
-            <ul className="hidden h-auto p-1 lg:flex overflow-auto border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full">
+            <ul className="hidden h-auto p-1 overflow-auto border rounded-full lg:flex border-darkPrimary/50 dark:border-whiteSecondary/30">
               {navigationRoutes.map((route, index) => {
                 const isActive = pathname === route.route;
 
@@ -147,10 +147,10 @@ export function Header() {
               {/* Кнопка меню */}
               <div
                 onClick={openMenu}
-                className="lg:hidden border border-slate-900/50 dark:border-whiteSecondary rounded-full p-0.5 flex items-center"
+                className="lg:hidden border border-slate-900/50 dark:border-whiteSecondary/30 rounded-full p-0.5 flex items-center"
               >
                 <button
-                  className="leading-none px-4 p-0.5 border border-slate-900/50 dark:border-whiteSecondary rounded-full h-full min-w-[87px]"
+                  className="leading-none px-4 p-0.5 border border-slate-900/50 dark:border-whiteSecondary/30 rounded-full h-full min-w-[87px]"
                   type="button"
                 >
                   {isMenuOpen ? 'Закрыть' : 'Меню'}
@@ -212,7 +212,7 @@ export function Header() {
               <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
                 <a href="">
                   <svg
-                    className="group-hover/social-item:fill-whiteSecondary dark:group-hover/social-item:fill-darkPrimary max-w-full max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
+                    className="max-w-full group-hover/social-item:fill-whiteSecondary dark:group-hover/social-item:fill-darkPrimary max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
                     width="64px"
                     height="64px"
                     viewBox="-2.5 0 32 32"
@@ -236,7 +236,7 @@ export function Header() {
               <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
                 <a href="">
                   <svg
-                    className=" dark:group-hover/social-item:fill-darkPrimary group-hover/social-item:fill-whiteSecondary max-w-full max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
+                    className="max-w-full dark:group-hover/social-item:fill-darkPrimary group-hover/social-item:fill-whiteSecondary max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
                     width="64px"
                     height="64px"
                     viewBox="-2.5 0 32 32"
@@ -260,7 +260,7 @@ export function Header() {
               <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
                 <a href="">
                   <svg
-                    className=" dark:group-hover/social-item:fill-darkPrimary group-hover/social-item:fill-whiteSecondary max-w-full max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
+                    className="max-w-full dark:group-hover/social-item:fill-darkPrimary group-hover/social-item:fill-whiteSecondary max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
                     width="64px"
                     height="64px"
                     viewBox="-2.5 0 32 32"

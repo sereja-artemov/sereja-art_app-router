@@ -18,7 +18,7 @@ export default function Figcaption({ src, caption, alt }: figcaptionProps) {
           placeholder={'blur'}
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOsrQcAAX8A/n6ayNMAAAAASUVORK5CYII="
         />
-        <figcaption>{caption}</figcaption>
+        <figcaption className='text-center'>{caption}</figcaption>
       </figure>
     );
   } else {

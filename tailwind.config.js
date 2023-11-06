@@ -19,20 +19,28 @@ module.exports = {
         borderColor: '#efefef',
         blockBorderColorDark: '#464646',
         blockBorderColorLight: '#efefef',
-        secondTextColor: '#828282',
+        secondTextColor: '#616161',
+        secondTextColorDark: '#C0C0C0',
         accentBg: '#6767ab29',
       },
       maxWidth: {
         textContainer: '680px',
       },
       typography: (theme) => ({
-        DEFAULT: {
+        custom: {
           css: {
-            color: theme('colors.darkPrimary'),
-
+            '--tw-prose-body': 'var(--light-text-color)',
+            '--tw-prose-headings': 'var(--light-text-color)',
+            '--tw-prose-links': 'var(--light-text-color)',
+            '--tw-prose-bold': 'var(--light-text-color)',
+            '--tw-prose-invert-links': 'var(--dark-text-color)',
+            '--tw-prose-invert-bold': 'var(--dark-text-color)',
+            '--tw-prose-invert-body': 'var(--dark-text-color)',
+            '--tw-prose-invert-headings': 'var(--dark-text-color)',
+            
             // ...
           },
-        },
+        }
       }),
     },
     fontFamily: {
