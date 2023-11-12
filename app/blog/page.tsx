@@ -13,7 +13,7 @@ export default function Blog() {
       <h1 className="block-title">Блог</h1>
       <section className='flex flex-col items-center gap-5'>
         {posts.map((post, index) => (
-          <PostCard key={index} {...post} />
+          post.published && <PostCard key={index} {...post} />
         ))}
       </section>
 

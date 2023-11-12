@@ -6,12 +6,12 @@ import { PostBlock } from '../PostBlock/PostBlock';
 
 const CardsGrid = () => {
   return (
-    <section className="container grid grid-flow-row-dense grid-cols-6 gap-5">
+    <section className="container grid grid-flow-row-dense grid-cols-8 gap-5">
       {/* Услуги */}
       <CardWrapper
         cardLink="/services"
         cardTitle="Услуги"
-        cssGridClassName="bg-[#1635A5] col-span-full lg:col-span-3 line-background"
+        cssGridClassName="bg-[#1635A5] col-span-full lg:col-span-4 line-background"
         isHeader
       >
         <ServicesBlock />
@@ -21,7 +21,7 @@ const CardsGrid = () => {
       <CardWrapper
         cardLink="/projects"
         cardTitle="Проекты"
-        cssGridClassName="bg-darkSecondary col-span-full lg:col-span-3 flex flex-col"
+        cssGridClassName="bg-darkSecondary col-span-full lg:col-span-4 flex flex-col"
       >
         <ProjectsBlock />
       </CardWrapper>
@@ -35,6 +35,13 @@ const CardsGrid = () => {
         isBgTransparent
       >
         <PostBlock />
+      </CardWrapper>
+      <CardWrapper
+        cssGridClassName="border border-custom col-span-full lg:col-span-5 flex flex-col"
+        isHeader
+        isBgTransparent
+      >
+
       </CardWrapper>
     </section>
   );

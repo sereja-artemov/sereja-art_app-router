@@ -31,13 +31,14 @@ const CardWrapper = ({
       {/* шапка карточки */}
       {isHeader && (
         <div className="flex items-center justify-between mb-5">
-          <h3
+          {cardTitle !== undefined &&           <h3
             className={`px-3 py-1 text-xs uppercase ${
               cardTitle !== undefined && 'border rounded-full'
             } ${isBgTransparent && 'border border-custom'}`}
           >
             {cardTitle}
-          </h3>
+          </h3>}
+
           {cardLink !== undefined && (
             <Link
               className={`${
