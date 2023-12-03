@@ -1,3 +1,17 @@
+---
+title: Cкролл не в верхнем положении при использовании NextJS (next/link) с ContentLayer
+date: 2023-12-02
+published: true
+category: other
+keywords: keywords
+excerpt: Как исправить ошибку с положением скролла при использовании NextJS (next/link) и ContentLayer
+coverImage: 
+---
+
+Используем NextJS в связке с ContentLayer для наших страниц. При переходе на страницу блога, скролл оказывается не в верхнем положении, а немного ниже... Это связано с тем, что страница блога не идентифицирована должным образом.
+
+<CodeTitle title='app/blog/[…slug]/page.tsx' lang='js' />
+```js /id={post._id}/
 'use client';
 
 import { allPosts } from 'contentlayer/generated';
@@ -37,51 +51,17 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
 
   const MDXContent = useMDXComponent(post.body.code);
 
-  const structuredData: WithContext<Article> = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
-    // url: `${process.env.HOST}/blog/${slug}/`,
-    // image: {
-    //   '@type': 'ImageObject',
-    //   url: `${process.env.HOST}${post.cover.filePath.replace(
-    //     '../public',
-    //     '',
-    //   )}/`,
-    // },
-    description: post.excerpt,
-    datePublished: post.date,
-    publisher: {
-      '@type': 'Person',
-      name: 'Sergey Artemov',
-      url: process.env.HOST,
-      image: '/avatar.png',
-    },
-    author: {
-      '@type': 'Person',
-      name: 'Sergey Artemov',
-      url: process.env.HOST,
-      image: '/avatar.png',
-    },
-  };
-  const jsonLd: Graph = {
-    '@context': 'https://schema.org',
-    '@graph': [structuredData],
-  };
-
   return (
     <div
-      className={`grid grid-cols-1 lg:items-start ${post.toc.length > 0 && "lg:grid-cols-[25%_1fr]"}`}
+      className="grid grid-cols-1 lg:items-start lg:grid-cols-[25%_1fr]"
       id={post._id}
     >
-{post.toc.length > 0 && (
-  <>
       <div
         className={`${
           isTocActive ? 'max-lg:translate-y-0' : 'max-lg:translate-y-full'
         } lg:sticky transition-transform lg:border-none lg:top-[120px] lg:pr-5 fixed left-0 bottom-0 w-full max-lg:bg-whiteSecondary/50 max-lg:dark:bg-darkSecondary/50 backdrop-blur-md z-[500] border border-blockBorderColorLight dark:border-blockBorderColorDark`}
       >
-        
+        {post.toc.length > 0 && (
           <nav className={`max-lg:px-5 max-lg:py-6`}>
             <div className="mb-1 mt-[7px] text-sm font-medium">Содержание</div>
             <ul className="max-h-[70vh] overflow-y-auto py-2 text-sm text-secondTextColor dark:text-secondTextColorDark max-lg:color-inherit max-lg:max-h-[50%] overflow-auto">
@@ -108,7 +88,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
               )}
             </ul>
           </nav>
-  
+        )}
 
         <button
           onClick={() => setIsTocActive(!isTocActive)}
@@ -116,11 +96,9 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
         >
           {!isTocActive ? 'Оглавление' : 'Закрыть'}
         </button>
-        
       </div>
-      </>
-        )}
-      <article className={`${post.toc.length <= 0 && "mx-auto"} prose-code:not-prose w-full prose max-[375px]:prose-sm prose-custom prose-h2:blog-title-link prose-h3:blog-title-link prose-pre:not-prose lg:prose-xl dark:prose-invert prose-code:text-[15px] prose-pre:border prose-pre:border-blockBorderColorDark prose-pre:rounded-xl prose-pre:mt-0 prose-code:before:hidden prose-code:after:hidden prose-pre:rounded-t-none prose-pre:px-0`}>
+
+      <article className="prose-code:not-prose prose max-[375px]:prose-sm prose-custom prose-h2:blog-title-link prose-h3:blog-title-link prose-pre:not-prose lg:prose-xl dark:prose-invert prose-code:text-[15px] prose-pre:border prose-pre:border-blockBorderColorDark prose-pre:rounded-xl prose-pre:mt-0 prose-code:before:hidden prose-code:after:hidden prose-pre:rounded-t-none prose-pre:px-0">
         {/* шапка начало */}
         <div className="px-5 py-6 mb-5 border sm:px-6 lg:py-8 lg:px-10 rounded-3xl block-border block-bg">
           <h1 className="text-2xl leading-tight max-[375px]:text-xl font-bold font-boss lg:leading-tight lg:text-5xl">
@@ -190,3 +168,6 @@ export function generateMetadata({ params: { slug } }: IProps): Metadata {
     },
   };
 }
+```
+
+У родительского блока должен быть задан ```post._id```. Без него next/link не сможет открыть страницу в самом верхнем положении.

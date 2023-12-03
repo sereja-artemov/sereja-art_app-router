@@ -209,7 +209,7 @@ export function Header() {
           <div>
             {/* Иконки соцсетей */}
             <ul className="items-center hidden lg:flex">
-              <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
+              <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
                 <a href="">
                   <svg
                     className="max-w-full group-hover/social-item:fill-whiteSecondary dark:group-hover/social-item:fill-darkPrimary max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
@@ -233,7 +233,7 @@ export function Header() {
                   </svg>
                 </a>
               </li>
-              <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
+              <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
                 <a href="">
                   <svg
                     className="max-w-full dark:group-hover/social-item:fill-darkPrimary group-hover/social-item:fill-whiteSecondary max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
@@ -257,7 +257,7 @@ export function Header() {
                   </svg>
                 </a>
               </li>
-              <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
+              <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
                 <a href="">
                   <svg
                     className="max-w-full dark:group-hover/social-item:fill-darkPrimary group-hover/social-item:fill-whiteSecondary max-h-auto fill-darkPrimary dark:fill-whiteSecondary"

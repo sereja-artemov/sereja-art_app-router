@@ -6,12 +6,12 @@ import { PostBlock } from '../PostBlock/PostBlock';
 
 const CardsGrid = () => {
   return (
-    <section className="container grid grid-flow-row-dense grid-cols-8 gap-5">
+    <section className="container grid grid-flow-row-dense grid-cols-12 gap-5">
       {/* Услуги */}
       <CardWrapper
         cardLink="/services"
         cardTitle="Услуги"
-        cssGridClassName="bg-[#1635A5] col-span-full lg:col-span-4 line-background"
+        cssGridClassName="bg-[#1635A5] col-span-full lg:col-span-6 line-background"
         isHeader
       >
         <ServicesBlock />
@@ -21,7 +21,7 @@ const CardsGrid = () => {
       <CardWrapper
         cardLink="/projects"
         cardTitle="Проекты"
-        cssGridClassName="bg-darkSecondary col-span-full lg:col-span-4 flex flex-col"
+        cssGridClassName="bg-darkSecondary col-span-full lg:col-span-6 flex flex-col"
       >
         <ProjectsBlock />
       </CardWrapper>
@@ -30,14 +30,14 @@ const CardsGrid = () => {
       <CardWrapper
         cardLink="/blog"
         cardTitle="Последняя запись"
-        cssGridClassName="border border-custom col-span-full lg:col-span-3 flex flex-col"
+        cssGridClassName="border border-custom col-span-full lg:col-span-4 flex flex-col"
         isHeader
         isBgTransparent
       >
         <PostBlock />
       </CardWrapper>
       <CardWrapper
-        cssGridClassName="border border-custom col-span-full lg:col-span-5 flex flex-col"
+        cssGridClassName="border border-custom col-span-full lg:col-span-8 flex flex-col"
         isHeader
         isBgTransparent
       >

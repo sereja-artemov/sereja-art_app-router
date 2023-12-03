@@ -8,6 +8,7 @@ import rehypePrettyCode, {
   type Options as PrettyCodeOptions,
 } from 'rehype-pretty-code';
 import { s } from 'hastscript';
+import GithubSlugger from "github-slugger"
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -36,6 +37,26 @@ export const Post = defineDocumentType(() => ({
         return readingTime;
       },
     },
+    toc: {
+      type: 'json',
+      resolve: (post) => {
+        const slugger = new GithubSlugger();
+        const regXHeader = /#{2,6}.+/g;
+        const headingArray = post.body.raw.match(regXHeader)
+          ? post.body.raw.match(regXHeader)
+          : [];
+        return headingArray?.map((heading) => {
+          return {
+            level: heading.split('#').length - 1 - 2, // мы начинаем с h2, поэтому мы вычитаем 2, а 1 - это дополнительный текст заголовка
+            heading: heading.replace(/#{2,6}/, '').trim(),
+            slugifyHeading: slugger.slug(heading).replace(
+              /(^| +)[!-\/:-@\[-`\{-~]*([^ ]*?)[!-\/:-@\[-`\{-~]*(?=\s|$)/gi,
+              '$1$2'
+            )
+          };
+        });
+      },
+    },
   },
 }));
 
@@ -54,7 +75,7 @@ export default makeSource({
         {
           behavior: 'append',
           // на какие заголовки будет действовать
-          test: ['h2', 'h3'], 
+          test: ['h2', 'h3'],
           properties: { class: 'heading-link' },
           content: s(
             'svg',
@@ -79,16 +100,17 @@ export default makeSource({
           ),
         } satisfies Partial<AutolinkOptions>,
       ],
+      // rehypeToc,
       [
         rehypePrettyCode,
         {
-          theme: "one-dark-pro",
+          theme: 'one-dark-pro',
           grid: false,
           onVisitLine(node: any) {
             // Prevent lines from collapsing in `display: grid` mode, and
             // allow empty lines to be copy/pasted
             if (node.children.length === 0) {
-              node.children = [{type: "text", value: " "}];
+              node.children = [{ type: 'text', value: ' ' }];
             }
           },
           // Feel free to add classNames that suit your docs
@@ -98,7 +120,6 @@ export default makeSource({
           // onVisitHighlightedWord(node: any) {
           //   node.properties.className = ["word"];
           // },
-          
         } satisfies Partial<PrettyCodeOptions>,
       ],
     ],
