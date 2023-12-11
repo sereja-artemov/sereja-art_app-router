@@ -2,16 +2,13 @@
 
 import { useKeenSlider } from 'keen-slider/react';
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import useWindowSize from '@/app/hooks/useWindowSize';
-import Link from 'next/link';
 import { projectsData } from '@/app/data/projectsData';
 
 const ProjectsBlock = () => {
   const windowSize = useWindowSize();
-  const [isInfoPopupOpen, setIsInfoPopupOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isMount, setIsMount] = useState(false);
   const [isImageLoading, setIsImageLoading] = useState(false);
   const [isProjectInfoVisible, setIsProjectInfoVisible] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
@@ -66,7 +63,7 @@ const ProjectsBlock = () => {
                 setIsProjectInfoVisible(false);
               }}
               key={index}
-              className="relative flex flex-col mb-3 keen-slider__slide group"
+              className="flex flex-col mb-3 keen-slider__slide group"
             >
               {/* фикс вспышки */}
               <Image
@@ -82,33 +79,15 @@ const ProjectsBlock = () => {
               ></Image>
               {/* подложка с информацией о проекте */}
               <div
-                className={` ${
-                  isProjectInfoVisible ? 'xl:opacity-100 ' : 'xl:opacity-0'
-                } ease-in duration-200 relative lg:w-full lg:m-0 lg:h-auto h-full overflow-auto xl:py-6 py-5 min-[1280px]:absolute min-[1280px]:bottom-2 min-[1280px]:left-1/2 min-[1280px]:-translate-x-1/2 mb-2 px-4 rounded-2xl shadow-xl lg:border-none border border-[#464646]`}
+                className={`relative ease-in duration-200 h-full overflow-auto xl:py-6 py-5 mb-2 px-4 rounded-2xl shadow-md`}
               >
                 <div className="flex flex-col h-full">
-                  <h3 className="mb-3 text-base font-medium leading-normal xl:mb-2 md:text-xl">
+                  <h3 className="mb-2 text-base font-medium leading-normal md:text-xl">
                     {project.name}
                   </h3>
-                  <p className="mb-5 md:text-base line-clamp-5">
+                  <p className="md:text-base line-clamp-4 max-[320px]:line-clamp-5">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-1 mb-5 text-xs">
-                    {project.tools.map((item, index) => (
-                      <p
-                        className="px-3.5 py-1 pb-1.5 bg-darkSecondary rounded-full"
-                        key={index}
-                      >
-                        {item}
-                      </p>
-                    ))}
-                  </div>
-                  <Link
-                    className="w-full mt-auto text-sm btn shrink-0 md:text-base"
-                    href="#"
-                  >
-                    Подробнее
-                  </Link>
                 </div>
                 <div className="backdrop-blur-sm absolute left-0 top-0 w-full h-full -z-10 bg-[#424750]/80"></div>
               </div>
