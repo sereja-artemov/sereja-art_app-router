@@ -21,7 +21,7 @@ const CardWrapper = ({
   return (
     <div
       className={`${cssGridClassName} rounded-3xl ${!isHeader && 'p-3'} ${
-        isHeader && 'p-6 md:p-8 lg:p-10'
+        isHeader && 'p-6 md:p-8 lg:p-[clamp(1.5rem,6%,2.5rem)]'
       } ${
         isBgTransparent
           ? 'text-darkPrimary dark:text-whitePrimary'

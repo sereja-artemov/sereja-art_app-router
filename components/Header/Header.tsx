@@ -85,9 +85,9 @@ export function Header() {
           className="absolute top-0 left-0 w-full h-full -z-10"
         ></div>
         <div className="container flex gap-x-1.5 items-stretch mx-auto">
-          <nav className="mx-auto w-full left-0 flex gap-x-1.5">
+          <nav className="mx-auto w-full left-0 inline-flex gap-x-1.5">
             <div
-              className={`flex grow lg:max-w-[250px] shrink-0 p-0.5 lg:p-1 border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full`}
+              className={`inline-flex shrink-0 p-0.5 lg:p-1 border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full`}
             >
               <Link
                 href="/"
@@ -199,17 +199,16 @@ export function Header() {
               <DarkModeSwitch
                 sunColor="#0f172a"
                 moonColor="#ededef"
-                style={{ width: '100%', height: 'auto', maxWidth: '40px' }}
+                style={{ width: '100%', height: 'auto' }}
                 checked={isDarkMode}
                 onChange={changeDarkMode}
               />
             </div>
           </div>
 
-          <div>
             {/* Иконки соцсетей */}
-            <ul className="items-center hidden lg:flex">
-              <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
+            <ul className="items-center hidden lg:inline-flex shrink-0">
+              <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full flex items-center justify-center aspect-square h-12 p-2.5">
                 <a href="">
                   <svg
                     className="max-w-full group-hover/social-item:fill-whiteSecondary dark:group-hover/social-item:fill-darkPrimary max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
@@ -233,7 +232,7 @@ export function Header() {
                   </svg>
                 </a>
               </li>
-              <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
+              <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full flex items-center justify-center aspect-square h-12 p-2.5">
                 <a href="">
                   <svg
                     className="max-w-full dark:group-hover/social-item:fill-darkPrimary group-hover/social-item:fill-whiteSecondary max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
@@ -257,7 +256,7 @@ export function Header() {
                   </svg>
                 </a>
               </li>
-              <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full flex items-center justify-center w-[48px] h-[48px] p-2.5">
+              <li className="group/social-item hover:bg-darkPrimary dark:hover:bg-whiteSecondary border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full flex items-center justify-center aspect-square h-12 p-2.5">
                 <a href="">
                   <svg
                     className="max-w-full dark:group-hover/social-item:fill-darkPrimary group-hover/social-item:fill-whiteSecondary max-h-auto fill-darkPrimary dark:fill-whiteSecondary"
@@ -282,7 +281,6 @@ export function Header() {
                 </a>
               </li>
             </ul>
-          </div>
         </div>
       </header>
       {/* Popup */}

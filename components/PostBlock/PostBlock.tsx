@@ -22,8 +22,8 @@ export const PostBlock = () => {
   const post = getLastPublishedPost();
   
   return (
-    <div className="text-darkPrimary dark:text-whitePrimary">
-      <div className='mb-2 overflow-hidden rounded-lg md:mb-0 sm:border border-blockBorderColorLight/50 dark:border-blockBorderColorDark/50'>
+    <article className="flex flex-col rounded-xl hover:border-blockBorderColorLight hover:dark:border-blockBorderColorDark">
+      <div className="mb-0 overflow-hidden rounded-lg sm:border border-blockBorderColorLight/50 dark:border-blockBorderColorDark/50">
         <Image
           className="w-full h-auto"
           src={post.coverImage || '/image-empty.jpg'}
@@ -34,30 +34,50 @@ export const PostBlock = () => {
           alt={`${post.title} - обложка записи блога frontend-разработчика sereja-art`}
         />
       </div>
+      <div className="flex flex-col pt-5 grow">
+        {/* техническая информация */}
+        <div className="flex flex-wrap gap-1.5 text-sm mb-3">
+          <span className="inline-flex items-center gap-2 mr-3 [&>svg]:w-[1.4em] [&>svg]:h-auto dark:text-secondTextColorDark text-secondTextColor">
+            {<AiOutlineCalendar />}
+            {getLocaleDate('ru', post.date, 'short')}
+          </span>
+          <div className="inline-flex gap-4">
+            <span className="flex items-center gap-2 [&>svg]:w-[1.4em] [&>svg]:h-auto dark:text-secondTextColorDark text-secondTextColor">
+              {<AiOutlineFieldTime />}
+              {post.readingTime.readingTimeText}
+            </span>
+          </div>
+        </div>
         <Link
-          className="block mb-1.5 leading-snug lg:text-xl md:text-lg text-base font-boss"
+          className="block mb-1.5 leading-snug md:text-lg text-base font-boss"
           href={post.url}
         >
           <h3>{post.title}</h3>
         </Link>
-        <div className="flex flex-wrap gap-3 shrink-0 2xl:pt-1">
-          <span className='flex gap-[.5em] text-xs items-center sm:text-sm'>
-            <AiOutlineCalendar className="w-[1.5em] h-[1.5em] fill-darkSecondary dark:fill-whiteSecondary" />
-            {getLocaleDate('ru', post.date, 'short')}
-          </span>
-          <span className='flex gap-[.5em] text-xs items-center sm:text-sm'>
-            <AiOutlineFieldTime className="w-[1.5em] h-[1.5em] fill-darkSecondary dark:fill-whiteSecondary" />
-            {post.readingTime.readingTimeText}
-          </span>
-          <span className='flex gap-[.5em] text-xs items-center sm:text-sm'>
-            <AiOutlineRead className="w-[1.5em] h-[1.5em] fill-darkSecondary dark:fill-whiteSecondary" />
-            {post.readingTime.wordsQuantityStr}
-          </span>
-        </div>
-      <hr className="my-4 mt-5 lg:mt-3 h-[1px] border-t-0 bg-darkSecondary/30 dark:bg-whiteSecondary opacity-100 dark:opacity-50" />
-      <p className='md:text-base'>
-        {post.excerpt}
-      </p>
-    </div>
+        <p className="mb-5 leading-normal dark:text-secondTextColorDark text-secondTextColor md:text-sm lg:text-base line-clamp-3 md:line-clamp-2">
+          {post.excerpt}
+        </p>
+        <Link
+          className="flex items-center justify-between gap-3 px-5 py-1 mt-auto font-semibold uppercase border rounded-xl lg:text-base border-blockBorderColorLight dark:border-blockBorderColorDark"
+          href={post.url}
+        >
+          <p>Читать</p>
+          <svg
+            stroke="currentColor"
+            fill="none"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            height="2.2em"
+            width="2.2em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M23.0677 11.9929L18.818 7.75739L17.4061 9.17398L19.2415 11.0032L0.932469 11.0012L0.932251 13.0012L19.2369 13.0032L17.4155 14.8308L18.8321 16.2426L23.0677 11.9929Z"
+              fill="currentColor"
+            ></path>
+          </svg>
+        </Link>
+      </div>
+    </article>
   );
 };

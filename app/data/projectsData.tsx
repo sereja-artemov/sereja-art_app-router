@@ -1,20 +1,24 @@
 import { StaticImageData } from 'next/image';
 import { ProjectType } from '@/lib/types';
 
-// export interface project {
-//   name: string;
-//   description: string;
-//   date: number | string | Date;
-//   cost: number;
-//   links: { detailLink?: string; githubLink?: string; buildLink?: string };
-//   image: string | StaticImageData;
-//   previewImage: string | StaticImageData;
-//   tools: string[];
-//   year?: number;
-//   active: boolean;
-// }
-
 export const projectsData: ProjectType[] = [
+  // {
+  //   name: 'Комплексный маркетинг для компании Промматик',
+  //   description:
+  //     'Помог мощно стартануть с помощью сайта и маркетинговых инструментов. Настроил контекстную рекламу и интеграцию с CRM-системой',
+  //   date: new Date('2017-01-26'),
+  //   cost: 123,
+  //   links: {
+  //     detailLink: '',
+  //     githubLink: '',
+  //     buildLink: '',
+  //   },
+  //   image: 'http://tech.sereja-art.ru/upload/projects/prommatic_1024.webp',
+  //   previewImage: '',
+  //   tools: ['1C-Bitrix', 'Aspro', 'SEO', 'Битрикс24', 'Bicall'],
+  //   year: 2023,
+  //   active: true,
+  // },
   {
     name: 'Комплексный маркетинг для компании Промматик',
     description:
@@ -22,9 +26,9 @@ export const projectsData: ProjectType[] = [
     date: new Date('2017-01-26'),
     cost: 123,
     links: {
-      detailLink: '#',
-      githubLink: 'https://github.com/sereja-artemov',
-      buildLink: '#',
+      detailLink: '',
+      githubLink: '',
+      buildLink: '',
     },
     image: 'http://tech.sereja-art.ru/upload/projects/prommatic_1024.webp',
     previewImage: '',
@@ -70,8 +74,8 @@ export const projectsData: ProjectType[] = [
     date: new Date('2017-01-26'),
     cost: 123,
     links: {
-      detailLink: '#',
-      githubLink: '#',
+      detailLink: '',
+      githubLink: '',
       buildLink:
         'http://tech.sereja-art.ru/project-build/family-budget-calculator/',
     },
@@ -90,9 +94,9 @@ export const projectsData: ProjectType[] = [
     date: new Date('2017-01-26'),
     cost: 123,
     links: {
-      detailLink: '#',
-      githubLink: 'https://github.com/sereja-artemov',
-      buildLink: '#',
+      detailLink: '',
+      githubLink: '',
+      buildLink: '',
     },
     image: 'http://tech.sereja-art.ru/upload/projects/cakedreams_1280x720.png',
     previewImage:
@@ -109,9 +113,9 @@ export const projectsData: ProjectType[] = [
     date: new Date('2017-01-26'),
     cost: 123,
     links: {
-      detailLink: '#',
-      githubLink: 'https://github.com/sereja-artemov',
-      buildLink: '#',
+      detailLink: '',
+      githubLink: '',
+      buildLink: '',
     },
     image: 'http://tech.sereja-art.ru/upload/projects/ant-farm_1280x720.png',
     previewImage:
@@ -128,9 +132,9 @@ export const projectsData: ProjectType[] = [
     date: new Date('2017-01-26'),
     cost: 123,
     links: {
-      detailLink: '#',
-      githubLink: 'https://github.com/sereja-artemov',
-      buildLink: '#',
+      detailLink: '',
+      githubLink: '',
+      buildLink: '',
     },
     image: 'http://tech.sereja-art.ru/upload/projects/gloria_1280x720.png',
     previewImage:

@@ -4,6 +4,9 @@ import Image from 'next/image';
 import React from 'react';
 import { AiOutlineCalendar } from 'react-icons/ai';
 import { projectsData } from '../data/projectsData';
+import Link from 'next/link';
+import { BsGithub } from 'react-icons/bs';
+import { FiExternalLink } from 'react-icons/fi';
 
 const Projects = () => {
   const ImageWidth = 667;
@@ -86,7 +89,7 @@ const Projects = () => {
               <p className="mb-4 text-sm leading-normal xl:text-base">
                 {project.description}
               </p>
-              <ul className="flex flex-wrap text-sm">
+              <ul className="flex flex-wrap mb-4 text-xs md:text-sm">
                 {project.tools.map((tool, index) => (
                   <li
                     key={index}
@@ -96,24 +99,24 @@ const Projects = () => {
                   </li>
                 ))}
               </ul>
-              {/* <div className="flex flex-wrap gap-4 shrink-0">
-                {projectsData.links.githubLink !== undefined && (
-                  <Link href={projectsData.links.githubLink} target="_blank">
+              <div className="flex flex-wrap gap-4 shrink-0">
+                {project.links.githubLink !== undefined && (
+                  <Link href={project.links.githubLink} target="_blank">
                     <BsGithub
                       className="w-[30px] h-auto hover:text-[#6767AB] hover:transition-all hover:duration-[0.2s] hover:ease-[ease-in-out] hover:scale-[1.2]"
-                      title="github иконка"
+                      title="ссылка на github"
                     />
                   </Link>
                 )}
-                {projectsData.links.buildLink !== undefined && (
-                  <Link href={projectsData.links.buildLink} target="_blank">
+                {project.links.buildLink !== undefined && (
+                  <Link href={project.links.buildLink} target="_blank">
                     <FiExternalLink
                       className="w-[30px] h-auto hover:text-[#6767AB] hover:transition-all hover:duration-[0.2s] hover:ease-[ease-in-out] hover:scale-[1.2]"
-                      title="build иконка"
+                      title="ссылка на сайт проекта"
                     />
                   </Link>
                 )}
-              </div> */}
+              </div>
             </div>
           </li>
         ))}
