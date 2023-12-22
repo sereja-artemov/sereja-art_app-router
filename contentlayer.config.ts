@@ -24,9 +24,13 @@ export const Post = defineDocumentType(() => ({
     coverImage: { type: 'string' },
   },
   computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (post) => post._raw.flattenedPath.replace(`${post._raw.sourceFileDir}/`, ""),
+    },
     url: {
       type: 'string',
-      resolve: (post) => `/blog/${post._raw.flattenedPath}`,
+      resolve: (post) => `${post._raw.flattenedPath}`,
     },
     readingTime: {
       type: 'json',
@@ -60,9 +64,62 @@ export const Post = defineDocumentType(() => ({
   },
 }));
 
+export const Note = defineDocumentType(() => ({
+  name: 'Note',
+  filePathPattern: `content/notes/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: { type: 'string', required: true },
+    date: { type: 'date', required: true },
+    published: { type: 'boolean', required: true },
+    category: { type: 'string' },
+    keywords: { type: 'string' },
+  },
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (post) => post._raw.flattenedPath.replace(`${post._raw.sourceFileDir}/`, ""),
+    },
+    url: {
+      type: 'string',
+      resolve: (post) => `${post._raw.flattenedPath}`,
+    },
+    readingTime: {
+      type: 'json',
+      resolve: (post) => {
+        const content = post.body.raw;
+        const readingTime = getReadingTime(content);
+
+        return readingTime;
+      },
+    },
+    toc: {
+      type: 'json',
+      resolve: (post) => {
+        const slugger = new GithubSlugger();
+        const regXHeader = /#{2,6}.+/g;
+        const headingArray = post.body.raw.match(regXHeader)
+          ? post.body.raw.match(regXHeader)
+          : [];
+        return headingArray?.map((heading) => {
+          return {
+            level: heading.split('#').length - 1 - 2, // мы начинаем с h2, поэтому мы вычитаем 2, а 1 - это дополнительный текст заголовка
+            heading: heading.replace(/#{2,6}/, '').trim(),
+            slugifyHeading: slugger.slug(heading).replace(
+              /(^| +)[!-\/:-@\[-`\{-~]*([^ ]*?)[!-\/:-@\[-`\{-~]*(?=\s|$)/gi,
+              '$1$2'
+            )
+          };
+        });
+      },
+    },
+  },
+}))
+
 export default makeSource({
-  contentDirPath: 'posts',
-  documentTypes: [Post],
+  contentDirPath: 'content',
+  contentDirInclude: [],
+  documentTypes: [Post, Note],
   mdx: {
     remarkPlugins: [],
     rehypePlugins: [

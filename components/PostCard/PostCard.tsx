@@ -51,6 +51,7 @@ export default function PostCard(post: Post) {
           className="block mb-1.5 leading-snug md:text-lg text-base font-boss"
           href={post.url}
         >
+          
           <h3>{post.title}</h3>
         </Link>
         <p className="mb-6 leading-normal dark:text-secondTextColorDark text-secondTextColor md:text-sm lg:text-base line-clamp-3 md:line-clamp-2">

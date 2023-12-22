@@ -87,7 +87,7 @@ export function Header() {
         <div className="container flex gap-x-1.5 items-stretch mx-auto">
           <nav className="mx-auto w-full left-0 inline-flex gap-x-1.5">
             <div
-              className={`inline-flex shrink-0 p-0.5 lg:p-1 border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full`}
+              className={`inline-flex shrink-0 p-0.5 lg:p-1 border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full flex-grow`}
             >
               <Link
                 href="/"

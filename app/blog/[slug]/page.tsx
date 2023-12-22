@@ -10,6 +10,7 @@ import type { MDXComponents } from 'mdx/types';
 import Link from 'next/link';
 import Figcaption from '@/components/MDXComponents/Figcaption';
 import CodeTitle from '@/components/MDXComponents/CodeTitle/CodeTitle';
+import YouTubeEmbed from '@/components/MDXComponents/YouTube';
 import {
   AiOutlineCalendar,
   AiOutlineFieldTime,
@@ -27,12 +28,13 @@ const mdxComponents: MDXComponents = {
   a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
   Figcaption,
   CodeTitle,
+  YouTubeEmbed,
 };
 
 const PostLayout = ({ params }: { params: { slug: string } }) => {
   const [isTocActive, setIsTocActive] = useState(false);
 
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+  const post = allPosts.find((post) => post.slug === params.slug);
   if (!post) notFound();
 
   const MDXContent = useMDXComponent(post.body.code);
@@ -159,11 +161,11 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
 export default PostLayout;
 
 export const generateStaticParams = async () =>
-  allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
+  allPosts.map((post) => ({ slug: post.slug }));
 
 //SEO metadata
 export function generateMetadata({ params: { slug } }: IProps): Metadata {
-  const post = allPosts.find((post) => post._raw.flattenedPath === slug);
+  const post = allPosts.find((post) => post.slug === slug);
 
   if (!post) {
     return {};
