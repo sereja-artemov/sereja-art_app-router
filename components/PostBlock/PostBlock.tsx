@@ -22,17 +22,19 @@ export const PostBlock = () => {
   const post = getLastPublishedPost();
   
   return (
-    <article className="flex flex-col rounded-xl hover:border-blockBorderColorLight hover:dark:border-blockBorderColorDark">
+    <article className="flex flex-col h-full rounded-xl">
       <div className="mb-0 overflow-hidden rounded-lg sm:border border-blockBorderColorLight/50 dark:border-blockBorderColorDark/50">
-        <Image
-          className="w-full h-auto"
-          src={post.coverImage || '/image-empty.jpg'}
-          width={640}
-          height={336}
-          placeholder="blur"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOsrQcAAX8A/n6ayNMAAAAASUVORK5CYII="
-          alt={`${post.title} - обложка записи блога frontend-разработчика sereja-art`}
-        />
+        <Link href={post.url}>
+          <Image
+            className="w-full h-auto"
+            src={post.coverImage || '/image-empty.jpg'}
+            width={640}
+            height={336}
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOsrQcAAX8A/n6ayNMAAAAASUVORK5CYII="
+            alt={`${post.title} - обложка записи блога frontend-разработчика sereja-art`}
+          />
+        </Link>
       </div>
       <div className="flex flex-col pt-5 grow">
         {/* техническая информация */}
@@ -65,7 +67,7 @@ export const PostBlock = () => {
           <svg
             stroke="currentColor"
             fill="none"
-            stroke-width="0"
+            strokeWidth="0"
             viewBox="0 0 24 24"
             height="2.2em"
             width="2.2em"

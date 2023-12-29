@@ -70,6 +70,7 @@ export const Note = defineDocumentType(() => ({
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
+    description: { type: 'string'},
     date: { type: 'date', required: true },
     published: { type: 'boolean', required: true },
     category: { type: 'string' },

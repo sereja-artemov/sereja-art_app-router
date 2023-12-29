@@ -17,15 +17,17 @@ export default function PostCard(post: Post) {
   return (
     <article className="flex flex-col bg-whiteSecondary dark:bg-darkSecondary rounded-xl hover:border-blockBorderColorLight hover:dark:border-blockBorderColorDark">
       <div className="m-3 mb-0 overflow-hidden rounded-lg sm:border border-blockBorderColorLight/50 dark:border-blockBorderColorDark/50">
-        <Image
-          className="w-full h-auto"
-          src={post.coverImage || '/image-empty.jpg'}
-          width={640}
-          height={336}
-          placeholder="blur"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOsrQcAAX8A/n6ayNMAAAAASUVORK5CYII="
-          alt={`${post.title} - обложка записи блога frontend-разработчика sereja-art`}
-        />
+        <Link href={post.url}>
+          <Image
+            className="w-full h-auto"
+            src={post.coverImage || '/image-empty.jpg'}
+            width={640}
+            height={336}
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOsrQcAAX8A/n6ayNMAAAAASUVORK5CYII="
+            alt={`${post.title} - обложка записи блога frontend-разработчика sereja-art`}
+          />
+        </Link>
       </div>
       <div className="flex flex-col p-6 grow">
         {/* техническая информация */}
@@ -51,7 +53,6 @@ export default function PostCard(post: Post) {
           className="block mb-1.5 leading-snug md:text-lg text-base font-boss"
           href={post.url}
         >
-          
           <h3>{post.title}</h3>
         </Link>
         <p className="mb-6 leading-normal dark:text-secondTextColorDark text-secondTextColor md:text-sm lg:text-base line-clamp-3 md:line-clamp-2">

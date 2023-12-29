@@ -3,16 +3,15 @@ import ServicesBlock from '../ServicesBlock/ServicesBlock';
 import CardWrapper from '../CardWrapper/CardWrapper';
 import ProjectsBlock from '../ProjectsBlock/ProjectsBlock';
 import { PostBlock } from '../PostBlock/PostBlock';
+import NotesBlock from '../NotesBlock/NotesBlock';
 
 const CardsGrid = () => {
   return (
     <section className="container grid grid-flow-row-dense grid-cols-12 gap-5">
       {/* Услуги */}
       <CardWrapper
-        cardLink="/services"
-        cardTitle="Услуги"
-        cssGridClassName="bg-[#1635A5] col-span-full lg:col-span-6 line-background"
-        isHeader
+        cssGridClassName="bg-[#1635A5] col-span-full lg:col-span-6 line-background text-whiteSecondary"
+        
       >
         <ServicesBlock />
       </CardWrapper>
@@ -21,7 +20,7 @@ const CardsGrid = () => {
       <CardWrapper
         cardLink="/projects"
         cardTitle="Проекты"
-        cssGridClassName="bg-darkSecondary col-span-full lg:col-span-6 flex flex-col"
+        cssGridClassName="bg-darkSecondary col-span-full lg:col-span-6 flex flex-col text-whiteSecondary"
       >
         <ProjectsBlock />
       </CardWrapper>
@@ -30,14 +29,32 @@ const CardsGrid = () => {
       <CardWrapper
         cardLink="/blog"
         cardTitle="Последняя запись"
-        cssGridClassName="col-span-full lg:col-span-4 flex flex-col bg-whiteSecondary dark:bg-darkSecondary border border-blockBorderColorLight dark:border-blockBorderColorDark"
+        cssGridClassName="col-span-full lg:row-span-2 lg:col-span-6 xl:col-span-3 flex flex-col bg-whiteSecondary dark:bg-darkSecondary border border-blockBorderColorLight dark:border-blockBorderColorDark"
         isHeader
-        isBgTransparent
       >
         <PostBlock />
       </CardWrapper>
+
+      {/* Заметки */}
       <CardWrapper
-        cssGridClassName="border border-custom col-span-full lg:col-span-8 flex flex-col"
+        cardLink="/notes"
+        cardTitle="Последние заметки"
+        cssGridClassName="border border-darkPrimary/50 dark:border-whiteSecondary/30 lg:row-span-2 col-span-full lg:col-span-6 xl:col-span-3 flex flex-col"
+        isHeader
+        isBgTransparent
+      >
+        <NotesBlock />
+      </CardWrapper>
+      
+      <CardWrapper
+        cssGridClassName="border border-custom lg:row-span-1 col-span-full lg:col-span-6 flex flex-col"
+        isHeader
+        isBgTransparent
+      >
+
+      </CardWrapper>
+      <CardWrapper
+        cssGridClassName="border border-custom lg:row-span-1 col-span-full lg:col-start-7 flex flex-col"
         isHeader
         isBgTransparent
       >

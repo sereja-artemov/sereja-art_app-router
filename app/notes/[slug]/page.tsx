@@ -1,6 +1,7 @@
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { allNotes } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import type { MDXComponents } from 'mdx/types';
 import Link from 'next/link';
 import Figcaption from '@/components/MDXComponents/Figcaption';
@@ -57,7 +58,7 @@ export default function PageLayout({ params }: { params: { slug: string } }) {
 
   return (
     <div className='mx-auto prose-code:not-prose w-full prose max-[375px]:prose-sm prose-custom prose-h2:blog-title-link prose-h3:blog-title-link prose-pre:not-prose lg:prose-xl dark:prose-invert prose-code:text-[15px] prose-pre:border prose-pre:border-blockBorderColorDark prose-pre:rounded-xl prose-pre:mt-0 prose-code:before:hidden prose-code:after:hidden prose-pre:rounded-t-none prose-pre:px-0'>
-      <h1>{note.title}</h1>
+      <h1 className='text-2xl leading-tight max-[375px]:text-xl font-bold font-boss lg:leading-tight lg:text-5xl'>{note.title}</h1>
       <MDXContent components={mdxComponents} />
       <script
         type="application/ld+json"
@@ -69,3 +70,31 @@ export default function PageLayout({ params }: { params: { slug: string } }) {
 
 export const generateStaticParams = async () =>
   allNotes.map((note) => ({ slug: note.slug }));
+
+  //SEO metadata
+export function generateMetadata({ params: { slug } }: IProps): Metadata {
+  const note = allNotes.find((note) => note.slug === slug);
+
+  if (!note) {
+    return {};
+  }
+
+  const { description, title, date, keywords } = note;
+
+  return {
+    title,
+    description,
+    keywords,
+    openGraph: {
+      type: 'article',
+      title,
+      description,
+      publishedTime: date,
+    },
+    twitter: {
+      title,
+      description,
+      card: 'summary_large_image',
+    },
+  };
+}

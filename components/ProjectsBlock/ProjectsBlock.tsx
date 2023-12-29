@@ -79,7 +79,7 @@ const ProjectsBlock = () => {
               ></Image>
               {/* подложка с информацией о проекте */}
               <div
-                className={`relative ease-in duration-200 h-full overflow-auto xl:py-6 py-5 mb-2 px-4 rounded-2xl shadow-md`}
+                className={`relative ease-in duration-200 h-full overflow-auto xl:py-6 py-5 mb-2 px-4 rounded-2xl bg-[#424750]/80`}
               >
                 <div className="flex flex-col h-full">
                   <h3 className="mb-2 text-base font-medium leading-normal md:text-xl">
@@ -89,7 +89,6 @@ const ProjectsBlock = () => {
                     {project.description}
                   </p>
                 </div>
-                <div className="backdrop-blur-sm absolute left-0 top-0 w-full h-full -z-10 bg-[#424750]/80"></div>
               </div>
             </div>
           );
