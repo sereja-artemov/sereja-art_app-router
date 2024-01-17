@@ -1,11 +1,41 @@
-'use client'
+'use client';
 
-import { Post } from 'contentlayer/generated'
-import Link from "next/link";
-import { useState } from "react";
+import { Post } from 'contentlayer/generated';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 function TableOfContents({ post }: { post: Post }) {
   const [isTocActive, setIsTocActive] = useState(false);
+  const [activeId, setActiveId] = useState('');
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -85% 0px' }
+    );
+
+    post.toc.forEach((element: {slugifyHeading: string}) => {
+      let heading = document.getElementById(element.slugifyHeading);
+      if (heading) {
+        observer.observe(heading);
+      }
+    });
+
+    return () => {
+      post.toc.forEach((element: {slugifyHeading: string}) => {
+        let heading = document.getElementById(element.slugifyHeading);
+        if (heading) {
+          observer.unobserve(heading);
+        }
+      });
+    };
+  }, [post.toc]);
 
   return (
     <div
@@ -14,9 +44,7 @@ function TableOfContents({ post }: { post: Post }) {
       } lg:sticky transition-transform lg:border-none lg:top-[120px] lg:pr-5 fixed left-0 bottom-0 w-full max-lg:bg-whiteSecondary/50 max-lg:dark:bg-darkSecondary/50 backdrop-blur-md z-[500] border border-blockBorderColorLight dark:border-blockBorderColorDark`}
     >
       <nav className={`max-lg:px-5 max-lg:py-6`}>
-        <div className="mb-1 mt-[7px] text-sm font-medium">
-          Содержание
-        </div>
+        <div className="mb-1 mt-[7px] text-base font-medium">Содержание</div>
         <ul className="max-h-[70vh] overflow-y-auto py-2 text-sm text-secondTextColor dark:text-secondTextColorDark max-lg:color-inherit max-lg:max-h-[50%] overflow-auto">
           {post.toc.map(
             (element: Post['toc'], index: number) =>
@@ -30,6 +58,9 @@ function TableOfContents({ post }: { post: Post }) {
                 >
                   <Link
                     href={`#${element.slugifyHeading}`}
+                    className={`${
+                      activeId === element.slugifyHeading ? 'text-[--light-text-color] dark:text-[--dark-text-color] font-semibold' : ''
+                    }`}
                     style={{
                       fontSize: 1 - Number(`0.${element.level}`) + 'em',
                     }}
@@ -49,7 +80,7 @@ function TableOfContents({ post }: { post: Post }) {
         {!isTocActive ? 'Оглавление' : 'Закрыть'}
       </button>
     </div>
-  )
+  );
 }
 
-export default TableOfContents
+export default TableOfContents;

@@ -46,10 +46,11 @@ function ProjectsImage({project}) {
 
   return (
     <Image
-      onMouseOver={mouseEnterHandler}
-      onMouseLeave={mouseLeaveHandler}
-      onMouseMove={mouseMoveHandler}
-      className="w-full h-auto rounded-xl mb-5 lg:w-[380px] lg:mb-0 hover:mix-blend-luminosity"
+      // onMouseOver={mouseEnterHandler}
+      // onMouseLeave={mouseLeaveHandler}
+      // onMouseMove={mouseMoveHandler}
+      // className="w-full h-auto mb-5 rounded-xl hover:mix-blend-luminosity"
+      className="w-full h-auto rounded-xl"
       width={910}
       height={512}
       src={project.previewImage || project.image}

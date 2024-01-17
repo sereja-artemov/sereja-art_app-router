@@ -43,7 +43,7 @@
   
   @media (min-width: 768px) {
     ::-webkit-scrollbar {
-      height: 12px;
+      height: 5px;
       width: 12px;
     }
   }

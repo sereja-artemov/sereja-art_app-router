@@ -15,7 +15,7 @@ export default function PostCard(post: Post) {
   const windowSize = useWindowSize();
 
   return (
-    <article className="flex flex-col bg-whiteSecondary dark:bg-darkSecondary rounded-xl hover:border-blockBorderColorLight hover:dark:border-blockBorderColorDark">
+    <article className="flex flex-col border bg-whiteSecondary dark:bg-darkSecondary rounded-xl border-blockBorderColorLight dark:border-blockBorderColorDark">
       <div className="m-3 mb-0 overflow-hidden rounded-lg sm:border border-blockBorderColorLight/50 dark:border-blockBorderColorDark/50">
         <Link href={post.url}>
           <Image
@@ -66,7 +66,7 @@ export default function PostCard(post: Post) {
           <svg
             stroke="currentColor"
             fill="none"
-            stroke-width="0"
+            strokeWidth="0"
             viewBox="0 0 24 24"
             height="2.2em"
             width="2.2em"

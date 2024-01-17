@@ -3,19 +3,19 @@ import React from 'react';
 import avatarPhoto from '../../images/about-photo.png';
 import Skills from '@/components/Skills/Skills';
 
-const About = () => {
+function About() {
   return (
     <>
-          <div className="lg:flex lg:items-center lg:gap-20 mb-10 md:mb-16">
+          <div className="mb-10 lg:flex lg:items-center lg:gap-20 md:mb-16">
         <div className="lg:w-2/5 mb-14 md:mb-20 lg:mb-0">
           <Image
-            className="mx-auto sm:max-w-[80%]"
+            className="mx-auto"
             src={avatarPhoto}
             alt="Сергей Артемов - веб-разработчик"
           />
         </div>
-        <div className="max-w-prose lg:w-3/5 prose-sm sm:prose-base md:prose-lg">
-          <h1 className="block-title not-prose mb-5">
+        <div className="prose-sm max-w-prose lg:w-3/5 sm:prose-base md:prose-lg">
+          <h1 className="mb-5 block-title not-prose">
             Обо мне
           </h1>
           <p>

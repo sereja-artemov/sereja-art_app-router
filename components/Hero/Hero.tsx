@@ -7,11 +7,11 @@ const Hero = () => {
     <section className="container mb-6">
       <div className="flex flex-col-reverse lg:items-end text-whiteSecondary bg-darkSecondary lg:pt-20 lg:px-12 lg:pb-12 md:flex-row md:justify-between md:align-top gap-7 px-4 py-8 md:px-9 md:py-11 rounded-3xl bg-slate-400 bg-[url('/hero-bg.jpg')] bg-no-repeat bg-cover bg-center">
         <div className="md:max-w-[285px] lg:max-w-none">
-          <h1 className="text-[40px] md:text-[46px] lg:text-[90px] leading-none font-boss mb-3 md:mb-1 lg:mb-5 uppercase font-bold">
+          <h1 className="text-[40px] md:text-[46px] lg:text-[90px] leading-none font-boss mb-3 md:mb-1.5 lg:mb-5 uppercase font-bold">
             sereja <span className="text-stroke">art-</span>
           </h1>
           <div className="lg:flex lg:flex-row-reverse lg:shrink-0 lg:items-center lg:gap-7">
-            <p className="mb-5 lg:mb-0 lg:text-base">
+            <p className="mb-5 text-sm lg:mb-0 lg:text-base">
               frontend-разработчик, веб-дизайнер, специалист по контекстной
               рекламе
             </p>

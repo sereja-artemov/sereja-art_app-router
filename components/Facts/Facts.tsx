@@ -14,7 +14,7 @@ const Facts = () => {
           Результат не гарантирую
         </li>
       </ul>
-      <p className="md:text-lg md:max-w-[630px]">
+      <p className="text-sm lg:text-base md:max-w-[630px]">
       Помогаю бизнесу зарабатывать с&nbsp;помощью современных <br />веб-технологий и&nbsp;маркетинговых инструментов
       </p>
     </section>

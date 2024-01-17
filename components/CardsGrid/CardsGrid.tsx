@@ -47,18 +47,16 @@ const CardsGrid = () => {
       </CardWrapper>
       
       <CardWrapper
-        cssGridClassName="border border-custom lg:row-span-1 col-span-full lg:col-span-6 flex flex-col"
-        isHeader
+        cssGridClassName="border border-darkPrimary/50 dark:border-whiteSecondary/30 lg:row-span-1 col-span-full lg:col-span-6 flex flex-col"
         isBgTransparent
       >
-
+        <span className='m-auto text-sm'>Тут ничего нет.</span>
       </CardWrapper>
       <CardWrapper
-        cssGridClassName="border border-custom lg:row-span-1 col-span-full lg:col-start-7 flex flex-col"
-        isHeader
+        cssGridClassName="border border-darkPrimary/50 dark:border-whiteSecondary/30 lg:row-span-1 col-span-full lg:col-start-7 flex flex-col"
         isBgTransparent
       >
-
+        <span className='m-auto text-sm'>И тут ничего нет.</span>
       </CardWrapper>
     </section>
   );
