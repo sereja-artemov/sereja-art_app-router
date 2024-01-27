@@ -1,18 +1,19 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import HeroAvatar from '../../images/hero-avatar.jpg';
+import HeroBg from '@/public/sereja-sea-bg.jpg';
 
 const Hero = () => {
   return (
     <section className="container mb-6">
-      <div className="flex flex-col-reverse lg:items-end text-whiteSecondary bg-darkSecondary lg:pt-20 lg:px-12 lg:pb-12 md:flex-row md:justify-between md:align-top gap-7 px-4 py-8 md:px-9 md:py-11 rounded-3xl bg-slate-400 bg-[url('/hero-bg.jpg')] bg-no-repeat bg-cover bg-center">
-        <div className="md:max-w-[285px] lg:max-w-none">
-          <h1 className="text-[40px] md:text-[46px] lg:text-[90px] leading-none font-boss mb-3 md:mb-1.5 lg:mb-5 uppercase font-bold">
+      <div className="relative flex flex-col-reverse px-4 py-8 overflow-hidden bg-center bg-no-repeat bg-cover lg:items-end text-whiteSecondary bg-darkSecondary lg:pt-20 lg:px-12 lg:pb-12 md:flex-row md:justify-between md:align-top gap-7 md:px-9 md:py-11 rounded-3xl">
+        <div className="relative z-10 md:max-w-[285px] lg:max-w-none">
+          <h1 className="text-[40px] md:text-[46px] lg:text-[70px] xl:text-[80px] leading-none font-boss mb-3 md:mb-1.5 lg:mb-5 uppercase font-bold">
             sereja <span className="text-stroke">art-</span>
           </h1>
           <div className="lg:flex lg:flex-row-reverse lg:shrink-0 lg:items-center lg:gap-7">
             <p className="mb-5 text-sm lg:mb-0 lg:text-base">
-              frontend-разработчик, веб-дизайнер, специалист по контекстной
+              frontend-разработчик, веб-дизайнер,<br /> специалист по контекстной
               рекламе
             </p>
             <div className='p-0.5 inline-block shrink-0 lg:p-1 border border-whiteSecondary/30 rounded-full'>
@@ -42,15 +43,26 @@ const Hero = () => {
 
           </div>
         </div>
-        <div className="w-fit">
+        <div className="relative z-10 w-fit">
           <Image
-            className="lg:max-w-[140px] md:max-w-[119px] mb-2 rounded-full"
+            className="max-w-[140px] md:max-w-[119px] mb-2 rounded-full"
             src={HeroAvatar}
             alt="аватарка"
+            quality={90}
           />
           <Link className="w-full inline-block align-middle text-center mx-auto px-[.9em] pb-[.55em] py-[.25em] text-xs border-b rounded-full lg:text-sm border-whiteSecondary/30" href="/about">
             Обо мне
           </Link>
+        </div>
+        <div className='absolute top-0 left-0 w-full h-full'>
+          <Image
+            src={HeroBg}
+            fill={true}
+            alt=""
+            quality={100}
+            placeholder='blur'
+            className='object-cover lg:object-[0_-8vw]'
+          />
         </div>
       </div>
     </section>

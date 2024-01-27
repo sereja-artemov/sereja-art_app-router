@@ -16,6 +16,18 @@ const nextConfig = {
   },
   reactStrictMode: true,
   swcMinify: true,
+  async redirects() {
+    return [
+        {
+            // What the user typed in the browser
+            source: '/blogs/:path*',
+            // Where the user will be redirected to
+            destination: '/blog/:path*',
+            // If the destination is a permanent redirect (308)
+            permanent: true
+        }
+    ];
+}
 };
 
 module.exports = withContentlayer(nextConfig);

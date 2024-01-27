@@ -4,11 +4,11 @@ import Link from 'next/link';
 import { useRef } from 'react';
 import Image, { StaticImageData } from 'next/image';
 
-import testImage1 from '../../images/servicesBlock/services1.png';
-import testImage2 from '../../images/servicesBlock/services2.png';
-import testImage3 from '../../images/servicesBlock/services3.png';
-import testImage4 from '../../images/servicesBlock/services4.png';
-import testImage5 from '../../images/servicesBlock/services5.png';
+import testImage1 from '../../images/servicesBlock/develop.png';
+import testImage2 from '../../images/servicesBlock/support.png';
+import testImage3 from '../../images/servicesBlock/promotion.png';
+import testImage4 from '../../images/servicesBlock/html-coding.png';
+import testImage5 from '../../images/servicesBlock/design.png';
 
 type ServicesItemProps = {
   children?: any;
@@ -24,8 +24,8 @@ export const ServicesListItem = ({
   imgAlt,
 }: ServicesItemProps) => {
   const imgRef = useRef(null);
-  const ImageWidth = 400;
-  const ImageHeight = 400;
+  const ImageWidth = 500;
+  const ImageHeight = 500;
 
   const mouseMoveEvent = (event: { pageX: number; pageY: number }) => {
     imgRef.current.style.top = event.pageY - ImageHeight / 2 + 'px';
@@ -58,6 +58,7 @@ export const ServicesListItem = ({
         className={`hidden absolute`}
         src={imgLink}
         alt={imgAlt}
+        quality={100}
       />
     </li>
   );

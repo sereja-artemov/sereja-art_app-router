@@ -18,11 +18,11 @@ export const navigationRoutes = [
     name: 'Блог',
   },
   {
-    route: '/contacts',
-    name: 'Контакты',
-  },
-  {
     route: '/notes',
     name: 'Заметки',
+  },
+  {
+    route: '/contacts',
+    name: 'Контакты',
   },
 ];

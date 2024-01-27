@@ -38,7 +38,7 @@ export default function RootLayout({
             }
           </Script>
           <YandexMetrika /> */}
-          <NextTopLoader height={4} />
+          <NextTopLoader height={6} color='#6767ab' />
           <Header />
           <main>{children}</main>
           <Footer />
