@@ -10,7 +10,6 @@ const ProjectsBlock = () => {
   const windowSize = useWindowSize();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isImageLoading, setIsImageLoading] = useState(false);
-  const [isProjectInfoVisible, setIsProjectInfoVisible] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
     {
       slideChanged(slider) {
@@ -28,7 +27,7 @@ const ProjectsBlock = () => {
 
   // исправил неправильную ширину слайдов при первоначальной загрузке
   useEffect(() => {
-    instanceRef?.current?.update();
+    instanceRef?.current?.update();    
   }, [isImageLoading]);
 
   const getCurrentSlideNumber = () => {
@@ -56,12 +55,6 @@ const ProjectsBlock = () => {
         {projectsData.map((project, index) => {
           return (
             <div
-              onMouseEnter={() => {
-                setIsProjectInfoVisible(true);
-              }}
-              onMouseLeave={() => {
-                setIsProjectInfoVisible(false);
-              }}
               key={index}
               className="flex flex-col mb-3 keen-slider__slide group"
             >
@@ -75,7 +68,7 @@ const ProjectsBlock = () => {
                 sizes="100vw"
                 width={1200}
                 height={675}
-                onLoadingComplete={() => setIsImageLoading(true)}
+                onLoad={() => setIsImageLoading(true)}
               ></Image>
               {/* подложка с информацией о проекте */}
               <div
