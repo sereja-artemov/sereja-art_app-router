@@ -44,9 +44,9 @@ module.exports = {
       }),
     },
     fontFamily: {
-      sans: ['"Open Sans"', ...defaultTheme.fontFamily.sans],
-      boss: ['Raleway', ...defaultTheme.fontFamily.sans],
-      playfair: ['"Playfair Display"', ...defaultTheme.fontFamily.serif],
+      sans: ['var(--font-open-sans)'],
+      boss: ['var(--font-raleway)'],
+      playfair: ['var(--font-playfair-display)'],
     },
     container: {
       center: true,

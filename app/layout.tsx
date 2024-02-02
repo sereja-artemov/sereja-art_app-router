@@ -6,6 +6,25 @@ import Footer from '@/components/Footer/Footer';
 import NextTopLoader from 'nextjs-toploader';
 import YandexMetrika from '@/components/YandexMetrika/YandexMetrika';
 import Script from 'next/script';
+import { Raleway, Open_Sans, Playfair_Display } from 'next/font/google'
+
+const raleway = Raleway({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-raleway',
+})
+ 
+const open_sans = Open_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-open-sans',
+})
+
+const playfair_display = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-playfair-display',
+})
 
 export const metadata = {
   title: {
@@ -57,7 +76,7 @@ export default function RootLayout({
 }) {
   return (
     <DarkModeProvider>
-      <html lang="ru">
+      <html lang="ru" className={`${playfair_display.variable} ${raleway.variable} ${open_sans.variable}`}>
         <body>
             {/* <Script id="metrika-counter" strategy="afterInteractive">
             {`(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
