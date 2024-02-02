@@ -41,7 +41,7 @@ function TableOfContents({ post }: { post: Post }) {
     <div
       className={`${
         isTocActive ? 'max-lg:translate-y-0' : 'max-lg:translate-y-full'
-      } lg:sticky transition-transform lg:border-none lg:top-[120px] lg:pr-5 fixed left-0 bottom-0 w-full max-lg:bg-whiteSecondary/50 max-lg:dark:bg-darkSecondary/50 backdrop-blur-md z-[500] border border-blockBorderColorLight dark:border-blockBorderColorDark`}
+      } lg:sticky z-10 transition-transform lg:border-none lg:top-[120px] lg:pr-5 fixed left-0 bottom-0 w-full max-lg:bg-whiteSecondary/50 max-lg:dark:bg-darkSecondary/50 backdrop-blur-md border border-blockBorderColorLight dark:border-blockBorderColorDark`}
     >
       <nav className={`max-lg:px-5 max-lg:py-6`}>
         <div className="mb-1 mt-[7px] text-base font-medium">Содержание</div>

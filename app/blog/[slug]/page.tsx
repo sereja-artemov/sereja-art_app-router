@@ -31,7 +31,7 @@ const mdxComponents: MDXComponents = {
 const PostLayout = ({ params }: { params: { slug: string } }) => {
 
   const post: Post | undefined = allPosts.find((post) => post.slug === params.slug);
-  if (!post) notFound();
+  if (!post) notFound()
 
   const MDXContent = useMDXComponent(post.body.code);
 
@@ -130,8 +130,7 @@ export function generateMetadata({ params: { slug } }: IProps): Metadata {
     return {};
   }
 
-  const { excerpt, title, date, keywords } = post;
-
+  const { excerpt, title, date, keywords, url } = post;
   const description = excerpt;
 
   return {
@@ -141,8 +140,10 @@ export function generateMetadata({ params: { slug } }: IProps): Metadata {
     openGraph: {
       type: 'article',
       title,
+      url: `${process.env.HOST}/${url}`,
       description,
       publishedTime: date,
+      images: `http://tech.sereja-art.ru/upload/blogs/${post.slug}/${post.slug}.jpg`,
     },
     twitter: {
       title,
