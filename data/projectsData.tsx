@@ -1,4 +1,3 @@
-import { StaticImageData } from 'next/image';
 import { ProjectType } from '@/lib/types';
 
 export const projectsData: ProjectType[] = [

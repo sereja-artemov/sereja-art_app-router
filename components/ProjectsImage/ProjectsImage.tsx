@@ -1,8 +1,9 @@
 'use client'
 
+import { ProjectType } from '@/lib/types';
 import Image from 'next/image';
 
-function ProjectsImage({project}) {
+function ProjectsImage({project}: {project: ProjectType}) {
   const ImageWidth = 667;
   const ImageHeight = 375;
 

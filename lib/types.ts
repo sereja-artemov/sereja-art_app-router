@@ -38,7 +38,7 @@ export type ProjectType = {
   description: string;
   date: number | string | Date;
   cost: number;
-  links?: {
+  links: {
     [key: string]: string;
   };
   image: string | StaticImageData;

@@ -23,21 +23,27 @@ export const ServicesListItem = ({
   imgLink,
   imgAlt,
 }: ServicesItemProps) => {
-  const imgRef = useRef(null);
+  const imgRef = useRef<HTMLImageElement>(null);
   const ImageWidth = 500;
   const ImageHeight = 500;
 
   const mouseMoveEvent = (event: { pageX: number; pageY: number }) => {
-    imgRef.current.style.top = event.pageY - ImageHeight / 2 + 'px';
-    imgRef.current.style.left = event.pageX + 20 + 'px';
+    if (imgRef.current !== null) {
+      imgRef.current.style.top = event.pageY - ImageHeight / 2 + 'px';
+      imgRef.current.style.left = event.pageX + 20 + 'px';
+    }
   };
 
   const mouseEnterEvent = () => {
-    imgRef.current.style.display = 'inline-block';
+    if (imgRef.current !== null) {
+      imgRef.current.style.display = 'inline-block';
+    }
   };
 
   const mouseLeaveEvent = () => {
-    imgRef.current.style.display = 'none';
+    if (imgRef.current !== null) {
+      imgRef.current.style.display = 'none';
+    }
   };
 
   return (

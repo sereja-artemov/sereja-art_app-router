@@ -5,7 +5,6 @@ import { projectsData } from '@/data/projectsData';
 import Link from 'next/link';
 import { BsGithub } from 'react-icons/bs';
 import { FiExternalLink } from 'react-icons/fi';
-import ProjectsImage from '@/components/ProjectsImage/ProjectsImage';
 
 function Projects() {
 
