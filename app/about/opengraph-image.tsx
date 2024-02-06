@@ -16,7 +16,7 @@ export const contentType = 'image/png'
 export default async function Image() {
   // Font
   const ralewaySemiBold = fetch(
-    new URL('../fonts/Raleway-SemiBold.ttf', import.meta.url)
+    new URL('@/fonts/Raleway-SemiBold.ttf', import.meta.url)
   ).then((res) => res.arrayBuffer())
  
   return new ImageResponse(

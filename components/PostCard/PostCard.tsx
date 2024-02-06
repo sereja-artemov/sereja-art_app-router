@@ -1,6 +1,6 @@
 'use client';
 
-import useWindowSize from '@/app/hooks/useWindowSize';
+import useWindowSize from '@/hooks/useWindowSize';
 import getLocaleDate from '@/lib/getLocaleDate';
 import { Post } from 'contentlayer/generated';
 import Image from 'next/image';

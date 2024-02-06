@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { navigationRoutes } from '@/app/data/navigationRoutes';
+import { navigationRoutes } from '@/data/navigationRoutes';
 import Link from 'next/link';
 
 const Navigation = () => {

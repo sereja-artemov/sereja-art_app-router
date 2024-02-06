@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import useWindowSize from '@/app/hooks/useWindowSize';
+import useWindowSize from '@/hooks/useWindowSize';
 import HeaderSocialIcons from '../HeaderSocialIcons/HeaderSocialIcons';
 import DarkModeToggle from '../DarkModeToggle/DarkModeToggle';
 import Navigation from '../Navigation/Navigation';

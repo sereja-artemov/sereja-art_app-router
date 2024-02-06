@@ -1,11 +1,8 @@
 import { DarkModeProvider } from '@/context/darkModeContext';
-import './globals.css';
+import '@/styles/globals.css';
 import { Header } from '@/components/Header/Header';
-import { Suspense } from 'react';
 import Footer from '@/components/Footer/Footer';
 import NextTopLoader from 'nextjs-toploader';
-import YandexMetrika from '@/components/YandexMetrika/YandexMetrika';
-import Script from 'next/script';
 import { Raleway, Open_Sans, Playfair_Display } from 'next/font/google'
 
 const raleway = Raleway({

@@ -1,6 +1,6 @@
 'use client'
 
-import { skillsData } from '@/app/data/skillsData';
+import { skillsData } from '@/data/skillsData';
 import { motion } from 'framer-motion';
 import React from 'react'
 import {SiAdobephotoshop, SiCss3, SiFigma, SiHtml5, SiJavascript, SiNextdotjs, SiReact, SiSass} from "react-icons/si";

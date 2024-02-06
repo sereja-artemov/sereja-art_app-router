@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import { AiOutlineCalendar } from 'react-icons/ai';
-import { projectsData } from '../data/projectsData';
+import { projectsData } from '@/data/projectsData';
 import Link from 'next/link';
 import { BsGithub } from 'react-icons/bs';
 import { FiExternalLink } from 'react-icons/fi';

@@ -3,8 +3,8 @@
 import { useKeenSlider } from 'keen-slider/react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import useWindowSize from '@/app/hooks/useWindowSize';
-import { projectsData } from '@/app/data/projectsData';
+import useWindowSize from '@/hooks/useWindowSize';
+import { projectsData } from '@/data/projectsData';
 
 const ProjectsBlock = () => {
   const windowSize = useWindowSize();
