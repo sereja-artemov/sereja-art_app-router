@@ -3,10 +3,8 @@ import { allPosts } from 'contentlayer/generated';
 import {
   AiOutlineCalendar,
   AiOutlineFieldTime,
-  AiOutlineRead,
 } from 'react-icons/ai';
 import getLocaleDate from '@/lib/getLocaleDate';
-import getWordEnding from '@/lib/getWordEnding';
 import Link from 'next/link';
 
 export const PostBlock = () => {

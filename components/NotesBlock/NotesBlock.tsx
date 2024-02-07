@@ -1,7 +1,5 @@
 import { allNotes } from '@/.contentlayer/generated';
-import getLocaleDate from '@/lib/getLocaleDate';
 import Link from 'next/link';
-import { AiOutlineCalendar } from 'react-icons/ai';
 
 function NotesBlock() {
   const getLastPublishedNotes = (count: number) => {
