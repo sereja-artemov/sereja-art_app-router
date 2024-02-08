@@ -1,10 +1,11 @@
 'use client';
 
+import { PostType } from '@/lib/types';
 import { Post } from 'contentlayer/generated';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-function TableOfContents({ post }: { post: Post }) {
+function TableOfContents({ post }: { post: PostType }) {
   const [isTocActive, setIsTocActive] = useState(false);
   const [activeId, setActiveId] = useState('');
   
@@ -20,7 +21,7 @@ function TableOfContents({ post }: { post: Post }) {
       { rootMargin: '0px 0px -85% 0px' }
     );
 
-    post.toc.forEach((element: {slugifyHeading: string}) => {
+    post.tableOfContents.forEach((element) => {
       let heading = document.getElementById(element.slugifyHeading);
       if (heading) {
         observer.observe(heading);
@@ -28,14 +29,14 @@ function TableOfContents({ post }: { post: Post }) {
     });
 
     return () => {
-      post.toc.forEach((element: {slugifyHeading: string}) => {
+      post.tableOfContents.forEach((element) => {
         let heading = document.getElementById(element.slugifyHeading);
         if (heading) {
           observer.unobserve(heading);
         }
       });
     };
-  }, [post.toc]);
+  }, [post.tableOfContents]);
 
   return (
     <div
@@ -46,7 +47,7 @@ function TableOfContents({ post }: { post: Post }) {
       <nav className={`max-lg:px-5 max-lg:py-6`}>
         <div className="mb-1 mt-[7px] text-base font-medium">Содержание</div>
         <ul className="max-h-[70vh] overflow-y-auto py-2 text-sm text-secondTextColor dark:text-secondTextColorDark max-lg:color-inherit max-lg:max-h-[50%] overflow-auto">
-          {post.toc.map(
+          {post.tableOfContents.map(
             (element: Post['toc'], index: number) =>
               element.level <= 2 && (
                 <li

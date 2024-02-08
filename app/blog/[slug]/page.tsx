@@ -1,52 +1,44 @@
-import { allPosts, Post } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
-import { useMDXComponent } from 'next-contentlayer/hooks';
 import { Metadata } from 'next';
 import { Article, Graph, WithContext } from 'schema-dts';
-import type { MDXComponents } from 'mdx/types';
-
 import Link from 'next/link';
-import Figcaption from '@/components/MDXComponents/Figcaption';
-import CodeTitle from '@/components/MDXComponents/CodeTitle/CodeTitle';
-import YouTubeEmbed from '@/components/MDXComponents/YouTube';
 import {
   AiOutlineCalendar,
   AiOutlineFieldTime,
   AiOutlineRead,
 } from 'react-icons/ai';
-import getLocaleDate from '@/lib/getLocaleDate';
 import TableOfContents from '@/components/TableOfContents/TableOfContents';
+import MDXComponentsCustom from '@/components/MDXComponents';
+import { getPost, getPostFromSlug, getPosts } from '@/lib/getPosts';
+import { PostType } from '@/lib/types';
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import getLocaleDate from '@/lib/getLocaleDate';
+import rehypeSlug from 'rehype-slug';
+import rehypePrettyCode from "rehype-pretty-code";
+import { prettyCodeOptions } from '@/lib/prettyCodeOptions';
 
 interface IProps {
   params: { slug: string };
 }
 
-const mdxComponents: MDXComponents = {
-  a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
-  Figcaption,
-  CodeTitle,
-  YouTubeEmbed,
-};
+const PostLayout = async ({ params }: { params: { slug: string } }) => {
 
-const PostLayout = ({ params }: { params: { slug: string } }) => {
+  // const  post: PostType | undefined = await getPost(params.slug, 'blog');
+  // if (!post) notFound()
+  const  post: PostType | undefined = await getPostFromSlug(params.slug, 'blog');
+  
+  console.log(post);
 
-  const post: Post | undefined = allPosts.find((post) => post.slug === params.slug);
-  if (!post) notFound()
-
-  const MDXContent = useMDXComponent(post.body.code);
 
   const structuredData: WithContext<Article> = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
-    // url: `${process.env.HOST}/blog/${slug}/`,
-    // image: {
-    //   '@type': 'ImageObject',
-    //   url: `${process.env.HOST}${post.cover.filePath.replace(
-    //     '../public',
-    //     '',
-    //   )}/`,
-    // },
+    url: `${process.env.HOST}/blog/${params.slug}/`,
+    image: {
+      '@type': 'ImageObject',
+      url: `${post.coverImage}`,
+    },
     description: post.excerpt,
     datePublished: post.date,
     publisher: {
@@ -70,17 +62,16 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   return (
     <div
       className={`grid grid-cols-1 lg:items-start ${
-        post.toc.length > 0 && 'lg:grid-cols-[25%_1fr]'
+        post.tableOfContents.length > 0 && 'lg:grid-cols-[25%_1fr]'
       }`}
-      id={post._id}
     >
-      {post.toc.length > 0 && (
+      {post.tableOfContents.length > 0 && (
         <TableOfContents post={post} />
       )}
       <article
         className={`${
-          post.toc.length <= 0 && 'mx-auto'
-        } prose-code:not-prose w-full prose max-[375px]:prose-sm prose-custom prose-h2:blog-title-link prose-h3:blog-title-link prose-pre:not-prose lg:prose-xl dark:prose-invert prose-code:text-[15px] prose-pre:border prose-pre:border-blockBorderColorDark prose-pre:rounded-xl prose-pre:mt-0 prose-code:before:hidden prose-code:after:hidden prose-pre:rounded-t-none prose-pre:px-0`}
+           post.tableOfContents.length <= 0 && 'mx-auto'
+         } prose-code:not-prose w-full prose max-[375px]:prose-sm prose-custom prose-h2:blog-title-link prose-h3:blog-title-link prose-pre:not-prose lg:prose-xl dark:prose-invert prose-code:text-[15px] prose-pre:border prose-pre:border-blockBorderColorDark prose-pre:rounded-xl prose-pre:mt-0 prose-code:before:hidden prose-code:after:hidden prose-pre:rounded-t-none prose-pre:px-0`}
       >
         {/* шапка начало */}
         <div className="px-5 py-6 mb-5 border sm:px-6 lg:py-8 lg:px-10 rounded-3xl block-border block-bg">
@@ -105,8 +96,14 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
           </div>
         </div>
         {/* шапка конец */}
-
-        <MDXContent components={mdxComponents} />
+        <MDXRemote source={post.body} options = {{mdxOptions: {
+           rehypePlugins: [
+             rehypeSlug, // автоматически создает заголовкам id с таким же названием
+             // [rehypeAutolinkHeadings, { behaviour: "wrap" }],
+             [rehypePrettyCode, prettyCodeOptions],
+           ],
+        }}} components={MDXComponentsCustom} />
+        {/* <MDXContent components={MDXComponentsCustom} /> */}
       </article>
 
       <script
@@ -119,12 +116,16 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
 
 export default PostLayout;
 
-export const generateStaticParams = async () =>
-  allPosts.map((post) => ({ slug: post.slug }));
+export const generateStaticParams = async () => {
+  const posts = await getPosts('blog');
+  return posts.map((post) => ({ slug: post.slug }));
+}
+
 
 //SEO metadata
-export function generateMetadata({ params: { slug } }: IProps): Metadata {
-  const post = allPosts.find((post) => post.slug === slug);
+export async function generateMetadata({ params: { slug } }: IProps): Metadata {
+  const  post: PostType | undefined = await getPostFromSlug(slug, 'blog');
+
 
   if (!post) {
     return {};

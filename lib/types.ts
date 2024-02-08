@@ -62,14 +62,29 @@ export type skillsType = {
   active: boolean;
 }
 
+// export type PostType = {
+//   meta: FrontMatter;
+//   source: MDXRemoteSerializeResult;
+//   tableOfContents: TableOfContents[];
+// };
+
 export type PostType = {
-  meta: FrontMatter;
-  source: MDXRemoteSerializeResult;
+  published: boolean;
+  title: string;
+  slug: string;
+  date: Date | string;
+  excerpt: string;
+  keywords: string[];
+  body: string;
   tableOfContents: TableOfContents[];
+  url: string;
+  coverImage: string;
+  readingTime: { readingTimeText: string, wordsQuantityStr: string },
+  
 };
 
 export type TableOfContents = {
   heading: string;
   level: number;
-  transliteratedHeading: string;
+  slugifyHeading: string,
 }
