@@ -1,34 +1,38 @@
-import { useMDXComponent } from 'next-contentlayer/hooks';
-import { allNotes } from 'contentlayer/generated';
-import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { Article, Graph, WithContext } from 'schema-dts';
 import MDXComponentsCustom from '@/components/MDXComponents';
+import { getPostFromSlug, getPosts } from '@/lib/getPosts';
+import { PostType } from '@/lib/types';
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import rehypeSlug from 'rehype-slug';
+import rehypePrettyCode from "rehype-pretty-code";
+import { prettyCodeOptions } from '@/lib/prettyCodeOptions';
+import rehypeAutolinkHeadings, {
+  type Options as AutolinkOptions,
+} from 'rehype-autolink-headings';
+import { s } from 'hastscript';
+import { notFound } from 'next/navigation';
 
 interface IProps {
   params: { slug: string };
 }
 
-export default function PageLayout({ params }: { params: { slug: string } }) {
+const NoteLayout = async ({ params }: { params: { slug: string } }) => {
 
-  const note = allNotes.find((note) => note.slug === params.slug);
-  if (!note) notFound();
-
-  const MDXContent = useMDXComponent(note.body.code);
+  const  post: PostType | undefined = await getPostFromSlug(params.slug, 'notes');
+  if (!post) notFound()
+  
   const structuredData: WithContext<Article> = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: note.title,
-    // url: `${process.env.HOST}/blog/${slug}/`,
-    // image: {
-    //   '@type': 'ImageObject',
-    //   url: `${process.env.HOST}${post.cover.filePath.replace(
-    //     '../public',
-    //     '',
-    //   )}/`,
-    // },
-    description: note.body.raw,
-    datePublished: note.date,
+    headline: post.title,
+    url: `${process.env.HOST}/notes/${params.slug}/`,
+    image: {
+      '@type': 'ImageObject',
+      url: `${post.coverImage}`,
+    },
+    description: post.excerpt,
+    datePublished: post.date,
     publisher: {
       '@type': 'Person',
       name: 'Sergey Artemov',
@@ -49,8 +53,40 @@ export default function PageLayout({ params }: { params: { slug: string } }) {
 
   return (
     <div className='mx-auto prose-code:not-prose w-full prose max-[375px]:prose-sm prose-custom prose-h2:blog-title-link prose-h3:blog-title-link prose-pre:not-prose lg:prose-xl dark:prose-invert prose-code:text-[15px] prose-pre:border prose-pre:border-blockBorderColorDark prose-pre:rounded-xl prose-pre:mt-0 prose-code:before:hidden prose-code:after:hidden prose-pre:rounded-t-none prose-pre:px-0'>
-      <h1 className='text-2xl leading-tight max-[375px]:text-xl font-bold font-boss lg:leading-tight lg:text-5xl'>{note.title}</h1>
-      <MDXContent components={MDXComponentsCustom} />
+      <h1 className='text-2xl leading-tight max-[375px]:text-xl font-bold font-boss lg:leading-tight lg:text-5xl'>{post.title}</h1>
+      <MDXRemote source={post.body} options = {{mdxOptions: {
+           rehypePlugins: [
+             rehypeSlug, // автоматически создает заголовкам id с таким же названием
+             [rehypeAutolinkHeadings, {
+              behavior: 'append',
+              // на какие заголовки будет действовать
+              test: ['h2', 'h3'],
+              properties: { class: 'heading-link' },
+              content: s(
+                'svg',
+                {
+                  xmlns: 'http://www.w3.org/2000/svg',
+                  viewBox: '0 0 24 24',
+                  width: '24',
+                  height: '24',
+                  fill: 'none',
+                  stroke: 'currentColor',
+                  'stroke-width': '2',
+                  'stroke-linecap': 'round',
+                  'stroke-linejoin': 'round',
+                  'aria-label': 'Anchor link',
+                },
+                [
+                  s('line', { x1: '4', y1: '9', x2: '20', y2: '9' }),
+                  s('line', { x1: '4', y1: '15', x2: '20', y2: '15' }),
+                  s('line', { x1: '10', y1: '3', x2: '8', y2: '21' }),
+                  s('line', { x1: '16', y1: '3', x2: '14', y2: '21' }),
+                ]
+              ),
+            } satisfies Partial<AutolinkOptions>,],
+             [rehypePrettyCode, prettyCodeOptions],
+           ],
+        }}} components={MDXComponentsCustom} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -59,18 +95,23 @@ export default function PageLayout({ params }: { params: { slug: string } }) {
   )
 }
 
-export const generateStaticParams = async () =>
-  allNotes.map((note) => ({ slug: note.slug }));
+export default NoteLayout;
 
-  //SEO metadata
-export function generateMetadata({ params: { slug } }: IProps): Metadata {
-  const note = allNotes.find((note) => note.slug === slug);
+export const generateStaticParams = async () => {
+  const posts = await getPosts('notes');
+  return posts.map((post) => ({ slug: post.slug }));
+}
 
-  if (!note) {
+//SEO metadata
+export async function generateMetadata({ params: { slug } }: IProps): Metadata {
+  const  post: PostType | undefined = await getPostFromSlug(slug, 'notes');
+
+  if (!post) {
     return {};
   }
 
-  const { description, title, date, keywords } = note;
+  const { excerpt, title, date, keywords, url } = post;
+  const description = excerpt;
 
   return {
     title,
@@ -79,8 +120,10 @@ export function generateMetadata({ params: { slug } }: IProps): Metadata {
     openGraph: {
       type: 'article',
       title,
+      url: `${process.env.HOST}/${url}`,
       description,
       publishedTime: date,
+      images: `http://tech.sereja-art.ru/upload/blogs/${post.slug}/${post.slug}.jpg`,
     },
     twitter: {
       title,

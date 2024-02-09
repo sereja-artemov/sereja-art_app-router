@@ -88,3 +88,16 @@ export type TableOfContents = {
   level: number;
   slugifyHeading: string,
 }
+
+export type NoteType = {
+  published: boolean;
+  title: string;
+  slug: string;
+  date: Date | string;
+  excerpt: string;
+  keywords: string[];
+  body: string;
+  // tableOfContents: TableOfContents[];
+  url: string;
+  // readingTime: { readingTimeText: string, wordsQuantityStr: string },
+};

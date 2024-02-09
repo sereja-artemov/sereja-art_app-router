@@ -3,7 +3,6 @@
 import useWindowSize from '@/hooks/useWindowSize';
 import getLocaleDate from '@/lib/getLocaleDate';
 import { PostType } from '@/lib/types';
-import { Post } from 'contentlayer/generated';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -14,7 +13,6 @@ import {
 
 export default function PostCard(post: PostType) {
   const windowSize = useWindowSize();
-  console.log(post);
   
   return (
     <article className="flex flex-col border bg-whiteSecondary dark:bg-darkSecondary rounded-xl border-blockBorderColorLight dark:border-blockBorderColorDark">
@@ -41,12 +39,12 @@ export default function PostCard(post: PostType) {
           <div className="inline-flex gap-4">
             <span className="flex items-center gap-2 [&>svg]:w-[1.4em] [&>svg]:h-auto dark:text-secondTextColorDark text-secondTextColor">
               {<AiOutlineFieldTime />}
-              {/* {post.readingTime.readingTimeText} */}
+              {post.readingTime.readingTimeText}
             </span>
             {windowSize.width >= 1024 && (
               <span className="flex items-center gap-2 [&>svg]:w-[1.4em] [&>svg]:h-auto dark:text-secondTextColorDark text-secondTextColor">
                 {<AiOutlineRead />}
-                {/* {post.readingTime.wordsQuantityStr} */}
+                {post.readingTime.wordsQuantityStr}
               </span>
             )}
           </div>

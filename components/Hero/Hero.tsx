@@ -19,7 +19,7 @@ const Hero = () => {
             <div className='p-0.5 inline-block shrink-0 lg:p-1 border border-whiteSecondary/30 rounded-full'>
               <button
                 type="button"
-                className="flex items-center justify-between h-full gap-6 px-4 py-1 pr-1 border rounded-full border-whiteSecondary/30 lg:pr-1 lg:gap-5 lg:px-5 shrink-0 md:border-1 lg:text-xl"
+                className="flex items-center bg-[#3338417a] justify-between h-full gap-6 px-4 py-1 pr-1 border rounded-full border-whiteSecondary/30 lg:pr-1 lg:gap-5 lg:px-5 shrink-0 md:border-1 lg:text-xl"
               >
                 <p className="lg:mb-[0.1em]">Начать работать</p>
                 <svg

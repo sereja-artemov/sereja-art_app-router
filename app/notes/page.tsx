@@ -1,6 +1,5 @@
 import Note from '@/components/Note/Note';
 import { getPosts } from '@/lib/getPosts';
-import { allNotes } from 'contentlayer/generated';
 
 export default async function Notes() {
   
