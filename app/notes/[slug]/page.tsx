@@ -19,7 +19,7 @@ interface IProps {
 
 const NoteLayout = async ({ params }: { params: { slug: string } }) => {
 
-  const  post: PostType | undefined = await getPostFromSlug(params.slug, 'notes');
+  const post = await getPostFromSlug(params.slug, 'notes');
   if (!post) notFound()
   
   const structuredData: WithContext<Article> = {
@@ -103,8 +103,8 @@ export const generateStaticParams = async () => {
 }
 
 //SEO metadata
-export async function generateMetadata({ params: { slug } }: IProps): Metadata {
-  const  post: PostType | undefined = await getPostFromSlug(slug, 'notes');
+export async function generateMetadata({ params: { slug } }: IProps): Promise<Metadata> {
+  const  post = await getPostFromSlug(slug, 'notes');
 
   if (!post) {
     return {};

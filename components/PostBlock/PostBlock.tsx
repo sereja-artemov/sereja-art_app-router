@@ -15,7 +15,7 @@ export default async function PostBlock() {
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
-  const post: PostType | undefined = publishedPosts[0];
+  const post = publishedPosts[0];
   
   return (
     <article className="flex flex-col h-full rounded-xl">

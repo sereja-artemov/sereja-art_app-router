@@ -2,13 +2,10 @@ import PostCard from '@/components/PostCard/PostCard';
 import { getPosts } from '@/lib/getPosts';
 
 export default async function Blog() {
-  // const posts = allPosts.sort(
-  //   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  // );
 
   const posts = await getPosts('blog');
   const sortedPosts = posts.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    (a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
   return (

@@ -3,6 +3,7 @@ import matter from 'gray-matter';
 import path from 'path';
 import GithubSlugger from 'github-slugger';
 import getReadingTime from '@/lib/readingTime';
+import { PostType } from './types';
 
 export async function getPosts(postTypeDir: string) {
   const posts = await fs.readdir(`./content/${postTypeDir}`);
@@ -21,14 +22,17 @@ export async function getPosts(postTypeDir: string) {
         const readingTime = getReadingTime(content);
         // const tableOfContents = getTableOfContents(content);
         /* Возвращаем front matter */
-        return {
+
+        const posts: PostType | any = {
           ...data,
           slug: fileSlug,
           url: fileUrl,
           body: content,
           readingTime,
           // tableOfContents,
-        };
+        }
+
+        return posts;
       })
   );
 }
@@ -46,14 +50,22 @@ export async function getPostFromSlug(slug: string, postTypeDir: string) {
 
     if (!data.published) return {post: null};
 
-  return {
-    ...data,
-    slug,
-    url: fileUrl,
-    body: content,
-    readingTime,
-    tableOfContents,
-  };
+    const post: PostType | any = {
+      // ...data,
+      published: data.published,
+      title: data.title,
+      excerpt: data.excerpt,
+      keywords: data.keywords,
+      date: data.date,
+      coverImage: data.coverImage,
+      slug,
+      url: fileUrl,
+      body: content,
+      readingTime,
+      tableOfContents,
+    }
+
+  return post;
 }
 
 const getTableOfContents = (markdown: string) => {

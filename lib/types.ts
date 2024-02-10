@@ -76,17 +76,17 @@ export type PostType = {
   excerpt: string;
   keywords: string[];
   body: string;
-  tableOfContents: TableOfContents[];
+  tableOfContents: TableOfContents[] | undefined;
   url: string;
   coverImage: string;
   readingTime: { readingTimeText: string, wordsQuantityStr: string },
   
 };
 
-export type TableOfContents = {
-  heading: string;
-  level: number;
-  slugifyHeading: string,
+interface TableOfContents {
+  heading?: string;
+  level?: number;
+  slugifyHeading?: string,
 }
 
 export type NoteType = {

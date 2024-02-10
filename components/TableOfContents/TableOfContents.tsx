@@ -5,7 +5,7 @@ import { Post } from 'contentlayer/generated';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-function TableOfContents({ post }: { post: PostType }) {
+function TableOfContents({ post }: { post: PostType | any }) {
   const [isTocActive, setIsTocActive] = useState(false);
   const [activeId, setActiveId] = useState('');
   
@@ -21,7 +21,7 @@ function TableOfContents({ post }: { post: PostType }) {
       { rootMargin: '0px 0px -85% 0px' }
     );
 
-    post.tableOfContents.forEach((element) => {
+    post.tableOfContents.forEach((element: any) => {
       let heading = document.getElementById(element.slugifyHeading);
       if (heading) {
         observer.observe(heading);
@@ -29,7 +29,7 @@ function TableOfContents({ post }: { post: PostType }) {
     });
 
     return () => {
-      post.tableOfContents.forEach((element) => {
+      post.tableOfContents.forEach((element: any) => {
         let heading = document.getElementById(element.slugifyHeading);
         if (heading) {
           observer.unobserve(heading);
