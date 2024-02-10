@@ -83,7 +83,7 @@ export type PostType = {
   
 };
 
-interface TableOfContents {
+export interface TableOfContents {
   heading?: string;
   level?: number;
   slugifyHeading?: string,

@@ -1,9 +1,9 @@
 'use client';
 
 import { PostType } from '@/lib/types';
-import { Post } from 'contentlayer/generated';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import {TableOfContents} from '@/lib/types';
 
 function TableOfContents({ post }: { post: PostType | any }) {
   const [isTocActive, setIsTocActive] = useState(false);
@@ -48,7 +48,7 @@ function TableOfContents({ post }: { post: PostType | any }) {
         <div className="mb-1 mt-[7px] text-base font-medium">Содержание</div>
         <ul className="max-h-[70vh] overflow-y-auto py-2 text-sm text-secondTextColor dark:text-secondTextColorDark max-lg:color-inherit max-lg:max-h-[50%] overflow-auto">
           {post.tableOfContents.map(
-            (element: Post['toc'], index: number) =>
+            (element: any, index: number) =>
               element.level <= 2 && (
                 <li
                   style={{
