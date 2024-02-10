@@ -3,11 +3,6 @@ import matter from 'gray-matter';
 import path from 'path';
 import GithubSlugger from 'github-slugger';
 import getReadingTime from '@/lib/readingTime';
-import rehypeSlug from 'rehype-slug';
-import rehypePrettyCode from "rehype-pretty-code";
-
-import { PostType } from './types';
-import { compileMDX } from 'next-mdx-remote/rsc';
 
 export async function getPosts(postTypeDir: string) {
   const posts = await fs.readdir(`./content/${postTypeDir}`);
@@ -38,14 +33,6 @@ export async function getPosts(postTypeDir: string) {
   );
 }
 
-// export async function getPost(slug: string, postTypeDir: string) {
-//   const posts = await getPosts(postTypeDir);
-//   const currentPost = posts.find((post) => post.slug === slug);
-//   // const tableOfContents = getTableOfContents(currentPost);
-
-//   return currentPost;
-// }
-
   /* Получаем post по значению slug (это пост с контентом и front matter)  */
 export async function getPostFromSlug(slug: string, postTypeDir: string) {
     const postPath = `./content/${postTypeDir}/${slug}.mdx`;
@@ -58,20 +45,6 @@ export async function getPostFromSlug(slug: string, postTypeDir: string) {
     const tableOfContents = getTableOfContents(content);
 
     if (!data.published) return {post: null};
-    
-
-    // получаем front matter
-  //   const {frontmatter, content} = await compileMDX({
-  //     source: article.description,
-  //     components: components,
-  //     options: {
-  //         parseFrontmatter: false, // ставим true, если нам нужно собирать мета данные из файлов mdx (в моём случае данные приходят из API)
-  //         mdxOptions: {
-  //             rehypePlugins: [rehypeCodeTitles, rehypePrismAll, rehypeFigure],
-  //             remarkPlugins: [remarkGfm]
-  //         }
-  //     }
-  // })
 
   return {
     ...data,
@@ -80,15 +53,6 @@ export async function getPostFromSlug(slug: string, postTypeDir: string) {
     body: content,
     readingTime,
     tableOfContents,
-    // options: {
-    //     mdxOptions: {
-    //       rehypePlugins: [
-    //         rehypeSlug, // автоматически создает заголовкам id с таким же названием
-    //         // [rehypeAutolinkHeadings, { behaviour: "wrap" }],
-    //         [rehypePrettyCode, prettyCodeOptions],
-    //       ],
-    //     }
-    // }
   };
 }
 

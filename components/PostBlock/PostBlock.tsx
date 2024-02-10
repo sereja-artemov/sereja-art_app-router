@@ -1,23 +1,21 @@
 import Image from 'next/image';
-import { allPosts } from 'contentlayer/generated';
 import {
   AiOutlineCalendar,
   AiOutlineFieldTime,
 } from 'react-icons/ai';
 import getLocaleDate from '@/lib/getLocaleDate';
 import Link from 'next/link';
+import { getPosts } from '@/lib/getPosts';
+import { PostType } from '@/lib/types';
 
-export const PostBlock = () => {
+export default async function PostBlock() {
 
-  const getLastPublishedPost = () => {
-    const publishedPosts = allPosts.filter((e) => e.published);
-    const postsByDate = publishedPosts.sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-    );
-    return postsByDate[0];
-  }
+  const posts = await getPosts('blog');
+  const publishedPosts = posts.filter(post => post.published).sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 
-  const post = getLastPublishedPost();
+  const post: PostType | undefined = publishedPosts[0];
   
   return (
     <article className="flex flex-col h-full rounded-xl">

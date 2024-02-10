@@ -2,7 +2,7 @@ import React from 'react';
 import ServicesBlock from '../ServicesBlock/ServicesBlock';
 import CardWrapper from '../CardWrapper/CardWrapper';
 import ProjectsBlock from '../ProjectsBlock/ProjectsBlock';
-import { PostBlock } from '../PostBlock/PostBlock';
+import PostBlock from '../PostBlock/PostBlock';
 import NotesBlock from '../NotesBlock/NotesBlock';
 
 const CardsGrid = () => {

@@ -1,25 +1,26 @@
-import { allNotes } from '@/.contentlayer/generated';
+import { getPosts } from '@/lib/getPosts';
 import Link from 'next/link';
 
-function NotesBlock() {
-  const getLastPublishedNotes = (count: number) => {
-    const publishedPosts = allNotes.filter((note) => note.published);
-    const postsByDate = publishedPosts.sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-    );
-    return postsByDate.slice(0, count + 1);
-  };
-
-  const notes = getLastPublishedNotes(10);
+async function NotesBlock() {
+  
+  const notes = await getPosts('notes');
+  //получаем 10 активных записей
+  const activeNotes = notes
+    .filter((note) => note.published)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 10 + 1);
 
   return (
     <ul className="flex flex-col gap-2 xl:text-sm lg:text-base">
-      {notes.map((note, index) => (
+      {activeNotes.map((note, index) => (
         <li
           className="py-1 pb-2 leading-snug border-b w-fit border-darkPrimary/20 dark:border-whiteSecondary/30"
           key={index + note._id}
         >
-          <Link className='flex gap-1.5 [&>svg]:w-[1.4em] [&>svg]:h-auto' href={note.url}>
+          <Link
+            className="flex gap-1.5 [&>svg]:w-[1.4em] [&>svg]:h-auto"
+            href={note.url}
+          >
             {note.title}
             <svg
               className="shrink-0"
