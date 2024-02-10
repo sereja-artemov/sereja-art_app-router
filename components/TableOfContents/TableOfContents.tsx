@@ -3,7 +3,7 @@
 import { PostType } from '@/lib/types';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import {TableOfContents} from '@/lib/types';
+// import {TableOfContents} from '@/lib/types';
 
 function TableOfContents({ post }: { post: PostType | any }) {
   const [isTocActive, setIsTocActive] = useState(false);
