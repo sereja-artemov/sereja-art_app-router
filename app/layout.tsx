@@ -24,6 +24,7 @@ const playfair_display = Playfair_Display({
 })
 
 export const metadata = {
+  metadataBase: new URL('https://sereja-art.ru'),
   title: {
     template: '%s — sereja-art',
     default: 'Разработка и продвижение сайтов под ключ — sereja-art',

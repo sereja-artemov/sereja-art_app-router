@@ -4,11 +4,12 @@ import path from 'path';
 import GithubSlugger from 'github-slugger';
 import getReadingTime from '@/lib/readingTime';
 import { PostType } from './types';
+import { cache } from 'react';
 
-export async function getPosts(postTypeDir: string) {
+export const getPosts = cache(async (postTypeDir: string) => {
   const posts = await fs.readdir(`./content/${postTypeDir}`);
 
-  return Promise.all(
+  const postsWithData = await Promise.all(
     posts
       .filter((file) => path.extname(file) === '.mdx')
       .map(async (file) => {
@@ -20,53 +21,68 @@ export async function getPosts(postTypeDir: string) {
         const { data, content } = matter(fileContent);
 
         const readingTime = getReadingTime(content);
-        // const tableOfContents = getTableOfContents(content);
-        /* Возвращаем front matter */
+        const tableOfContents = getTableOfContents(content);
 
-        const posts: PostType | any = {
+        if (data.published === false) {
+          return null;
+        }
+
+        /* Возвращаем front matter и контент */
+        return {
           ...data,
           slug: fileSlug,
           url: fileUrl,
           body: content,
           readingTime,
-          // tableOfContents,
-        }
-
-        return posts;
+          tableOfContents,
+        } as PostType;
       })
   );
+
+  const filteredPosts = postsWithData
+    .filter((post) => post !== null)
+    .sort((a, b) =>
+      a && b ? new Date(b.date).getTime() - new Date(a.date).getTime() : 0
+    ) as PostType[];
+
+  return filteredPosts;
+});
+
+export async function getPost(slug: string, postTypeDir: string) {
+  const posts = await getPosts(postTypeDir);
+  return posts.find((post) => post.slug === slug);
 }
 
-  /* Получаем post по значению slug (это пост с контентом и front matter)  */
-export async function getPostFromSlug(slug: string, postTypeDir: string) {
-    const postPath = `./content/${postTypeDir}/${slug}.mdx`;
-    // const postPath = path.join(this.POST_PATH, `${slug}.mdx`);
-    const fileContent = await fs.readFile(postPath, 'utf8');
-    const fileUrl = `${postTypeDir}/${slug}`;
-    const {data, content} = matter(fileContent);
+/* Получаем post по значению slug (это пост с контентом и front matter)  */
+// export async function getPostFromSlug(slug: string, postTypeDir: string) {
+//     const postPath = `./content/${postTypeDir}/${slug}.mdx`;
+//     // const postPath = path.join(this.POST_PATH, `${slug}.mdx`);
+//     const fileContent = await fs.readFile(postPath, 'utf8');
+//     const fileUrl = `${postTypeDir}/${slug}`;
+//     const {data, content} = matter(fileContent);
 
-    const readingTime = getReadingTime(content);
-    const tableOfContents = getTableOfContents(content);
+//     const readingTime = getReadingTime(content);
+//     const tableOfContents = getTableOfContents(content);
 
-    if (!data.published) return {post: null};
+//     if (!data.published) return {post: null};
 
-    const post: PostType | any = {
-      // ...data,
-      published: data.published,
-      title: data.title,
-      excerpt: data.excerpt,
-      keywords: data.keywords,
-      date: data.date,
-      coverImage: data.coverImage,
-      slug,
-      url: fileUrl,
-      body: content,
-      readingTime,
-      tableOfContents,
-    }
+//     const post: PostType | any = {
+//       // ...data,
+//       published: data.published,
+//       title: data.title,
+//       excerpt: data.excerpt,
+//       keywords: data.keywords,
+//       date: data.date,
+//       coverImage: data.coverImage,
+//       slug,
+//       url: fileUrl,
+//       body: content,
+//       readingTime,
+//       tableOfContents,
+//     }
 
-  return post;
-}
+//   return post;
+// }
 
 const getTableOfContents = (markdown: string) => {
   const slugger = new GithubSlugger();

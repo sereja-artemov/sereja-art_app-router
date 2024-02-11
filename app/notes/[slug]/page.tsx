@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
 import { Article, Graph, WithContext } from 'schema-dts';
 import MDXComponentsCustom from '@/components/MDXComponents';
-import { getPostFromSlug, getPosts } from '@/lib/getPosts';
-import { PostType } from '@/lib/types';
+import { getPost, getPosts } from '@/lib/getPosts';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypeSlug from 'rehype-slug';
 import rehypePrettyCode from "rehype-pretty-code";
@@ -18,8 +17,7 @@ interface IProps {
 }
 
 const NoteLayout = async ({ params }: { params: { slug: string } }) => {
-
-  const post = await getPostFromSlug(params.slug, 'notes');
+  const post = await getPost(params.slug, 'notes');
   if (!post) notFound()
   
   const structuredData: WithContext<Article> = {
@@ -104,7 +102,7 @@ export const generateStaticParams = async () => {
 
 //SEO metadata
 export async function generateMetadata({ params: { slug } }: IProps): Promise<Metadata> {
-  const  post = await getPostFromSlug(slug, 'notes');
+  const  post = await getPost(slug, 'notes');
 
   if (!post) {
     return {};

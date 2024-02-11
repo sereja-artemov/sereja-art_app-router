@@ -6,16 +6,11 @@ import {
 import getLocaleDate from '@/lib/getLocaleDate';
 import Link from 'next/link';
 import { getPosts } from '@/lib/getPosts';
-import { PostType } from '@/lib/types';
 
 export default async function PostBlock() {
 
   const posts = await getPosts('blog');
-  const publishedPosts = posts.filter(post => post.published).sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
-
-  const post = publishedPosts[0];
+  const post = posts[0];
   
   return (
     <article className="flex flex-col h-full rounded-xl">
@@ -42,7 +37,7 @@ export default async function PostBlock() {
           <div className="inline-flex gap-4">
             <span className="flex items-center gap-2 [&>svg]:w-[1.4em] [&>svg]:h-auto dark:text-secondTextColorDark text-secondTextColor">
               {<AiOutlineFieldTime />}
-              {post.readingTime.readingTimeText}
+              {post.readingTime && post.readingTime?.readingTimeText}
             </span>
           </div>
         </div>

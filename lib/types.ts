@@ -1,28 +1,7 @@
 import { Variants } from "framer-motion";
 import React from "react";
 import CSS from 'csstype';
-import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { StaticImageData } from "next/image";
-
-export interface ReadTimeResultsCustom {
-  text: string;
-  textRU?: string;
-  time: number;
-  words: number;
-  minutes: number;
-}
-
-export type FrontMatter = {
-  readingTime: ReadTimeResultsCustom;
-  category: string;
-  date: string;
-  excerpt: string;
-  image: string;
-  keywords: string;
-  slug: string;
-  title: string;
-  stringDate: string;
-};
 
 /* Custom Animated Components types */
 export type AnimatedTAGProps = {
@@ -62,38 +41,32 @@ export type skillsType = {
   active: boolean;
 }
 
-// export type PostType = {
-//   meta: FrontMatter;
-//   source: MDXRemoteSerializeResult;
-//   tableOfContents: TableOfContents[];
-// };
-
 export type PostType = {
   published: boolean;
   title: string;
   slug: string;
-  date: Date | string;
+  date: string;
   excerpt: string;
   keywords: string[];
   body: string;
-  tableOfContents: TableOfContents[] | undefined;
+  tableOfContents: TableOfContents[];
   url: string;
   coverImage: string;
-  readingTime: { readingTimeText: string, wordsQuantityStr: string },
-  
+  readingTime: { readingTimeText: string, wordsQuantityStr: string };
+  lastModified?: number;
 };
 
 export interface TableOfContents {
-  heading?: string;
-  level?: number;
-  slugifyHeading?: string,
+  heading: string;
+  level: number;
+  slugifyHeading: string,
 }
 
 export type NoteType = {
   published: boolean;
   title: string;
   slug: string;
-  date: Date | string;
+  date: string;
   excerpt: string;
   keywords: string[];
   body: string;

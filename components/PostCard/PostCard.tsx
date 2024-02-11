@@ -34,17 +34,17 @@ export default function PostCard(post: PostType) {
         <div className="flex flex-wrap gap-1.5 text-sm mb-4">
           <span className="inline-flex items-center gap-2 mr-3 [&>svg]:w-[1.4em] [&>svg]:h-auto dark:text-secondTextColorDark text-secondTextColor">
             {<AiOutlineCalendar />}
-            {getLocaleDate('ru', post.date.toString(), 'short')}
+            {getLocaleDate('ru', post.date, 'short')}
           </span>
           <div className="inline-flex gap-4">
             <span className="flex items-center gap-2 [&>svg]:w-[1.4em] [&>svg]:h-auto dark:text-secondTextColorDark text-secondTextColor">
               {<AiOutlineFieldTime />}
-              {post.readingTime.readingTimeText}
+              {post.readingTime && post.readingTime?.readingTimeText}
             </span>
             {windowSize.width >= 1024 && (
               <span className="flex items-center gap-2 [&>svg]:w-[1.4em] [&>svg]:h-auto dark:text-secondTextColorDark text-secondTextColor">
                 {<AiOutlineRead />}
-                {post.readingTime.wordsQuantityStr}
+                {post.readingTime && post.readingTime.wordsQuantityStr}
               </span>
             )}
           </div>

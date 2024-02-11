@@ -27,8 +27,8 @@ export function DarkModeProvider({ children }: { children: React.ReactNode }) {
     updateTheme();
   }, []);
   
-  function changeDarkMode(value: boolean) {
-    localStorage.setItem("isDarkMode", value.toString());
+  function changeDarkMode(value: boolean | string) {
+    localStorage.setItem("isDarkMode", value?.toString());
     updateTheme();
   }
 

@@ -5,17 +5,16 @@ async function NotesBlock() {
   
   const notes = await getPosts('notes');
   //получаем 10 активных записей
-  const activeNotes = notes
+  const filteredNotes = notes
     .filter((note) => note.published)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 10 + 1);
 
   return (
     <ul className="flex flex-col gap-2 xl:text-sm lg:text-base">
-      {activeNotes.map((note, index) => (
+      {filteredNotes.map((note, index) => (
         <li
           className="py-1 pb-2 leading-snug border-b w-fit border-darkPrimary/20 dark:border-whiteSecondary/30"
-          key={index + note._id}
+          key={index + note.slug}
         >
           <Link
             className="flex gap-1.5 [&>svg]:w-[1.4em] [&>svg]:h-auto"
