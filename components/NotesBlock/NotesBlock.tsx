@@ -14,7 +14,7 @@ async function NotesBlock() {
       {filteredNotes.map((note, index) => (
         <li
           className="py-1 pb-2 leading-snug border-b w-fit border-darkPrimary/20 dark:border-whiteSecondary/30"
-          key={index + note.slug}
+          key={index}
         >
           <Link
             className="flex gap-1.5 [&>svg]:w-[1.4em] [&>svg]:h-auto"

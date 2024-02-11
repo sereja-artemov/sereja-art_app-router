@@ -4,7 +4,7 @@ import React, { useState, useContext, useEffect, createContext } from "react";
 
 export interface DarkModeContextType {
   isDarkMode: boolean;
-  changeDarkMode(value: boolean): void;
+  changeDarkMode(value: any): void;
 }
 
 const DarkModeContext = createContext<DarkModeContextType | null>(null);
@@ -27,8 +27,8 @@ export function DarkModeProvider({ children }: { children: React.ReactNode }) {
     updateTheme();
   }, []);
   
-  function changeDarkMode(value: boolean | string) {
-    localStorage.setItem("isDarkMode", value?.toString());
+  function changeDarkMode(value: any) {
+    localStorage.setItem("isDarkMode", value);
     updateTheme();
   }
 
